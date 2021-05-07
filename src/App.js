@@ -5,13 +5,17 @@ import Grid from '@material-ui/core/Grid';
 import Instructions from "./components/instructions/instructions"
 import Input from "./components/input/input"
 import TwitterResults from "./components/twitterResults/twitterResults"
-
+import validateHandle from "./twitterAPI/validateHandle"
 
 
 function App() {
 
-  const handleInput = ( ) => {
-    
+  const handleInput = ( submittedContent ) => {
+    //console.log(submittedContent);
+    validateHandle(submittedContent)
+    //take name once submitted 
+    //pass to twitter api function
+
   }
   return (
     <div className="App">
@@ -29,7 +33,7 @@ function App() {
           </Grid>
 
           <Grid item>
-            <Input/>
+            <Input handleInput = {handleInput}/>
           </Grid>
 
           <Grid item>
