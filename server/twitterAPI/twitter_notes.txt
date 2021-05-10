@@ -1,0 +1,54 @@
+
+   // data = [ { id: '939091', name: 'Joe Biden', username: 'JoeBiden' } ]
+
+
+    //official 
+    // https://api.twitter.com/2/users/by?usernames=${usernames}&${params}
+
+
+    //root is https://api.twitter.com/2/
+
+    //path is first arguement 
+
+    //attempt at new version 
+
+    //https://api.twitter.com/2/users/by/username?usernames=JoeBiden
+
+    // offical 
+
+    //https://api.twitter.com/2/users/by?usernames=
+
+
+
+
+    // MORE ADVANCED QUERIES 
+
+
+
+    // const  data = await client.get('tweets', {
+    //     ids: '1228393702244134912',
+    //     tweet: {
+    //       fields: ['created_at', 'entities', 'public_metrics', 'author_id'],
+    //     },
+    //   });
+
+    
+
+        //const { data } = await client.get('tweets', { ids: '1228393702244134912' });
+
+
+
+
+
+
+
+// const { account } = await client.get("users/by?usernames", params)
+
+// if(account === undefined){
+//     //return not valid
+// } 
+
+// console.log(account);
+
+// console.log(account.name);
+
