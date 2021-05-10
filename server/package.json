@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "twitter-v2": "^1.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "^9.0.2"
+  }
+}

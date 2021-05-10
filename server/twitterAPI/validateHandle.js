@@ -2,11 +2,15 @@
 
 const Twitter = require('twitter-v2');
 
+require('dotenv').config();
+
+
+
 const client = new Twitter({
-    consumer_key: 'sF1NuA8aYhyJKmrgzHSoLqIFk',
-    consumer_secret: 'i1mdlM20Xsx9nhKYHE6bI6e6t1rU2qonr7uayfLVD5Z49eXfuD',
-    access_token_key: '1390350156726407170-QtPf6zHPPncuKKMNkhkfkGpgbRViko',
-    access_token_secret: 'K7rnnNmtoeypzWXdluTKY7cVLiAHTiSQ2wmjOMb5CCJK5',
+    consumer_key: `${process.env.CONSUMER_KEY}`,//'sF1NuA8aYhyJKmrgzHSoLqIFk', //, //
+    consumer_secret: `${process.env.CONSUMER_SECRET}`, //`${process.env.REACT_APP_CONSUMER_SECRET}`, //,
+    access_token_key: `${process.env.ACCESS_TOKEN_KEY}`, //`${process.env.REACT_APP_ACCESS_TOKEN_KEY}`,
+    access_token_secret: `${process.env.ACCESS_TOKEN_SECRET}`
 });
 
 
@@ -26,7 +30,7 @@ async function validateUsername() {
         // return not valid 
     } else {
         let { id, name, username } = data[0];
-        console.log(name);
+        console.log(id);
 
         return id, name, username
     };

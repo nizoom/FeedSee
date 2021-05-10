@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react'
+import React from 'react'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
@@ -22,18 +22,11 @@ function App() {
     fetch("/api")
       .then((res) => res.json())
       .then((info) => console.log(info))
-      .then((data) => setData(data.message))
+      .then((data) => setData(data))
       .then((data) => console.log(data))
 
-    // headers: {
-    //   'Content-Type': 'application/json',
-    //   'Accept': 'application/json'
-    // }
   }
 
-
-
-  //console.log(submittedContent);
   //validateHandle(submittedName)
   //take name once submitted 
   //pass to twitter api function
