@@ -46,9 +46,13 @@ app.get("/api/users/:handle", (req, res) => {
 
         let obj = Object.values(valid)
 
-        console.log(`This is obj ${obj}`);
+        console.log(obj);
 
-        console.log(`This is valid ${valid}`)
+        console.log(obj);
+
+        // console.log(`This is obj ${obj}`);
+
+        //console.log(`This is valid ${valid}`)
 
         //valid != "error" ? console.log("We good ") : console.log("we not good");
 

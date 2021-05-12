@@ -15,25 +15,39 @@ const Input = (props) => {
     }
 
     const passSubmitted = () => {
+        console.log("passed")
         props.handleInput(inputContent);
+        //reset for next search
+        setValidity(true)
     }
 
     const checkValidity = () => {
+
+        console.log("fired")
+        console.log
         const regex = /[^a-zA-Z\d\s_]/
         // if inputContent is empty -> invalid 
         if (inputContent === "") {
-            setValidity(false);
+            return setValidity(false);
         }
         // if inputContent contains non alphanumeric chars except dashes  -> invalid 
 
         if (regex.test(inputContent)) {
-            setValidity(false);
+            return setValidity(false);
         }
 
         // if inputContent is less than 4 and no more than 15 chars long 
         if (inputContent.length < 4 || inputContent.length > 15) {
-            setValidity(false);
+            return setValidity(false);
         }
+
+        if (validity) {
+            console.log(validity)
+            passSubmitted()
+        }
+
+        //reset for next search
+        setValidity(true)
     }
 
     return (
