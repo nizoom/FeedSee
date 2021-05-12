@@ -19,7 +19,7 @@ function App() {
 
     console.log("Making request")
 
-    fetch("/api")
+    fetch(`/api/users/${submittedName}`) //user=${submittedName}`
       .then((res) => res.json())
       .then((info) => console.log(info))
       .then((data) => setData(data))

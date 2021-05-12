@@ -1,43 +1,35 @@
+async function validateUsername(submittedContent, credentials) {
 
+    const Twitter = require('twitter-v2');
 
-const Twitter = require('twitter-v2');
-
-require('dotenv').config();
-
-
-
-const client = new Twitter({
-    consumer_key: `${process.env.CONSUMER_KEY}`,
-    consumer_secret: `${process.env.CONSUMER_SECRET}`,
-    access_token_key: `${process.env.ACCESS_TOKEN_KEY}`,
-    access_token_secret: `${process.env.ACCESS_TOKEN_SECRET}`
-});
-
-
-
-let params = { usernames: "JoeBiden" }
-
-async function validateUsername() {
+    const client = new Twitter(credentials);
 
     let id, name, username;
     let valid
     // THIS WORKS 
 
-    const { data } = await client.get("users/by?usernames", params)
+    const data = await client.get("users/by?usernames", { usernames: `${submittedContent}` })
 
-    if (data === undefined) {
-        console.log("error");
-        // return not valid 
-    } else {
-        let { id, name, username } = data[0];
-        console.log(id);
+        .then(function (data) {
+            //console.log(data)
 
-        return id, name, username
-    };
+            return data;
+            //let { id, name, username } = data;
+            //console.log(id);
+            //return id, name, username
+
+        })
+        .catch((error) => {
+            //console.log(error)
+            return "error";
+        })
+
+
+    return data;
 
 
 }
 
-validateUsername()
 
+module.exports = validateUsername;
 
