@@ -4,7 +4,9 @@ const express = require("express");
 
 const app = express();
 
-const validateHandle = require("./twitterAPI/validateHandle")
+const validateHandle = require("./twitterAPI/validateHandle");
+
+const getFollowers = require("./twitterAPI/getfollowers");
 
 const PORT = process.env.PORT || 3001;
 
@@ -22,6 +24,7 @@ app.get("/api/users/:handle", (req, res) => {
     //get handle from request param 
 
     validation()
+
     async function validation() {
 
 
@@ -29,41 +32,41 @@ app.get("/api/users/:handle", (req, res) => {
 
         const valid = await validateHandle(twitterHandle, credentials)
 
-        //invalid name 
-
-        // if (valid === "error") {
-        //     console.log("error")
-        //     res.send("error")
-
-        // } else {
-        //     // For a valid name 
-
-        //     let obj = Object.values(valid)
-
-        //     let drillDown = obj[0][0];
-        // }
-
-
         let obj = Object.values(valid)
 
-        console.log(obj);
+        let drillDown = obj[0][0];
 
-        console.log(obj);
+        //invalid name 
 
-        // console.log(`This is obj ${obj}`);
+        if (drillDown.id != undefined) { // valid name 
 
-        //console.log(`This is valid ${valid}`)
+            console.log("We are valid")
 
-        //valid != "error" ? console.log("We good ") : console.log("we not good");
+            let startingId = obj[0][0].id
+
+            const arrOfFollowers = await getFollowers(startingId, credentials)
+
+
+
+            //pull tweets 
+        } else {
+            //invalid name 
+
+            console.log("There's an error / deleted account")
+        }
+
+
+
 
         //res.send(req.params)
     }
+
+
 })
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
-//let params = { usernames: "JoeBiden" }
 
 //validateHandle("kendricklamar14554", credentials)

@@ -23,21 +23,24 @@ const Input = (props) => {
 
     const checkValidity = () => {
 
-        console.log("fired")
-        console.log
+        console.log(validity)
+
         const regex = /[^a-zA-Z\d\s_]/
         // if inputContent is empty -> invalid 
         if (inputContent === "") {
+            console.log("stopped 1")
             return setValidity(false);
         }
         // if inputContent contains non alphanumeric chars except dashes  -> invalid 
 
         if (regex.test(inputContent)) {
+            console.log("stopped 2")
             return setValidity(false);
         }
 
         // if inputContent is less than 4 and no more than 15 chars long 
         if (inputContent.length < 4 || inputContent.length > 15) {
+            console.log("stopped 3")
             return setValidity(false);
         }
 
@@ -47,7 +50,7 @@ const Input = (props) => {
         }
 
         //reset for next search
-        setValidity(true)
+        return setValidity(true)
     }
 
     return (

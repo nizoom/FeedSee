@@ -14,11 +14,9 @@ async function validateUsername(submittedContent, credentials) {
             //console.log(data)
 
             return data;
-            //let { id, name, username } = data;
-            //console.log(id);
-            //return id, name, username
 
         })
+
         .catch((error) => {
             //console.log(error)
             return "error";
