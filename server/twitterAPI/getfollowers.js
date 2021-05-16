@@ -14,31 +14,42 @@
 
 async function getFollowers(id, credentials) {
 
-    let followers = [];
+
+    function Follower(name, id) { //keep track of both name and id of each follower 
+        this.name = name;
+        this.id = id;
+    }
+
+    let allFollowers = [];
 
     const Twitter = require('twitter-v2');
 
     const client = new Twitter(credentials);
 
-    const data = await client.get(`users/${id}/following`) //{ usernames: `${submittedContent}` }
+    const data = await client.get(`users/${id}/following`)
         .then(function (data) {
             obj = Object.values(data)
-            //console.log(obj[0])
+            //list of all followers from fetch
             let arr = obj[0]
 
             for (let i = 0; i < arr.length; i++) {
-                followers.push(arr[i].username);
+
+                const nextFollower = new Follower(arr[i].name, arr[i].id) //name, id
+
+                allFollowers.push(nextFollower);
             }
 
-            console.log(followers)
+            //console.log(followersNames)
         })
 
         .catch((error) => {
             console.log(error)
             //return "error";
         })
+    //console.log(typeof allFollowers);
+    //console.log(allFollowers[0].name); // how you would access name of a single follower
 
-    return followers;
+    return allFollowers;
 }
 
 //getFollowers(credentials)

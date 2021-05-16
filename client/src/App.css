@@ -1,7 +1,12 @@
 .App {
   text-align: center;
+ 
 }
 
-html{
-  background-color: bisque;
+body{
+  background-image: url("media/mountain.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
