@@ -10,29 +10,47 @@ async function getTweets(allFollowers) {
 
     //let tweet = []; //may need an object so that id and corresponding tweet is tracked
 
+    //Follower { name: 'The Washington Post', id: '2467791' },
+
     const Twitter = require('twitter-v2');
 
     const client = new Twitter(credentials);
 
     let ids = []
 
+    let names = []
+
     allFollowers.forEach(follower => ids.push(follower.id));
 
-    //console.log(ids);
+
+    allFollowers.forEach(follower => names.push(follower.name));
+
+    // console.log(names);
 
 
-    async function getFirstTweetFromAcc(idNumber) {
+    async function getFirstTweetFromAcc(idNumber, followerIndex) {
 
         //https://api.twitter.com/2/tweets
 
-        const fetchedTweet = await client.get(`users/${idNumber}/tweets`) // get first tweet 
+        const fetchedTweet = await client.get(`users/${idNumber}/tweets`, {
+            max_results: 5
+        }) // get first tweet 
             .then(function (tweets) {
+                //console.log("STARTING TWEETS for " + idNumber + "--------------------")
+                //console.log(tweets.data)
                 const mostRecentTweet = Object.values(tweets)[0][0];
+                //console.log(names[followerIndex])
+                //console.log("______________")
+                //console.log(mostRecentTweet.text)
 
-                //tweet.push(mostRecentTweet.text);
-                //console.log(mostRecentTweet.text) //
-                //console.log("This should happen first ")
-                return mostRecentTweet.text
+                //add author to most recent tweet obj 
+
+                const tweetAuthor = names[followerIndex]
+                mostRecentTweet.authorName = tweetAuthor
+
+                //console.log(mostRecentTweet)
+
+                return mostRecentTweet
 
             })
             .catch(function (error) {
@@ -45,62 +63,28 @@ async function getTweets(allFollowers) {
 
 
 
-    //await ids.forEach(id => tweets.push(getFirstTweetFromAcc(id)));
 
 
 
-    const functionWithPromise = item => { //a function that returns a promise
-        return Promise.resolve('ok')
-    }
+
 
     // const anAsyncFunction = async item => {
-    //     return functionWithPromise(item)
-    // }
-
-    // const getData = async () => {
-    //     return Promise.all(list.map(item => anAsyncFunction(item)))
-    // }
 
 
-
-    //async function 
-    //see above
-
-
-    //final function 
-    //let tweets = [];
-    let arr = [];
     const promisedTweets = async () => {
-        return Promise.all(ids.map(id => getFirstTweetFromAcc(id))) //an async function
+        return Promise.all(ids.map(id => getFirstTweetFromAcc(id, ids.indexOf(id)))) //an async function
     }
 
     const tweets = await promisedTweets().then(data => {
-        arr.push(data)
-        console.log("This is data " + data)
+
+        //console.log("This is data " + data)
+        //console.log(typeof data)
         return data;
 
     })
+    // console.log("HERE ARE TWEETS " + tweets)
+    return tweets;
 
-
-
-    console.log("THIS IS THE THING " + tweets);
-
-    // let tweets = ids.map(async function (id) {
-    //     const tweet = await getFirstTweetFromAcc(id)
-    //     return tweet;
-    // })
-
-    // console.log(tweets)
-
-    //console.log("Here are the tweets " + tweets);
-
-
-    //getFirstTweetFromAcc(813286)
-    //arrOfFollowers.forEach(idNumber => getFirstTweetFromAcc(idNumber));
-
-    //console.log("This should happen last ")
-
-    //return tweet;
 
 }
 

@@ -23,7 +23,7 @@ function App() {
       .then((res) => res.json())
       .then((info) => console.log(info))
       .then((data) => setData(data))
-      .then((data) => console.log(data))
+    //.then((data) => console.log(data))
 
   }
 

@@ -48,7 +48,7 @@ async function getFollowers(id, credentials) {
         })
     //console.log(typeof allFollowers);
     //console.log(allFollowers[0].name); // how you would access name of a single follower
-
+    //console.log(allFollowers);
     return allFollowers;
 }
 
