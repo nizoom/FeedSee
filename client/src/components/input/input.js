@@ -2,8 +2,29 @@ import React, { useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { MuiThemeProvider, makeStyles } from '@material-ui/core/styles';
+import "./input.css"
 
 const Input = (props) => {
+
+    const useStyles = makeStyles(theme => ({ //button styling
+        root: {
+            color: "#89EBCF",
+            borderColor: "#89EBCF",
+            fontSize: "1.5em",
+            borderWidth: "5px",
+
+            '&:hover': {
+                color: "#89EBCF",
+                borderColor: "#89EB90",
+                fontSize: "1.5em",
+                borderWidth: "5px",
+            },
+
+        }
+    }));
+
+    const classes = useStyles();
 
     const [inputContent, setInputContent] = useState("");
 
@@ -53,19 +74,40 @@ const Input = (props) => {
         return setValidity(true)
     }
 
+
+    //    <InputLabel style={{ color: "white", fontWeight: "bold", }}
+    //                 htmlFor="twitterInput"
+    //             > Twitter Handle </InputLabel>
+
     return (
 
         <div>
-            <TextField id="standard-basic" label="Twitter Handle"
-                onChange={handleChange} />
 
-            <Button variant="contained" color="primary"
-                style={{ marginLeft: "25px", marginTop: "15px" }}
+
+
+            <TextField id="standard-basic"
+
+                name="twitterInput"
+                onChange={handleChange}
+                style={{
+                    backgroundColor: "#C9B7E2",
+                    borderRadius: "5%"
+                }}
+                label="TwitterHandle"
+                InputLabelProps={{ className: "textfield___label" }}
+            />
+
+
+            <Button variant="outlined" color="primary" size="large"
+                style={{ marginLeft: "25px", marginTop: "6px" }}
                 onClick={checkValidity}
+                className={classes.root}
             > Submit </Button>
 
-            {validity ? null : <p> Handle must be 4 to 15 characters of only numbers, letters, and underscores </p>}
-        </div>
+            {validity ? null : <p
+                className="error__message"
+            > Handle must be 4 to 15 characters of only numbers, letters, and underscores </p>}
+        </div >
     )
 }
 
