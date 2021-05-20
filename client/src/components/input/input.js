@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-import { MuiThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import "./input.css"
 
 const Input = (props) => {
@@ -91,7 +91,8 @@ const Input = (props) => {
                 onChange={handleChange}
                 style={{
                     backgroundColor: "#C9B7E2",
-                    borderRadius: "5%"
+                    borderRadius: "5%",
+                    opacity: ".8"
                 }}
                 label="TwitterHandle"
                 InputLabelProps={{ className: "textfield___label" }}

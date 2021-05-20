@@ -1,8 +1,9 @@
 input[type=text] {
     border: 2px;
     padding: 20px 10px;
-    color: #2D1252;
-    
+    color: black;
+    font-weight: 400;
+   
   }
 
  .textfield___label{
@@ -10,10 +11,11 @@ input[type=text] {
     padding: 5px;
     margin-left: 10px;
     margin-top: 3px;
+
  }
 
  .error__message{
-    background: -webkit-linear-gradient(45deg, #CF9DDC, #89EBCF 80%);
+    background: -webkit-linear-gradient(45deg, #CF9DDC, white, #89EBCF 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 500;

@@ -10,18 +10,19 @@ import TwitterResults from "./components/twitterResults/twitterResults"
 
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [name, setName] = React.useState(null);
 
+  const [data, setData] = React.useState(["No Tweets"]);
 
   const handleInput = (submittedName) => {
     console.log(submittedName);
-    setData(submittedName);
+    setName(submittedName);
 
     console.log("Making request")
 
     fetch(`/api/users/${submittedName}`) //user=${submittedName}`
       .then((res) => res.json())
-      .then((info) => console.log(info))
+      //.then((info) => console.log(info))
       .then((data) => setData(data))
     //.then((data) => console.log(data))
 
@@ -53,7 +54,7 @@ function App() {
 
         <Grid item>
           <section>
-            <TwitterResults />
+            <TwitterResults results={data} />
           </section>
         </Grid>
 
