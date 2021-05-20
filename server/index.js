@@ -64,7 +64,7 @@ app.get("/api/users/:handle", (req, res) => {
                 // not following anyone
             } else {
 
-                const tweets = await getTweets(allFollowers)
+                const tweets = await getTweets(allFollowers, credentials)
 
                 let response = []
 
@@ -74,7 +74,7 @@ app.get("/api/users/:handle", (req, res) => {
                     response.push(tweet);
                 }
 
-
+                console.log(response)
 
                 res.send(response)
             }

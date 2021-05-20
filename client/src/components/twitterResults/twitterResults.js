@@ -1,15 +1,24 @@
 import React from "react";
-import TextField from '@material-ui/core/TextField';
 import "./twitterResults.css"
-import { recomposeColor } from "@material-ui/core";
+
+//import RelativeTime from '../../../../node_modules/@yaireo/relative-Time/relative-time'
 
 const TwitterResults = (props) => {
+
+    //2018-09-06T00:48:11.000Z
+
 
     const tweets = props.results;
 
 
     const displayTweets = tweets.map((tweet) =>
-        <li key={tweets.indexOf(tweet).toString()}> {tweet.text} -- {tweet.authorName}</li>
+        <li key={tweets.indexOf(tweet).toString()}>
+            <p>{tweet.text} </p> --
+
+        <p>{tweet.authorName} , {tweet.created_at} </p>
+
+
+        </li>
     )
 
     console.log(props.results)
