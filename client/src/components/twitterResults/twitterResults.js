@@ -1,39 +1,44 @@
 import React from "react";
 import "./twitterResults.css"
 
-//import RelativeTime from '../../../../node_modules/@yaireo/relative-Time/relative-time'
 
 const TwitterResults = (props) => {
-
-    //2018-09-06T00:48:11.000Z
 
 
     const tweets = props.results;
 
 
     const displayTweets = tweets.map((tweet) =>
-        <li key={tweets.indexOf(tweet).toString()}>
-            <p>{tweet.text} </p> --
+        <div className="tweetDiv" key={tweets.indexOf(tweet).toString()}
 
-        <p>{tweet.authorName} , {tweet.created_at} </p>
+        >
+            <li>
+                <p className="author">{tweet.authorName}</p> ,
+                <p className="tweetText">{tweet.text} </p>
+                <p style={{ padding: "10px" }}>{tweet.timeSince} </p>
 
-
-        </li>
+            </li>
+        </div>
     )
 
     console.log(props.results)
     return (
         <div>
-            {props.results !== null ?
-                <ul>
-                    {displayTweets}
-                </ul>
-
-                :
-                <p>Click Submit to see results!</p>
+            {
+                props.results[0] !== "No Tweets" ?
+                    <div className="container">
+                        <ul style={{
+                            display: "flex", flexDirection: "row", flexWrap: "wrap",
+                            justifyContent: "space-between", opacity: ".85"
+                        }}>
+                            {displayTweets}
+                        </ul>
+                    </div >
+                    :
+                    <p style={{ fontSize: "2em", color: "#89EBCF" }}> ......</p>
             }
-
         </div >
+
 
     )
 }

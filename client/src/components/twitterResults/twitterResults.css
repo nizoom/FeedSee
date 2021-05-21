@@ -1,0 +1,45 @@
+.tweetDiv{
+    border-radius: 10px;
+    width: 250px;
+    height: 350px;
+    border-style: solid;
+    box-sizing: border-box;
+    background-color: black;
+    margin-bottom: 5px;
+    border-color: #8C64C9;
+    margin: 10px;
+    padding: 5px;
+    word-wrap: break-word;
+    padding-right:10px;
+    padding-left: 10px;
+    box-shadow: 5px 5px 2px 1px #4447BB;;
+
+
+}
+
+.tweetDiv p{
+    color: white;
+ 
+}
+
+.tweetText{
+
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    font-weight: 700;
+}
+
+.author{
+    position: relative;
+    font-size: large;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+ul{
+    list-style-type: none;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+}

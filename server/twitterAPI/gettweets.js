@@ -2,6 +2,8 @@ async function getTweets(allFollowers, credentials) {
 
     //Follower { name: 'The Washington Post', id: '2467791' },
 
+    const ta = require("time-ago");
+
     const Twitter = require('twitter-v2');
 
     const client = new Twitter(credentials);
@@ -34,13 +36,22 @@ async function getTweets(allFollowers, credentials) {
                 //console.log(names[followerIndex])
                 //console.log("______________")
                 //console.log(mostRecentTweet.text)
+
                 //add author to most recent tweet obj 
 
-                const tweetAuthor = names[followerIndex]
+                const tweetAuthor = names[followerIndex] // get author
 
                 mostRecentTweet.authorName = tweetAuthor
 
                 //console.log(mostRecentTweet)
+
+                const timeStamp = mostRecentTweet.created_at; // get tweet time
+
+                const timeSince = ta.ago(timeStamp);
+
+                mostRecentTweet.timeSince = timeSince;
+                //console.log(timeSince);
+
 
                 return mostRecentTweet
 

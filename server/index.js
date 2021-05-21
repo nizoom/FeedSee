@@ -71,10 +71,11 @@ app.get("/api/users/:handle", (req, res) => {
                 tweets.forEach(tweet => deleteTweetID(tweet)); //remove tweet ID which isn't needed
                 function deleteTweetID(tweet) {
                     delete tweet.id
+                    delete tweet.created_at
                     response.push(tweet);
                 }
 
-                console.log(response)
+                //console.log(response)
 
                 res.send(response)
             }

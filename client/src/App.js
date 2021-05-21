@@ -35,7 +35,9 @@ function App() {
 
   return (
     <div className="App">
-      <Grid container spacing={10} direction="column">
+      <Grid container spacing={10} direction="column"
+
+      >
 
         <Grid item>
           <header>
@@ -59,7 +61,7 @@ function App() {
         </Grid>
 
       </Grid>
-    </div>
+    </div >
   );
 }
 
