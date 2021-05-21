@@ -13,9 +13,9 @@ const TwitterResults = (props) => {
 
         >
             <li>
-                <p className="author">{tweet.authorName}</p> ,
+                <p className="author">{tweet.authorName}</p>
                 <p className="tweetText">{tweet.text} </p>
-                <p style={{ padding: "10px" }}>{tweet.timeSince} </p>
+                <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeSince} </p>
 
             </li>
         </div>
@@ -29,7 +29,7 @@ const TwitterResults = (props) => {
                     <div className="container">
                         <ul style={{
                             display: "flex", flexDirection: "row", flexWrap: "wrap",
-                            justifyContent: "space-between", opacity: ".85"
+                            justifyContent: "space-between"
                         }}>
                             {displayTweets}
                         </ul>

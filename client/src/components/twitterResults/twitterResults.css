@@ -4,15 +4,16 @@
     height: 350px;
     border-style: solid;
     box-sizing: border-box;
-    background-color: black;
+    background-image: url("../../media/card.png");  
+    background-size: 250px 25em;
     margin-bottom: 5px;
-    border-color: #8C64C9;
+    border-color: #9B89A8;
     margin: 10px;
     padding: 5px;
     word-wrap: break-word;
     padding-right:10px;
     padding-left: 10px;
-    box-shadow: 5px 5px 2px 1px #4447BB;;
+    box-shadow: 5px 5px 2px 1px #659B9E;;
 
 
 }
@@ -24,7 +25,7 @@
 
 .tweetText{
 
-    font-family: 'Inconsolata', monospace;
+    font-family: 'KoHo', sans-serif;
     color: white;
     font-weight: 700;
 }
