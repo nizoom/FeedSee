@@ -5,6 +5,7 @@ import CollapseButton from "../minimize/minimize"
 
 const TwitterResults = (props) => {
 
+    // console.log("Hi I am Spaced out".trim())
 
     const tweets = props.results;
 
@@ -18,8 +19,8 @@ const TwitterResults = (props) => {
     const changeBtnStatus = () => {
         setBtnStatus(!btnStatus)
         // console.log(btnStatus)
-        // console.log(content.current.scrollHeight)
-        // console.log(height);
+        console.log(content.current.scrollHeight)
+        console.log(height);
 
     }
 
@@ -28,21 +29,34 @@ const TwitterResults = (props) => {
     }, [btnStatus])
 
 
-    //{btnStatus ? "container" : "collapsed"}
-    const displayTweets = tweets.map((tweet) =>
+    const convertNameToUrl = (authorName) => {
+        console.log(authorName)
+        if (authorName === undefined) {
+            return ("")
+        } else {
+            const urlReadyName = authorName.replace(/\s+/g, '').toLowerCase();
+            //const urlReadyName = authorName.trim().toLowerCase()
+            //console.log(`https://twitter.com/${urlReadyName}`)
+            return "https://twitter.com/" + urlReadyName
+        }
 
-        <div className="tweetDiv" key={tweets.indexOf(tweet).toString()}
+    }
 
-        >
-            <a href={`https://twitter.com/${tweet.authorName}`} target="_blank">
-                <li>
-                    <p className="author">{tweet.authorName}</p>
-                    <p className="tweetText">{tweet.text} </p>
-                    <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeSince} </p>
+    const displayTweets = tweets.map((tweet) => {
 
-                </li>
-            </a>
-        </div >
+        return (
+            < div className="tweetDiv" key={tweets.indexOf(tweet).toString()} >
+                <a href={convertNameToUrl(tweet.authorName)} target="_blank" rel="noreferrer">
+                    <li>
+                        <p className="author">{tweet.authorName}</p>
+                        <p className="tweetText">{tweet.text} </p>
+                        <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeSince} </p>
+
+                    </li>
+                </a>
+            </div >
+        )
+    }
     )
 
     console.log(props.results)

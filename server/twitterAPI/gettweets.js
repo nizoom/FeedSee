@@ -41,7 +41,12 @@ async function getTweets(allFollowers, credentials) {
 
                 const tweetAuthor = names[followerIndex] // get author
 
-                mostRecentTweet.authorName = tweetAuthor
+                console.log(tweetAuthor);
+                if (tweetAuthor === undefined || tweetAuthor === null) {
+                    mostRecentTweet.authorName = "unknown twitter user"
+                } else {
+                    mostRecentTweet.authorName = tweetAuthor
+                }
 
                 //console.log(mostRecentTweet)
 
