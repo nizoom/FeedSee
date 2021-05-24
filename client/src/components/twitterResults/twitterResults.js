@@ -20,7 +20,6 @@ const TwitterResults = (props) => {
         // console.log(btnStatus)
         // console.log(content.current.scrollHeight)
         // console.log(height);
-        //setHeight(btnStatus ? `${content.current.scrollHeight}px` : `0px`)
 
     }
 
@@ -35,13 +34,15 @@ const TwitterResults = (props) => {
         <div className="tweetDiv" key={tweets.indexOf(tweet).toString()}
 
         >
-            <li>
-                <p className="author">{tweet.authorName}</p>
-                <p className="tweetText">{tweet.text} </p>
-                <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeSince} </p>
+            <a href={`https://twitter.com/${tweet.authorName}`} target="_blank">
+                <li>
+                    <p className="author">{tweet.authorName}</p>
+                    <p className="tweetText">{tweet.text} </p>
+                    <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeSince} </p>
 
-            </li>
-        </div>
+                </li>
+            </a>
+        </div >
     )
 
     console.log(props.results)
