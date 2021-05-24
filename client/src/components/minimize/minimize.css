@@ -36,16 +36,18 @@
 .verticalOpen {
   transform: rotate(180deg);
 }
-
+/*
 .content {
   margin-top: 20px;
   height: 0;
   background: lightblue;
 /*   padding: 10px; */
+/*
   overflow: hidden;
 /*   transform: scaleY(0);
   transform-origin: top;
   position: relative; */
+  /*
   transition: 0.8s ease;
 }
 .content-wrapper {
@@ -53,8 +55,10 @@
 /*   position: absolute;
   top: 0;
   left: 0; */
+  /*
 }
 .content.open {
   height: 500px;
-/*   transform: scaleY(1); */
+/*   transform: scaleY(1); 
 }
+*/

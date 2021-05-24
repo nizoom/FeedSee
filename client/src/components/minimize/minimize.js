@@ -17,9 +17,9 @@ const CollapseButton = (props) => {
     return (
         <div>
             <button className="circle" onClick={props.btnClicked}>
-                <div className={props.status ? "line-wrapper" : "line-wrapperOpen"}>
+                <div className={props.status ? "line-wrapperOpen" : "line-wrapper"}>
                     <div className="horizontal"></div>
-                    <div className={props.status ? "vertical" : "verticalOpen"}></div>
+                    <div className={props.status ? "verticalOpen" : "vertical"}></div>
                 </div>
             </button>
         </div>
