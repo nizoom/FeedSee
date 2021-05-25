@@ -29,15 +29,15 @@ const TwitterResults = (props) => {
     }, [btnStatus])
 
 
-    const convertNameToUrl = (authorName) => {
-        console.log(authorName)
-        if (authorName === undefined) {
+    const convertNameToUrl = (handle) => {
+        console.log(handle)
+        if (handle === undefined) {
             return ("")
         } else {
-            const urlReadyName = authorName.replace(/\s+/g, '').toLowerCase();
+            const urlReadyHandle = handle.replace(/\s+/g, '').toLowerCase();
             //const urlReadyName = authorName.trim().toLowerCase()
             //console.log(`https://twitter.com/${urlReadyName}`)
-            return "https://twitter.com/" + urlReadyName
+            return "https://twitter.com/" + urlReadyHandle
         }
 
     }
@@ -46,7 +46,7 @@ const TwitterResults = (props) => {
 
         return (
             < div className="tweetDiv" key={tweets.indexOf(tweet).toString()} >
-                <a href={convertNameToUrl(tweet.authorName)} target="_blank" rel="noreferrer">
+                <a href={convertNameToUrl(tweet.handle)} target="_blank" rel="noreferrer">
                     <li>
                         <p className="author">{tweet.authorName}</p>
                         <p className="tweetText">{tweet.text} </p>

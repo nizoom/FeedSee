@@ -26,7 +26,10 @@ async function getFollowers(id, credentials) {
 
     const client = new Twitter(credentials);
 
-    const data = await client.get(`users/${id}/following`)
+
+    const data = await client.get(`users/${id}/following`)//, {
+        //  screen_name
+        //})
         .then(function (data) {
             obj = Object.values(data)
             //list of all followers from fetch
@@ -35,7 +38,7 @@ async function getFollowers(id, credentials) {
             for (let i = 0; i < arr.length; i++) {
 
                 const nextFollower = new Follower(arr[i].name, arr[i].id) //name, id
-
+                //console.log(nextFollower)
                 allFollowers.push(nextFollower);
             }
 

@@ -10,6 +10,8 @@ const getFollowers = require("./twitterAPI/getfollowers");
 
 const getTweets = require("./twitterAPI/gettweets");
 
+const getUsernames = require("./twitterAPI/getusernames")
+
 const PORT = process.env.PORT || 3001;
 
 const credentials = {
@@ -66,12 +68,13 @@ app.get("/api/users/:handle", (req, res) => {
 
                 const tweets = await getTweets(allFollowers, credentials)
 
+
                 let response = []
 
                 tweets.forEach(tweet => deleteTweetID(tweet)); //remove tweet ID which isn't needed
                 function deleteTweetID(tweet) {
                     if (tweet === undefined || tweet === null) {
-                        console.log(tweet)
+                        //console.log(tweet)
                         tweets.splice(tweets.indexOf(tweet), 1)
                     } else {
                         delete tweet.id

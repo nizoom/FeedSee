@@ -26,22 +26,26 @@ async function getTweets(allFollowers, credentials) {
         const fetchedTweet = await client.get(`users/${idNumber}/tweets`, {
             max_results: 5,
             tweet: {
-                fields: "created_at"
-            }
+                fields: "created_at",
+            },
+            expansions: "author_id"
+
         }) // get first tweet 
             .then(function (tweets) {
                 //console.log("STARTING TWEETS for " + idNumber + "--------------------")
-                //console.log(tweets.data)
+
+
                 const mostRecentTweet = Object.values(tweets)[0][0];
                 //console.log(names[followerIndex])
                 //console.log("______________")
+
                 //console.log(mostRecentTweet.text)
 
-                //add author to most recent tweet obj 
+                //add author to most recent tweet obj -- this is not the same as handle
 
                 const tweetAuthor = names[followerIndex] // get author
 
-                console.log(tweetAuthor);
+                //console.log(tweetAuthor);
                 if (tweetAuthor === undefined || tweetAuthor === null) {
                     mostRecentTweet.authorName = "unknown twitter user"
                 } else {
@@ -57,6 +61,11 @@ async function getTweets(allFollowers, credentials) {
                 mostRecentTweet.timeSince = timeSince;
                 //console.log(timeSince);
 
+                const handle = Object.values(tweets.includes)[0][0].username //get handle for twitter link in front end 
+
+                console.log(handle)
+
+                mostRecentTweet.handle = handle;
 
                 return mostRecentTweet
 
@@ -67,11 +76,6 @@ async function getTweets(allFollowers, credentials) {
 
         return await fetchedTweet;
     }
-
-
-
-
-
 
 
 
@@ -90,7 +94,7 @@ async function getTweets(allFollowers, credentials) {
         return data;
 
     })
-    // console.log("HERE ARE TWEETS " + tweets)
+    //console.log("HERE ARE TWEETS " + tweets)
     return tweets;
 
 
