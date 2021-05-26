@@ -18,7 +18,15 @@ async function getTweets(allFollowers, credentials) {
     allFollowers.forEach(follower => names.push(follower.name));
 
     // console.log(names);
+    const calcRecency = (creationTimestamp) => {
+        const date = new Date(creationTimestamp)
 
+        const seconds = date.getTime() / 1000
+        //console.log(seconds)
+        //seconds since Jan 1, 1970 from when the tweet was published 
+        return Math.round(seconds);
+        //bigger the number the more recent the tweet 
+    }
 
     async function getFirstTweetFromAcc(idNumber, followerIndex) {
 
@@ -39,15 +47,29 @@ async function getTweets(allFollowers, credentials) {
                 //console.log(names[followerIndex])
                 //console.log("______________")
 
-                //console.log(mostRecentTweet.text)
-
                 //add author to most recent tweet obj -- this is not the same as handle
 
-                const tweetAuthor = names[followerIndex] // get author
+
+
+                if (tweets.includes === undefined) {
+                    console.log("failed to get metadata")
+                    return;
+                } else {
+                    const handle = Object.values(tweets.includes)[0][0].username //get handle for twitter link in front end 
+                    mostRecentTweet.handle = handle;
+
+                }
+                //console.log("2 " + tweets.include)
+
+                //console.log(handle)
+
 
                 //console.log(tweetAuthor);
+                const tweetAuthor = names[followerIndex] // get author
+
                 if (tweetAuthor === undefined || tweetAuthor === null) {
-                    mostRecentTweet.authorName = "unknown twitter user"
+                    console.log("failed to get authorName")
+                    return
                 } else {
                     mostRecentTweet.authorName = tweetAuthor
                 }
@@ -56,16 +78,16 @@ async function getTweets(allFollowers, credentials) {
 
                 const timeStamp = mostRecentTweet.created_at; // get tweet time
 
+                //seconds since Jan 1, 1970 from when the tweet was published 
+                const recency = calcRecency(mostRecentTweet.created_at)
+
+                mostRecentTweet.recencyLevel = recency;
+
                 const timeSince = ta.ago(timeStamp);
 
                 mostRecentTweet.timeSince = timeSince;
                 //console.log(timeSince);
 
-                const handle = Object.values(tweets.includes)[0][0].username //get handle for twitter link in front end 
-
-                console.log(handle)
-
-                mostRecentTweet.handle = handle;
 
                 return mostRecentTweet
 

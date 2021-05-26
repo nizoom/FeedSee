@@ -4,13 +4,13 @@ const express = require("express");
 
 const app = express();
 
+const ta = require("time-ago");
+
 const validateHandle = require("./twitterAPI/validateHandle");
 
 const getFollowers = require("./twitterAPI/getfollowers");
 
 const getTweets = require("./twitterAPI/gettweets");
-
-const getUsernames = require("./twitterAPI/getusernames")
 
 const PORT = process.env.PORT || 3001;
 
@@ -60,18 +60,78 @@ app.get("/api/users/:handle", (req, res) => {
 
 
             // console.log(allFollowers);
-
+            let response = []
 
             if (allFollowers.length < 1) {
                 // not following anyone
+                response.push("This account is not following anyone")
+
+                res.send(response)
+
             } else {
 
                 const tweets = await getTweets(allFollowers, credentials)
 
+                //break down and rebuild tweet object to sort by most recent
 
-                let response = []
+                let sortable = []
 
-                tweets.forEach(tweet => deleteTweetID(tweet)); //remove tweet ID which isn't needed
+                for (let i = 0; i < tweets.length; i++) {
+                    if (tweets[i] != undefined) {
+                        sortable.push([tweets[i].author_id, tweets[i].recencyLevel])
+                    }
+                }
+
+
+                //2. sort tweets array by size of relative time in seconds 
+                sortable.sort(function (a, b) {
+                    return b[1] - a[1];
+                })
+
+                //console.log(sortable)
+                //rebuild based on id not index 
+
+
+
+                function matchUp(timeStamp) {
+
+
+                    for (let x = 0; x < tweets.length; x++) {
+                        //if timestamp id = tweet author id then they should combine into one object
+                        if (tweets[x] !== undefined && timeStamp !== undefined) {
+                            if (timeStamp[0] === tweets[x].author_id) {
+                                // combo logic 
+                                const sortedTweet = Object.assign({}, tweets[x])
+
+                                //console.log(sortedTweet);
+                                //arrOfSortedTweets.push(sortedTweet);
+                                return sortedTweet
+                            }
+                        } else {
+                            continue;
+                        }
+
+                    }
+                    //console.log(arrOfSortedTweets)
+
+                }
+                //sortable.forEach(timestamp => matchUp(timestamp)) //new array every time 
+                //console.log(` number of tweets ${tweets.length}`);
+                //console.log(` number of sortables ${sortable.length}`)
+                let arrOfSortedTweets = []
+                for (let y = 0; y < tweets.length; y++) {
+                    const nextTweet = matchUp(sortable[y])
+                    //console.log(nextTweet)
+                    if (nextTweet !== undefined) {
+                        arrOfSortedTweets.push(nextTweet)
+                    }
+                }
+
+                console.log("Hello " + JSON.stringify(arrOfSortedTweets))
+
+
+                tweets.forEach(tweet => deleteTweetID(tweet));
+                //remove tweet ID which isn't needed
                 function deleteTweetID(tweet) {
                     if (tweet === undefined || tweet === null) {
                         //console.log(tweet)
