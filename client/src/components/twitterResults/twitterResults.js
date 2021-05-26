@@ -19,8 +19,8 @@ const TwitterResults = (props) => {
     const changeBtnStatus = () => {
         setBtnStatus(!btnStatus)
         // console.log(btnStatus)
-        console.log(content.current.scrollHeight)
-        console.log(height);
+        //console.log(content.current.scrollHeight)
+        //console.log(height);
 
     }
 
@@ -30,7 +30,7 @@ const TwitterResults = (props) => {
 
 
     const convertNameToUrl = (handle) => {
-        console.log(handle)
+        // console.log(handle)
         if (handle === undefined) {
             return ("")
         } else {

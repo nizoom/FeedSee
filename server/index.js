@@ -89,12 +89,10 @@ app.get("/api/users/:handle", (req, res) => {
                 })
 
                 //console.log(sortable)
-                //rebuild based on id not index 
 
 
-
+                //3. rebuild based on id not index 
                 function matchUp(timeStamp) {
-
 
                     for (let x = 0; x < tweets.length; x++) {
                         //if timestamp id = tweet author id then they should combine into one object
@@ -110,15 +108,14 @@ app.get("/api/users/:handle", (req, res) => {
                         } else {
                             continue;
                         }
-
                     }
-                    //console.log(arrOfSortedTweets)
-
                 }
                 //sortable.forEach(timestamp => matchUp(timestamp)) //new array every time 
                 //console.log(` number of tweets ${tweets.length}`);
                 //console.log(` number of sortables ${sortable.length}`)
                 let arrOfSortedTweets = []
+
+                //matches the sorted index with the correct tweet metadata
                 for (let y = 0; y < tweets.length; y++) {
                     const nextTweet = matchUp(sortable[y])
                     //console.log(nextTweet)
@@ -130,7 +127,7 @@ app.get("/api/users/:handle", (req, res) => {
                 console.log("Hello " + JSON.stringify(arrOfSortedTweets))
 
 
-                tweets.forEach(tweet => deleteTweetID(tweet));
+                arrOfSortedTweets.forEach(tweet => deleteTweetID(tweet));
                 //remove tweet ID which isn't needed
                 function deleteTweetID(tweet) {
                     if (tweet === undefined || tweet === null) {
