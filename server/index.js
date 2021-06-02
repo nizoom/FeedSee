@@ -12,7 +12,11 @@ const getFollowers = require("./twitterAPI/getfollowers");
 
 const getTweets = require("./twitterAPI/gettweets");
 
-const PORT = process.env.PORT || 3001;
+const processTweets = require("./processtweets")
+
+const processText = require("./wordcloud/wordcloud");
+
+const PORT = process.env.PORT || 3001; //process.env 
 
 const credentials = {
     consumer_key: `${process.env.CONSUMER_KEY}`,
@@ -26,6 +30,10 @@ const credentials = {
 app.get("/api/users/:handle", (req, res) => {
     //res.json({ message: "Hello from server" })
 
+    //i80i
+    //console.log(require('dotenv').config())
+
+    //console.log(credentials)
 
     function TweetData(tweet, name) {  //keep track of both name and tweet of each follower 
         this.name = name;
@@ -44,6 +52,8 @@ app.get("/api/users/:handle", (req, res) => {
 
         let obj = Object.values(valid)
 
+        console.log(obj);
+
         let drillDown = obj[0][0];
 
         //invalid name 
@@ -58,13 +68,13 @@ app.get("/api/users/:handle", (req, res) => {
 
             const allFollowers = await getFollowers(inititalizingId, credentials)
 
-
+            console.log("Got " + allFollowers.length + " followers.")
             // console.log(allFollowers);
             let response = []
 
             if (allFollowers.length < 1) {
                 // not following anyone
-                response.push("This account is not following anyone")
+                response.push("This account is not following anyone") // THIS USE CASE NEEDS ATTENTION
 
                 res.send(response)
 
@@ -72,8 +82,13 @@ app.get("/api/users/:handle", (req, res) => {
 
                 const tweets = await getTweets(allFollowers, credentials)
 
-                //break down and rebuild tweet object to sort by most recent
+                const processedTweets = await processTweets(tweets)
+                //process tweets is going to add relative time, filter out undefined tweets, 
+                // add tweet author, 
 
+                // console.log(tweets);
+                //break down and rebuild tweet object to sort by most recent
+                console.log("got tweets")
                 let sortable = []
 
                 for (let i = 0; i < tweets.length; i++) {
@@ -85,13 +100,13 @@ app.get("/api/users/:handle", (req, res) => {
 
                 //2. sort tweets array by size of relative time in seconds 
                 sortable.sort(function (a, b) {
-                    return b[1] - a[1];
+                    return b[1] - a[1]; //finding largest recency level
                 })
 
                 //console.log(sortable)
 
 
-                //3. rebuild based on id not index 
+                //3. rebuild based on id, not index 
                 function matchUp(timeStamp) {
 
                     for (let x = 0; x < tweets.length; x++) {
@@ -123,10 +138,10 @@ app.get("/api/users/:handle", (req, res) => {
                         arrOfSortedTweets.push(nextTweet)
                     }
                 }
+                console.log("sorted tweets")
+                //console.log("Hello " + JSON.stringify(arrOfSortedTweets))
 
-                console.log("Hello " + JSON.stringify(arrOfSortedTweets))
-
-
+                // delete extranneous properties from tweet obj 
                 arrOfSortedTweets.forEach(tweet => deleteTweetID(tweet));
                 //remove tweet ID which isn't needed
                 function deleteTweetID(tweet) {
@@ -141,9 +156,27 @@ app.get("/api/users/:handle", (req, res) => {
 
                 }
 
-                //console.log(response)
+                //ALL OF THE ABOVE IS TO CREATE THE TWEET CARDS 
+
+                //This section below is to process the tweets to be sent to the front end 
+
+                //the object will be word: " " and frequency: # (for frequency of appearance)
+
+                /*let allTweetText = ""
+
+                arrOfSortedTweets.forEach(tweet => extractAndAddText(tweet));
+
+                function extractAndAddText(tweet) {
+                    allTweetText += tweet.text
+                }
+                   */
+                //const arrOfText = processText(allTweetText);
+
+                console.log("sending to front end")
 
                 res.send(response)
+
+
             }
 
 

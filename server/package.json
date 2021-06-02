@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^9.0.2",
     "nodemon": "^2.0.7",
     "time-ago": "^0.2.1",

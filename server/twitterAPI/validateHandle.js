@@ -18,7 +18,7 @@ async function validateUsername(submittedContent, credentials) {
         })
 
         .catch((error) => {
-            //console.log(error)
+            console.log(error)
             return "error";
         })
 

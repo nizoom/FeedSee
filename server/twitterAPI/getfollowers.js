@@ -1,24 +1,15 @@
-
-
-// const credentials = {
-//     consumer_key: `sF1NuA8aYhyJKmrgzHSoLqIFk`,
-//     consumer_secret: `i1mdlM20Xsx9nhKYHE6bI6e6t1rU2qonr7uayfLVD5Z49eXfuD`,
-//     access_token_key: `1390350156726407170-QtPf6zHPPncuKKMNkhkfkGpgbRViko`,
-//     access_token_secret: `K7rnnNmtoeypzWXdluTKY7cVLiAHTiSQ2wmjOMb5CCJK5`
-// }
-
-
 //const url = `https://api.twitter.com/2/users/${userId}/following`;
 
 
 
 async function getFollowers(id, credentials) {
 
+    console.log("Getting folowers for " + id)
 
-    function Follower(name, id) { //keep track of both name and id of each follower 
-        this.name = name;
-        this.id = id;
-    }
+    // function Follower(name, id) { //keep track of both name and id of each follower 
+    //     this.name = name;
+    //     this.id = id;
+    // }
 
     let allFollowers = [];
 
@@ -37,9 +28,9 @@ async function getFollowers(id, credentials) {
 
             for (let i = 0; i < arr.length; i++) {
 
-                const nextFollower = new Follower(arr[i].name, arr[i].id) //name, id
+                //const nextFollower = new Follower(arr[i].name, arr[i].id) //name, id
                 //console.log(nextFollower)
-                allFollowers.push(nextFollower);
+                allFollowers.push(arr[i].id);
             }
 
             //console.log(followersNames)

@@ -2,27 +2,22 @@ async function getTweets(allFollowers, credentials) {
 
     //Follower { name: 'The Washington Post', id: '2467791' },
 
+    console.log('Getting tweets for ' + allFollowers.length + ' users.')
+
     const ta = require("time-ago");
 
     const Twitter = require('twitter-v2');
 
-    // const credentials = {
-    //     consumer_key: `sF1NuA8aYhyJKmrgzHSoLqIFk`,
-    //     consumer_secret: `i1mdlM20Xsx9nhKYHE6bI6e6t1rU2qonr7uayfLVD5Z49eXfuD`,
-    //     access_token_key: `1390350156726407170-QtPf6zHPPncuKKMNkhkfkGpgbRViko`,
-    //     access_token_secret: `K7rnnNmtoeypzWXdluTKY7cVLiAHTiSQ2wmjOMb5CCJK5`
-    // }
-
     const client = new Twitter(credentials);
-
 
     let ids = []
 
-    allFollowers.forEach(follower => ids.push(follower));
+    let names = []
+
+    allFollowers.forEach(follower => ids.push(follower.id));
 
 
-    console.log(ids)
-    //allFollowers.forEach(follower => names.push(follower.name));
+    allFollowers.forEach(follower => names.push(follower.name));
 
     // console.log(names);
     const calcRecency = (creationTimestamp) => {
@@ -35,59 +30,44 @@ async function getTweets(allFollowers, credentials) {
         //bigger the number the more recent the tweet 
     }
 
-    async function getFirstTweetFromAcc(idNumber) {
-        //console.log(idNumber)
-        //https://api.twitter.com/2/tweets
+    async function getFirstTweetFromAcc(idNumber, followerIndex) {
 
+        //https://api.twitter.com/2/tweets
         const fetchedTweet = await client.get(`users/${idNumber}/tweets`, {
             max_results: 5,
-            user: { fields: "username", fields: "profile_image_url" },
             tweet: {
                 fields: "created_at",
             },
             expansions: "author_id"
 
-
-
-            //expansions: "author_id"
-
-
         }) // get first tweet 
             .then(function (tweets) {
                 //console.log("STARTING TWEETS for " + idNumber + "--------------------")
+                let latestTweet = tweets.data[0]
+                console.log(latestTweet);
+                return latestTweet
+                // const mostRecentTweet = Object.values(tweets)[0][0];
+                // //console.log(names[followerIndex])
+                // //console.log("______________")
 
-                //console.log(tweets.data[0])
-                const textAndUTC = tweets.data[0]; //created at, text 
-                //console.log(Object.values(tweets.includes)[0][0]) //username, name, img url
-                const tweetMetaData = Object.values(tweets.includes)[0][0];
-
-                const allDataForTweet = [textAndUTC, tweetMetaData]
-                //const mostRecentTweet = Object.values(tweets)[0][0];
-                //console.log(names[followerIndex])
-                //[0][0].username //get handle for twitter link in front end 
-                //console.log(handle)
-                //console.log("______________")
-
-                //add author to most recent tweet obj -- this is not the same as handle
+                // //add author to most recent tweet obj -- this is not the same as handle
 
 
 
                 // if (tweets.includes === undefined) {
-                //     console.log("failed to get metadata")
+                //     //console.log("failed to get metadata")
                 //     return;
                 // } else {
                 //     const handle = Object.values(tweets.includes)[0][0].username //get handle for twitter link in front end 
                 //     mostRecentTweet.handle = handle;
 
                 // }
-                //console.log("2 " + tweets.include)
+                // //console.log("2 " + tweets.include)
 
-                //console.log(handle)
-                //curl "https://api.twitter.com/2/users/2244994945/tweets?expansions=author_id&tweet.fields=created_at,author_id,conversation_id,public_metrics,context_annotations&user.fields=username&max_results=5" - H "Authorization: Bearer $BEARER_TOKEN"
+                // //console.log(handle)
 
 
-                //console.log(tweetAuthor);
-
+                // //console.log(tweetAuthor);
                 // const tweetAuthor = names[followerIndex] // get author
 
                 // if (tweetAuthor === undefined || tweetAuthor === null) {
@@ -97,7 +77,7 @@ async function getTweets(allFollowers, credentials) {
                 //     mostRecentTweet.authorName = tweetAuthor
                 // }
 
-                //console.log(mostRecentTweet)
+                // //console.log(mostRecentTweet)
 
                 // const timeStamp = mostRecentTweet.created_at; // get tweet time
 
@@ -112,12 +92,14 @@ async function getTweets(allFollowers, credentials) {
                 // //console.log(timeSince);
 
 
-                return allDataForTweet
+                // return mostRecentTweet
 
             })
             .catch(function (error) {
-                console.log(error)
+                console.log("Here is the error " + error)
+
             })
+
 
         return await fetchedTweet;
     }
@@ -125,20 +107,23 @@ async function getTweets(allFollowers, credentials) {
 
 
 
+    // const anAsyncFunction = async item => {
 
 
     const promisedTweets = async () => {
-        return Promise.all(ids.map(id => getFirstTweetFromAcc(id, ids.indexOf(id)))) //an async function
+
+        // const results = await Promise.all(ids.map(async id => {
+        //     return await getFirstTweetFromAcc(id, ids.indexOf(id))
+        // })) //an async function
+        const trimmedIds = ids.slice(0, 3)
+        const results = await Promise.all(trimmedIds.map(id => getFirstTweetFromAcc(id, ids.indexOf(id))))
+        console.log("RESULTS: " + results)
+        return results
     }
 
-    const tweets = await promisedTweets().then(data => {
-
-        //console.log("This is data " + data)
-        //console.log(typeof data)
-        return data;
-
-    })
+    const tweets = await promisedTweets()
     //console.log("HERE ARE TWEETS " + tweets)
+    console.log("returning tweet obj")
     return tweets;
 
 
