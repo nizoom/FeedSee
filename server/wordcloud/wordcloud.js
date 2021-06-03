@@ -37,10 +37,6 @@ async function processWords(text) {
     }
 
     //Now convert each word into an object count frequency of each word and store that as a property
-    //let wordObjArray = [];
-
-
-    //textToArray.forEach(possibleMatch => countMatches(possibleMatch, textToArray[i]))
 
     //everytime textToArray[i] matches a textToArray element then up the counter by 1 
 
@@ -48,27 +44,50 @@ async function processWords(text) {
 
     let wordObjArray = []
 
+    let uniqueWords = []
+
     for (let i = 0; i < textToArray.length; i++) {
 
         let counter = 0
 
-        textToArray.forEach(possibleMatch => countMatches(possibleMatch, textToArray[i]))
+        //create a check to make sure that a wordInQuestion isn't being repeated 
 
-        function countMatches(possibleMatch, wordInQuestion) {
-            //create a check to make sure that a wordInQuestion isn't being repeated 
-            if (possibleMatch === wordInQuestion) {
-                counter++
-                if (wordInQuestion !== "") {
-                    const data = [counter, wordInQuestion]; //stored in array 
+        const caughtRepeat = uniqueWords.includes(textToArray[i]); //array of word NOT obj
 
-                    const dataToObj = { frequency: data[0], word: data[1] }
+        console.log(caughtRepeat)
 
-                    wordObjArray.push(dataToObj);
-                }
-            }
+        if (caughtRepeat === false) {
+            //console.log(textToArray[i]);
+            counter++
+
+            const wordInQuestion = textToArray[i]
+            //const data = [counter, wordInQuestion]; //stored in array 
+
+            const dataToObj = { frequency: counter, word: wordInQuestion }
+
+            const uniqueWord = wordInQuestion;
+
+            wordObjArray.push(dataToObj);
+
+            uniqueWords.push(uniqueWord);
+
+
+            //textToArray.forEach(possibleMatch => countMatches(possibleMatch, textToArray[i]))
+        } else {
+            console.log("stopped")
+            //find relevent index in  wordObjArray
+            const allWords = wordObjArray.map(function (wordObj) {
+                return wordObj.word
+            })
+            //add counter logic to specific word
+            const index = allWords.indexOf(textToArray[i]);
+
+            wordObjArray[index].frequency++;
+
 
 
         }
+
     }
 
 
@@ -77,15 +96,9 @@ async function processWords(text) {
 
     //once you have the frequency you can create the object 
 
-    //const 
 
 
     //console.log(textToArray)
-
-
-
-
-
 
 
 
@@ -93,5 +106,5 @@ async function processWords(text) {
 
 //processWords("#Yo The quick brown fox jumped over the lazy dog This post is about building my first web application, Global News. I’d had the idea for the project for around a year, and at first it was in a very different form. Before I had begun learning to code there was an established view that immigration was going to be an important feature of the modern world. Between climate change creating unsafe homes and global economic inequality there would be a compounding need for travel both today and in the future. And so, I was thinking about how to facilitate information to those considering a journey to a new place.  ")
 
-//processWords("#!Yo. ((***SHmurrple hello")
+processWords("#!Yo. ((***SHmurrple hello hello")
 module.exports = processWords;
