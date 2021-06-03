@@ -46,11 +46,11 @@ const TwitterResults = (props) => {
 
         return (
             < div className="tweetDiv" key={tweets.indexOf(tweet).toString()} >
-                <a href={convertNameToUrl(tweet.handle)} target="_blank" rel="noreferrer">
+                <a href={convertNameToUrl(tweet.username)} target="_blank" rel="noreferrer">
                     <li>
-                        <p className="author">{tweet.authorName}</p>
+                        <p className="author">{tweet.author}</p>
                         <p className="tweetText">{tweet.text} </p>
-                        <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeSince} </p>
+                        <p style={{ padding: "10px", opacity: ".7" }}>{tweet.timeElapsed} </p>
 
                     </li>
                 </a>

@@ -4,7 +4,7 @@
 
 async function getFollowers(id, credentials) {
 
-    console.log("Getting folowers for " + id)
+    // console.log("Getting folowers for " + id)
 
     // function Follower(name, id) { //keep track of both name and id of each follower 
     //     this.name = name;
