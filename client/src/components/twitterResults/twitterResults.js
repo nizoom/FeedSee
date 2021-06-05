@@ -59,7 +59,7 @@ const TwitterResults = (props) => {
     }
     )
 
-    console.log(props.results)
+    //console.log(props.results)
 
     return (
         <div>

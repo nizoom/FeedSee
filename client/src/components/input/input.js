@@ -81,7 +81,7 @@ const Input = (props) => {
 
     return (
 
-        <div>
+        <div className="inputWrapper">
 
 
 

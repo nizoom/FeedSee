@@ -14,7 +14,7 @@ const processTweets = require("./processTweets/processtweets")
 
 const sortByMostRecent = require("./processTweets/mostrecenttweets")
 
-const processText = require("./wordcloud/wordcloud");
+const textToWordCloud = require("./wordcloud/wordcloud");
 
 const PORT = process.env.PORT || 3001; //process.env 
 
@@ -35,16 +35,12 @@ app.get("/api/users/:handle", (req, res) => {
 
     //console.log(credentials)
 
-    function TweetData(tweet, name) {  //keep track of both name and tweet of each follower 
-        this.name = name;
-        this.tweet = tweet
-    }
 
     let finalReturn = [] //where each new tweet and name will be stored 
 
-    validation()
+    processData()
 
-    async function validation() {
+    async function processData() {
 
         const twitterHandle = req.params.handle
 
@@ -86,10 +82,15 @@ app.get("/api/users/:handle", (req, res) => {
 
                 const sortedMostRecentTweets = await sortByMostRecent(processedTweets);
 
+                let allText = ""
 
+                processedTweets.map(function (processedTweets) {
+                    allText += processedTweets.text
+                })
+
+                const cloudTextObj = await textToWordCloud(allText);
                 //ALL OF THE ABOVE IS TO CREATE THE TWEET CARDS 
 
-                //This section below is to process the tweets to be sent to the front end 
 
                 //the object will be word: " " and frequency: # (for frequency of appearance)
 
@@ -101,11 +102,13 @@ app.get("/api/users/:handle", (req, res) => {
                     allTweetText += tweet.text
                 }
                    */
-                //const arrOfText = processText(allTweetText);
+                //console.log(cloudTextObj)
 
                 console.log("sending to front end")
 
-                res.send(sortedMostRecentTweets)
+                res.send([sortedMostRecentTweets, cloudTextObj])
+
+
 
 
             }

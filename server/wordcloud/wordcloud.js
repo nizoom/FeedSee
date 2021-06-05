@@ -84,27 +84,28 @@ async function processWords(text) {
 
             wordObjArray[index].frequency++;
 
-
-
         }
 
     }
 
+    const reducedToMostCommonWords = wordObjArray.map(function (wordObj) {
+        if (wordObj.frequency > 1) {
+            return wordObj
+        }
+    })
 
-    console.log(wordObjArray)
+    const removingUndefinedFromAbove = reducedToMostCommonWords.filter(function (x) {
+        return x !== undefined;
+    });
 
 
-    //once you have the frequency you can create the object 
+    console.log(removingUndefinedFromAbove.length);
 
 
-
-    //console.log(textToArray)
-
-
-
+    return removingUndefinedFromAbove
 }
 
 //processWords("#Yo The quick brown fox jumped over the lazy dog This post is about building my first web application, Global News. I’d had the idea for the project for around a year, and at first it was in a very different form. Before I had begun learning to code there was an established view that immigration was going to be an important feature of the modern world. Between climate change creating unsafe homes and global economic inequality there would be a compounding need for travel both today and in the future. And so, I was thinking about how to facilitate information to those considering a journey to a new place.  ")
 
-processWords("#!Yo. ((***SHmurrple hello hello")
+//processWords("#!Yo. ((***SHmurrple hello hello")
 module.exports = processWords;

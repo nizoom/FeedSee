@@ -1,3 +1,18 @@
+.inputWrapper{
+   background-color: #14394B;
+   margin-left: 35%;
+   width: 30%;
+   opacity: .9;
+   height: 50%;
+   padding-bottom: 20px;
+   padding-top: 20px;
+   padding-left: 0;
+   padding-right: 0;
+   border-radius: 16px;
+   border-style: solid white;
+  
+}
+
 input[type=text] {
     border: 2px;
     padding: 20px 10px;

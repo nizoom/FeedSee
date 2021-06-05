@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Instructions from "./components/instructions/instructions"
 import Input from "./components/input/input"
 import TwitterResults from "./components/twitterResults/twitterResults"
+import MyCloud from "./components/wordcloud/wordcloud"
+import CloudBtn from "./components/wordcloud/initcloudbtn"
 //import validateHandle from "./twitterAPI/validateHandle"
 
 
@@ -13,6 +15,8 @@ function App() {
   const [name, setName] = React.useState(null);
 
   const [data, setData] = React.useState(["No Tweets"]);
+
+  const [cloudText, setCloudText] = React.useState([]);
 
   const handleInput = (submittedName) => {
     console.log(submittedName);
@@ -22,8 +26,13 @@ function App() {
 
     fetch(`/api/users/${submittedName}`) //user=${submittedName}`
       .then((res) => res.json())
-      //.then((info) => console.log(info))
-      .then((data) => setData(data))
+      .then(res => {
+        const [tweets, wordCloudtext] = [res[0], res[1]];
+        setData(tweets)
+        setCloudText(wordCloudtext)
+        console.log(wordCloudtext);
+      })
+    //.then((tweets) => setData(tweets))
     //.then((data) => console.log(data))
 
   }
@@ -38,21 +47,18 @@ function App() {
       <Grid container spacing={10} direction="column"
 
       >
-
-        <Grid item>
-          <header>
-            <Typography variant="h1" style={{ fontSize: "3em", marginTop: "15px" }}>
-              Welcome to The Echo Chamber </Typography>
-          </header>
-        </Grid>
-
         <Grid item>
           <Instructions />
         </Grid>
 
-        <Grid item>
+        <Grid>
           <Input handleInput={handleInput} />
         </Grid>
+
+        <Grid item>
+          <CloudBtn />
+        </Grid>
+
 
         <Grid item>
           <section>
@@ -60,9 +66,18 @@ function App() {
           </section>
         </Grid>
 
+        <Grid item>
+          <section>
+
+          </section>
+        </Grid>
+
       </Grid>
+
     </div >
   );
 }
 
 export default App;
+
+// {cloudWanted ? <MyCloud text={cloudText} /> : null}
