@@ -18,6 +18,11 @@ function App() {
 
   const [cloudText, setCloudText] = React.useState([]);
 
+  const manageCloudInit = (status) => {
+    status ? console.log("show cloud") : console.log("don't show")
+    //return (status ? "show cloud" : "don't show")
+  }
+
   const handleInput = (submittedName) => {
     console.log(submittedName);
     setName(submittedName);
@@ -37,9 +42,6 @@ function App() {
 
   }
 
-  //validateHandle(submittedName)
-  //take name once submitted 
-  //pass to twitter api function
 
 
   return (
@@ -56,7 +58,7 @@ function App() {
         </Grid>
 
         <Grid item>
-          <CloudBtn />
+          {cloudText.length > 0 ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
         </Grid>
 
 
