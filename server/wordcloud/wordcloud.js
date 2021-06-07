@@ -28,12 +28,6 @@ async function processWords(text) {
 
         textToArray.splice(y, 1, finalStrNoSpaces) // at index y, delete 1 element, replace it with finalizedStr
 
-        avoidedWords.forEach(avoidedWord => {
-            if (avoidedWord === textToArray[y]) {
-                //Delete from array 
-                textToArray.splice(y, 1)
-            }
-        })
     }
 
     //Now convert each word into an object count frequency of each word and store that as a property
@@ -88,24 +82,54 @@ async function processWords(text) {
 
     }
 
-    const reducedToMostCommonWords = wordObjArray.map(function (wordObj) {
+    function removeUndefined(arr) {
+
+        const removingUndefinedFromArr = arr.filter(function (x) {
+            return x !== undefined;
+        });
+
+        return removingUndefinedFromArr
+
+    }
+
+    const filteredOutIrrelevance = wordObjArray.map(function (currentTweetWord) {
+        if (avoidedWords.includes(currentTweetWord.word)) {
+            return
+        } else {
+            return currentTweetWord;
+        }
+    })
+
+    const filteredundefines = removeUndefined(filteredOutIrrelevance)
+
+    // const removingUndefinedFromAbove = filteredOutIrrelevance.filter(function (x) {
+    //     return x !== undefined;
+    // });
+
+    const reducedToMostCommonWords = filteredundefines.map(function (wordObj) {
         if (wordObj.frequency > 1) {
             return wordObj
         }
     })
 
-    const removingUndefinedFromAbove = reducedToMostCommonWords.filter(function (x) {
-        return x !== undefined;
-    });
+    const finalReturn = removeUndefined(reducedToMostCommonWords)
 
 
-    console.log(removingUndefinedFromAbove.length);
 
 
-    return removingUndefinedFromAbove
+
+
+
+
+    console.log(finalReturn.length);
+
+    console.log(finalReturn);
+
+
+    return finalReturn
 }
 
 //processWords("#Yo The quick brown fox jumped over the lazy dog This post is about building my first web application, Global News. I’d had the idea for the project for around a year, and at first it was in a very different form. Before I had begun learning to code there was an established view that immigration was going to be an important feature of the modern world. Between climate change creating unsafe homes and global economic inequality there would be a compounding need for travel both today and in the future. And so, I was thinking about how to facilitate information to those considering a journey to a new place.  ")
 
-//processWords("#!Yo. ((***SHmurrple hello hello")
+//processWords("#!Yo. ((***SHmurrple hello hello a a a us to with a gargoyle we of guzzle guzzle")
 module.exports = processWords;

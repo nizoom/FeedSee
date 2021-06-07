@@ -81,7 +81,7 @@ function App() {
             <BackBtn handler={handleBackBtn} />
           </div>
           <div>
-            <MyCloud />
+            <MyCloud text={cloudText} />
           </div>
         </div>
 

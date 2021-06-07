@@ -16,56 +16,56 @@ const styles = {
 
 
 
-class MyCloud extends Component {
-    componentDidMount() {
-        console.log(this.props.text)
-        // setInterval(() => {
-        //     this.forceUpdate();
-        // }, 5000);
-    }
+const MyCloud = (props) => {
+
+    // componentDidMount() {
+    //     console.log(this.props.text)
+    //     // setInterval(() => {
+    //     //     this.forceUpdate();
+    //     // }, 5000);
+    // }
 
 
+    console.log(props.text)
 
-    render() {
+    return (
+        <div className='app-outer'>
+            <div className='app-inner'>
 
-        return (
-            <div className='app-outer'>
-                <div className='app-inner'>
+                <h1>react-tag-cloud demo</h1>
+                <TagCloud
+                    className='tag-cloud'
+                    style={{
+                        fontFamily: 'sans-serif',
+                        //fontSize: () => Math.round(Math.random() * 50) + 16,
+                        fontSize: 30,
+                        color: () => randomColor({
+                            hue: 'blue'
+                        }),
+                        padding: 5,
+                    }}>
+                    <div style={{
+                        fontFamily: 'serif',
 
-                    <h1>react-tag-cloud demo</h1>
-                    <TagCloud
-                        className='tag-cloud'
-                        style={{
-                            fontFamily: 'sans-serif',
-                            //fontSize: () => Math.round(Math.random() * 50) + 16,
-                            fontSize: 30,
-                            color: () => randomColor({
-                                hue: 'blue'
-                            }),
-                            padding: 5,
-                        }}>
-                        <div style={{
-                            fontFamily: 'serif',
+                        fontStyle: 'italic',
+                        fontWeight: 'bold',
+                        color: randomColor()
 
-                            fontStyle: 'italic',
-                            fontWeight: 'bold',
-                            color: randomColor()
+                    }} key={Math.floor(Math.random() * 10)}>
+                        {props.text.map((droplet) => (
+                            <div key={props.text.indexOf(droplet)}
+                                style={{ fontSize: `${droplet.frequency * .5}em` }}
+                            > { droplet.word} </div>
+                        ))}
+                    </div>
 
-                        }} key={Math.floor(Math.random() * 10)}>
-                            {this.props.text.map((droplet) => (
-                                <div key={Math.floor(Math.random() * 10)}
-                                    style={{ fontSize: `${droplet.frequency * .5}em` }}
-                                > { droplet.word} </div>
-                            ))}
-                        </div>
+                </TagCloud>
 
-                    </TagCloud>
+            </div>
 
-                </div>
+        </div >
+    );
 
-            </div >
-        );
-    }
 }
 
 
@@ -91,3 +91,5 @@ export default MyCloud;
                         <div style={styles.small}>Cops</div>
                         <div style={styles.small}>Alfred J. Kwak</div>
                         <div style={styles.small}>Dr Snuggles</div> */}
+
+                        //`${props.text} ${Math.floor(Math.random() * 10).toString()}`
