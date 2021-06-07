@@ -76,10 +76,16 @@ function App() {
         </Grid>
 
       </Grid> :
-
         <div>
-          <BackBtn handler={handleBackBtn} />
-        </div>}
+          <div>
+            <BackBtn handler={handleBackBtn} />
+          </div>
+          <div>
+            <MyCloud />
+          </div>
+        </div>
+
+      }
 
     </div >
   );

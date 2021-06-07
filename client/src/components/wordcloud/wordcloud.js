@@ -17,11 +17,14 @@ const styles = {
 
 
 class MyCloud extends Component {
-    // componentDidMount() {
-    //     setInterval(() => {
-    //         this.forceUpdate();
-    //     }, 5000);
-    // }
+    componentDidMount() {
+        console.log(this.props.text)
+        // setInterval(() => {
+        //     this.forceUpdate();
+        // }, 5000);
+    }
+
+
 
     render() {
 
