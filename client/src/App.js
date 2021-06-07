@@ -8,6 +8,7 @@ import Input from "./components/input/input"
 import TwitterResults from "./components/twitterResults/twitterResults"
 import MyCloud from "./components/wordcloud/wordcloud"
 import CloudBtn from "./components/wordcloud/initcloudbtn"
+import BackBtn from "./components/backbtn/backbtn"
 //import validateHandle from "./twitterAPI/validateHandle"
 
 
@@ -18,9 +19,16 @@ function App() {
 
   const [cloudText, setCloudText] = React.useState([]);
 
+  const [appCSS, setAppCSS] = React.useState("App")
+
   const manageCloudInit = (status) => {
-    status ? console.log("show cloud") : console.log("don't show")
+    console.log(status)
+    status ? setAppCSS("CloudApp") : setAppCSS("App")
     //return (status ? "show cloud" : "don't show")
+  }
+
+  const handleBackBtn = () => {
+    setAppCSS("App")
   }
 
   const handleInput = (submittedName) => {
@@ -39,14 +47,13 @@ function App() {
       })
     //.then((tweets) => setData(tweets))
     //.then((data) => console.log(data))
-
   }
 
 
 
   return (
     <div className="App">
-      <Grid container spacing={10} direction="column"
+      { appCSS === "App" ? <Grid container spacing={10} direction="column"
 
       >
         <Grid item>
@@ -57,24 +64,22 @@ function App() {
           <Input handleInput={handleInput} />
         </Grid>
 
-        <Grid item>
+        <Grid item style={{ padding: "0px" }} >
           {cloudText.length > 0 ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
         </Grid>
 
 
-        <Grid item>
+        <Grid item >
           <section>
             <TwitterResults results={data} />
           </section>
         </Grid>
 
-        <Grid item>
-          <section>
+      </Grid> :
 
-          </section>
-        </Grid>
-
-      </Grid>
+        <div>
+          <BackBtn handler={handleBackBtn} />
+        </div>}
 
     </div >
   );

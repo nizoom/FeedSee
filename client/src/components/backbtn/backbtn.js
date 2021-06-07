@@ -1,12 +1,8 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import "./initcloudbtn.css"
 
-
-const CloudBtn = (props) => {
-
-    const [cloudStatus, setCloudStatus] = React.useState(false)
+const BackBtn = (props) => {
 
     const useStyles = makeStyles(theme => ({ //button styling
         root: {
@@ -14,9 +10,11 @@ const CloudBtn = (props) => {
             borderColor: "#C9B7E2",
             fontSize: "1.5em",
             borderWidth: "5px",
+            borderRadius: "16px",
+            marginTop: "5px",
 
             '&:hover': {
-                color: "#3AC0CB",
+                color: "#3ACBA3 ",
                 borderColor: "white",
                 fontSize: "1.5em",
                 borderWidth: "5px",
@@ -27,22 +25,21 @@ const CloudBtn = (props) => {
 
     const classes = useStyles();
 
-
-
     const handleClick = () => {
-        setCloudStatus(!cloudStatus)
-        props.returnClickToParent(!cloudStatus);
-        // change class to make screen go black
+        props.handler()
     }
 
     return (
-        <div className="cloudBtnWrapper">
+        <div>
             <Button variant="outlined" color="primary" size="large" className={classes.root}
-                onClick={handleClick}>
-                Tweet Word Cloud
+                onClick={handleClick}
+            >
+                Back
             </Button>
+
         </div>
+
     )
 }
 
-export default CloudBtn
+export default BackBtn;
