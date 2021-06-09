@@ -2,3 +2,5 @@
 2. display message if no followers
 3. media queries 
 4. fix error where if valid request follows an invalid one, you have to click twice 
+5. uninstall unused packages
+6. display message if username is valid but doesn't exist 
