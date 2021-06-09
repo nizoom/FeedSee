@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TagCloud from "react-tag-cloud"
+import Goo from 'gooey-react'
 import randomColor from "randomcolor"
 import "./testcss.css"
 
@@ -25,43 +25,22 @@ const MyCloud = (props) => {
     //     // }, 5000);
     // }
 
+    const droplets = props.text.map((droplet) => (
+        <div key={props.text.indexOf(droplet)} className="droplet"
+            style={{ fontSize: `${droplet.frequency * .6}em`, color: randomColor(), fontWeight: "bold", }}
+        >  {droplet.word} </div>
+    ))
 
     console.log(props.text)
 
     return (
-        <div className='app-outer'>
+        <div>
+            <h1> Word Cloud </h1>
+            <div className='app-outer'>
+                {droplets}
 
-            <div className='app-inner'>
-
-                <h1> Word Cloud </h1>
-
-                <TagCloud
-                    className='tag-cloud'
-                    style={{
-                        fontFamily: 'sans-serif',
-                        //fontSize: () => Math.round(Math.random() * 50) + 16,
-                        fontSize: 30,
-                        color: () => randomColor({
-                            hue: 'blue'
-                        }),
-                        padding: 5,
-                    }}>
-                    <div className="cloud" style={{
-                        fontWeight: 'bold',
-                        color: randomColor()
-
-                    }} key={Math.floor(Math.random() * 10)}>
-                        {props.text.map((droplet) => (
-                            <div key={props.text.indexOf(droplet)} className="droplet"
-                                style={{ fontSize: `${droplet.frequency * .5}em`, color: randomColor() }}
-                            >  {droplet.word} </div>
-                        ))}
-                    </div>
-
-                </TagCloud>
 
             </div>
-
         </div >
     );
 
@@ -70,25 +49,23 @@ const MyCloud = (props) => {
 
 export default MyCloud;
 
+//{droplets}
+
 
 {/* 
-                        <div style={styles.large}>Transformers</div>
-                        <div style={styles.large}>Simpsons</div>
-                        <div style={styles.large}>Dragon Ball</div>
-                        <div style={styles.large}>Rick & Morty</div>
-                        <div style={{ fontFamily: 'courier' }}>He man</div>
-                        <div style={{ fontSize: 30 }}>World trigger</div>
-                        <div style={{ fontStyle: 'italic' }}>Avengers</div>
-                        <div style={{ fontWeight: 200 }}>Family Guy</div>
-                        <div style={{ color: 'green' }}>American Dad</div>
+                          <Goo instenity="weak" style={{ animation: 'left 4s linear infinite' }}>
+                    <svg width="192" height="192">
 
+                        <g id="parent">
+                            <circle cx="37%" cy="37%" fill="orchid" r="32" style={{ animation: 'right 1s linear infinite' }} />
+                            <circle cx="63%" cy="63%" fill="mediumorchid" r="32" />
+                            <text x="37%" y="37%" text-anchor="middle" stroke="black" stroke-width="5px"
+                                alignment-baseline="middle">Label!</text>
 
-                        <div style={styles.small}>Dino Riders</div>
-                        <div style={styles.small}>Silverhawks</div>
-                        <div style={styles.small}>Bravestar</div>
-                        <div style={styles.small}>Starcom</div>
-                        <div style={styles.small}>Cops</div>
-                        <div style={styles.small}>Alfred J. Kwak</div>
-                        <div style={styles.small}>Dr Snuggles</div> */}
+                        </g>
 
-                        //`${props.text} ${Math.floor(Math.random() * 10).toString()}`
+                    </svg>
+
+                </Goo>
+                        */}
+

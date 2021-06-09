@@ -1,24 +1,22 @@
 .app-outer{
+    background-color:#D3E8E2;
+    border: solid #14394B;
+    
+    border-radius: 16px;
     display: flex;
-    flex: 1 1;
-    flex-direction: row;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-smooth: always;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+    width: 50%;
 }
 
+svg * { transform-origin: 50% }
 
-.cloud{
-    border-radius:  16px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 100%;
-    max-width: 1000px;
-    width: 100%;
- }
+@keyframes left {
+  100% { transform: rotate(-360deg) }
+}
 
- .tag-cloud {
-    flex: 1;
- }
+@keyframes right {
+  100% { transform: rotate(360deg) }
+}
