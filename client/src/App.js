@@ -76,7 +76,7 @@ function App() {
         </Grid>
 
       </Grid> :
-        <div>
+        <div className="CloudApp">
           <div>
             <BackBtn handler={handleBackBtn} />
           </div>

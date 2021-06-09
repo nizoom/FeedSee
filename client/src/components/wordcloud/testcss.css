@@ -1,0 +1,24 @@
+.app-outer{
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+}
+
+
+.cloud{
+    border-radius:  16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+ }
+
+ .tag-cloud {
+    flex: 1;
+ }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TagCloud from "react-tag-cloud"
 import randomColor from "randomcolor"
-import "./wordcloud.css"
+import "./testcss.css"
 
 const styles = {
     large: {
@@ -30,9 +30,11 @@ const MyCloud = (props) => {
 
     return (
         <div className='app-outer'>
+
             <div className='app-inner'>
 
-                <h1>react-tag-cloud demo</h1>
+                <h1> Word Cloud </h1>
+
                 <TagCloud
                     className='tag-cloud'
                     style={{
@@ -44,18 +46,15 @@ const MyCloud = (props) => {
                         }),
                         padding: 5,
                     }}>
-                    <div style={{
-                        fontFamily: 'serif',
-
-                        fontStyle: 'italic',
+                    <div className="cloud" style={{
                         fontWeight: 'bold',
                         color: randomColor()
 
                     }} key={Math.floor(Math.random() * 10)}>
                         {props.text.map((droplet) => (
-                            <div key={props.text.indexOf(droplet)}
-                                style={{ fontSize: `${droplet.frequency * .5}em` }}
-                            > { droplet.word} </div>
+                            <div key={props.text.indexOf(droplet)} className="droplet"
+                                style={{ fontSize: `${droplet.frequency * .5}em`, color: randomColor() }}
+                            >  {droplet.word} </div>
                         ))}
                     </div>
 

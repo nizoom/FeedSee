@@ -11,7 +11,7 @@ async function processWords(text) {
         "since", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these",
         "they", "this", "tis", "to", "too", "twas", "us", "wants", "was", "we", "were", "what",
         "when", "where", "which", "while", "who", "whom", "why", "will", "with", "would", "yet",
-        "you", "your"
+        "you", "your", "it's"
     ];
 
     //split text to array 
