@@ -64,17 +64,18 @@ app.get("/api/users/:handle", (req, res) => {
 
             const allFollowers = await getFollowers(inititalizingId, credentials)
 
-            console.log("Got " + allFollowers.length + " followers.")
-            // console.log(allFollowers);
-            let response = []
+            //if not following anyone 
 
-            if (allFollowers.length < 1) {
-                // not following anyone
-                response.push("This account is not following anyone") // THIS USE CASE NEEDS ATTENTION
+            if (allFollowers.length === 0) {
+                res.send({ numberOfFollowing: "0" })
 
-                res.send(response)
+            } else { // continue with successful query 
 
-            } else {
+
+
+                console.log("Got " + allFollowers.length + " followers.")
+                // console.log(allFollowers);
+
 
                 const tweets = await getTweets(allFollowers, credentials)
 
@@ -95,9 +96,9 @@ app.get("/api/users/:handle", (req, res) => {
                 //the object will be word: " " and frequency: # (for frequency of appearance)
 
                 /*let allTweetText = ""
-
+ 
                 arrOfSortedTweets.forEach(tweet => extractAndAddText(tweet));
-
+ 
                 function extractAndAddText(tweet) {
                     allTweetText += tweet.text
                 }

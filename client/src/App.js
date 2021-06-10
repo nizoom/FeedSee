@@ -8,8 +8,7 @@ import TwitterResults from "./components/twitterResults/twitterResults"
 import MyCloud from "./components/wordcloud/wordcloud"
 import CloudBtn from "./components/wordcloud/initcloudbtn"
 import BackBtn from "./components/backbtn/backbtn"
-import AccntNotFound from "./components/notfound/accountnotfound"
-//import validateHandle from "./twitterAPI/validateHandle"
+import SearchFailed from "./components/notfound/searchfailed"
 
 
 function App() {
@@ -20,6 +19,8 @@ function App() {
   const [cloudText, setCloudText] = React.useState([]);
 
   const [appCSS, setAppCSS] = React.useState("App")
+
+  const [successfulQuery, setsuccessfulQuery] = React.useState(true)
 
   const manageCloudInit = (status) => {
     console.log(status)
@@ -42,19 +43,30 @@ function App() {
       .then(res => {
         console.log("yo")
         if (Array.isArray(res)) { // successful query with followers
+
           const [tweets, wordCloudtext] = [res[0], res[1]];
+
           setData(tweets)
           setCloudText(wordCloudtext)
+          setsuccessfulQuery(true);
           console.log(wordCloudtext);
         } else {
-          console.log("not an array") // account not found 
-          console.log(res)
-          setData(res.notFound)
+          setsuccessfulQuery(false);
+          if (res.hasOwnProperty("notFound")) {
+            console.log("not an array") // account not found 
+            console.log(res)
+            setData(res.notFound)
+            setCloudText([]);
+          } else { //account exists but follows no one 
+            console.log("follows no one")
+            setData("0")
+            setCloudText([]);
+          }
+          // reset cloud 
         }
 
       })
-    //.then((tweets) => setData(tweets))
-    //.then((data) => console.log(data))
+
   }
 
 
@@ -81,7 +93,7 @@ function App() {
 
 
         <Grid item >
-          {data === "not found" ? <AccntNotFound /> : <section>
+          {!successfulQuery ? <SearchFailed issue={data} /> : <section>
             <TwitterResults results={data} />
           </section>}
         </Grid>
