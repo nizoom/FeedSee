@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Typography from '@material-ui/core/Typography';
 import randomColor from "randomcolor"
 import "./wordcloud.css"
-import gif from "./../../media/tweetgifv6.gif"
+import gif from "./../../media/tweetgifv7.gif"
 //import test from "./../../media/test.png"
 ///Users/nissimram / Desktop / Programming / Twitter Project / twitter - project / client / src / media / tweetGifv4.gif
 
@@ -33,7 +33,7 @@ const MyCloud = (props) => {
 
     const droplets = props.text.map((droplet) => (
         <div key={props.text.indexOf(droplet)} className="droplet"
-            style={{ fontSize: `${droplet.frequency * .6}em`, color: randomColor(), fontWeight: "bold", padding: "2px" }}
+            style={{ fontSize: `${droplet.frequency * .6}em`, fontWeight: "bold", padding: "2px" }}
         >  {droplet.word} </div>
     ))
 
@@ -43,7 +43,7 @@ const MyCloud = (props) => {
         <div>
 
 
-            <Typography variant="h2" style={{ color: "#14394B", padding: "10px" }}> Word Cloud </Typography>
+            <Typography variant="h2" style={{ color: "#14394B", padding: "10px" }}> Word Cloud from User_Name</Typography>
             <div className='app-outer'>
 
                 <div style={{

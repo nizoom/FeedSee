@@ -1,10 +1,16 @@
 .cloud{
+  color: white;
+    z-index: 100;
+    position: absolute;
+    margin-top: 42vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 90%;
-
+    width: 39%;
+    background-image: linear-gradient( #5178A3, #3FB07B);
+    border-radius: 16px;
+ 
 }
 
 .app-outer{
