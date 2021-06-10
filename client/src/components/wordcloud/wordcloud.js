@@ -8,16 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 //import test from "./../../media/test.png"
 
-// const styles = {
-//     large: {
-//         fontSize: 60,
-//         fontWeight: 'bold'
-//     },
-//     small: {
-//         opacity: 0.7,
-//         fontSize: 16
-//     }
-// };
+
 
 
 
@@ -27,7 +18,7 @@ const MyCloud = (props) => {
 
     const droplets = props.text.map((droplet) => (
         <div key={props.text.indexOf(droplet)} className="droplet"
-            style={{ fontSize: `${droplet.frequency * .6}em`, fontWeight: "bold", padding: "2px" }}
+            style={{ fontSize: `${droplet.frequency * .6}em`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
         >  {droplet.word} </div>
     ))
 
@@ -47,7 +38,7 @@ const MyCloud = (props) => {
 
                     }}>
 
-                        <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "950px" }} />
+                        <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "990px", width: "1030px" }} />
 
                     </div>
 

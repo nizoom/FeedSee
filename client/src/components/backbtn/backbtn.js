@@ -7,7 +7,7 @@ const BackBtn = (props) => {
     const useStyles = makeStyles(theme => ({ //button styling
         root: {
             color: "#28244E",
-            borderColor: "#C9B7E2",
+            borderColor: "#28244E",
             fontSize: "1.5em",
             borderWidth: "5px",
             borderRadius: "16px",
@@ -30,11 +30,12 @@ const BackBtn = (props) => {
     }
 
     return (
-        <div>
+        <div style={{ position: "absolute" }}>
             <Button variant="outlined" color="primary" size="large" className={classes.root}
-                onClick={handleClick}
+                onClick={handleClick} style={{ marginTop: "10px", marginLeft: "10px" }}
             >
-                Back
+                <span style={{ fontSize: "25px" }}>&#8617;</span>
+
             </Button>
 
         </div>

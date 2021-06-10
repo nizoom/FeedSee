@@ -4,3 +4,4 @@
 4. fix error where if valid request follows an invalid one, you have to click twice 
 5. uninstall unused packages
 6. display message if username is valid but doesn't exist 
+7. tool tip of frequency in cloud?

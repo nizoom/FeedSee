@@ -52,9 +52,12 @@ function App() {
 
   return (
     <div className="App">
-      { appCSS === "App" ? <Grid container spacing={10} direction="column"
+      { appCSS === "App" ? <Grid container spacing={5} direction="column" style={{
+        margin: 0,
+        width: '100%',
+      }}>
 
-      >
+
         <Grid item>
           <Instructions />
         </Grid>

@@ -70,7 +70,7 @@ const TwitterResults = (props) => {
                         <CollapseButton btnClicked={changeBtnStatus} status={btnStatus} />
 
                         <div className="container" ref={content}
-                            style={{ maxHeight: `${height}` }}
+                            style={{ maxHeight: `${height}`, paddingRight: "40px" }}
                         >
                             <ul style={{
                                 display: "flex", flexDirection: "row", flexWrap: "wrap",
