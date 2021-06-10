@@ -59,7 +59,7 @@ function App() {
           <Instructions />
         </Grid>
 
-        <Grid>
+        <Grid item>
           <Input handleInput={handleInput} />
         </Grid>
 
@@ -80,7 +80,7 @@ function App() {
             <BackBtn handler={handleBackBtn} />
           </div>
           <div>
-            <MyCloud text={cloudText} />
+            <MyCloud text={cloudText} accountName={name} />
           </div>
         </div>
 

@@ -1,3 +1,22 @@
+.cloudWrapper{
+}
+
+.cloudTitle{
+  color: #E9DBEE;
+  background-color: #14394B;
+  padding: 20px;
+  margin: 20px;
+  margin-right: 250px;
+  margin-left: 250px;
+
+ 
+  opacity: .9;
+
+
+
+  border-radius: 16px;
+}
+
 .cloud{
   color: white;
     z-index: 100;

@@ -1,33 +1,27 @@
-import React, { Component } from "react";
+import React from "react";
 //import Goo from 'gooey-react'
 import Typography from '@material-ui/core/Typography';
 import randomColor from "randomcolor"
 import "./wordcloud.css"
 import gif from "./../../media/tweetgifv7.gif"
-//import test from "./../../media/test.png"
-///Users/nissimram / Desktop / Programming / Twitter Project / twitter - project / client / src / media / tweetGifv4.gif
+import Grid from '@material-ui/core/Grid';
 
-const styles = {
-    large: {
-        fontSize: 60,
-        fontWeight: 'bold'
-    },
-    small: {
-        opacity: 0.7,
-        fontSize: 16
-    }
-};
+//import test from "./../../media/test.png"
+
+// const styles = {
+//     large: {
+//         fontSize: 60,
+//         fontWeight: 'bold'
+//     },
+//     small: {
+//         opacity: 0.7,
+//         fontSize: 16
+//     }
+// };
 
 
 
 const MyCloud = (props) => {
-
-    // componentDidMount() {
-    //     console.log(this.props.text)
-    //     // setInterval(() => {
-    //     //     this.forceUpdate();
-    //     // }, 5000);
-    // }
 
 
 
@@ -40,27 +34,32 @@ const MyCloud = (props) => {
     console.log(props.text)
 
     return (
-        <div>
+        <Grid container direction="column">
+            <div className="cloudWrapper" spacing={2} justify="center">
 
-
-            <Typography variant="h2" style={{ color: "#14394B", padding: "10px" }}> Word Cloud from User_Name</Typography>
-            <div className='app-outer'>
-
-                <div style={{
-                }}>
-
-                    <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "50%" }} />
+                <div className="cloudTitle">
+                    <Typography variant="h2"> Word Cloud from @{props.accountName}'s feed </Typography>
 
                 </div>
+                <div className='app-outer'>
 
-                <div className="cloud">
-                    {droplets}
+                    <div style={{
+
+                    }}>
+
+                        <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "950px" }} />
+
+                    </div>
+
+                    <div className="cloud">
+                        {droplets}
+                    </div>
+
+
+
                 </div>
-
-
-
-            </div>
-        </div >
+            </div >
+        </Grid>
     );
 
 }
