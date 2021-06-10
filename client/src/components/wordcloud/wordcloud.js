@@ -18,7 +18,7 @@ const MyCloud = (props) => {
 
     const droplets = props.text.map((droplet) => (
         <div key={props.text.indexOf(droplet)} className="droplet"
-            style={{ fontSize: `${droplet.frequency * .6}em`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
+            style={{ fontSize: `${droplet.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
         >  {droplet.word} </div>
     ))
 
@@ -32,23 +32,22 @@ const MyCloud = (props) => {
                     <Typography variant="h2"> Word Cloud from @{props.accountName}'s feed </Typography>
 
                 </div>
-                <div className='app-outer'>
 
-                    <div style={{
 
-                    }}>
+                <div className="outerContainer">
 
-                        <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "990px", width: "1030px" }} />
+                    <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "995px", width: "1095px", float: "left" }} />
 
-                    </div>
+
 
                     <div className="cloud">
+
                         {droplets}
                     </div>
-
-
-
                 </div>
+
+
+
             </div >
         </Grid>
     );

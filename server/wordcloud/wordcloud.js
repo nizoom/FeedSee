@@ -112,7 +112,7 @@ async function processWords(text) {
         }
     })
 
-    const finalReturn = removeUndefined(reducedToMostCommonWords)
+    const finalReturn = removeUndefined(reducedToMostCommonWords).slice(0, 100); //can't fit more than 95 in word cloud space
 
 
 
