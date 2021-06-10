@@ -116,8 +116,8 @@ app.get("/api/users/:handle", (req, res) => {
 
         } else {
             //invalid name 
-
-            console.log("There's an error / deleted account")
+            res.send({ notFound: "not found" })
+            console.log("There's an error / deleted account SEND")
         }
 
 

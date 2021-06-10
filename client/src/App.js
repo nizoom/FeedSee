@@ -8,6 +8,7 @@ import TwitterResults from "./components/twitterResults/twitterResults"
 import MyCloud from "./components/wordcloud/wordcloud"
 import CloudBtn from "./components/wordcloud/initcloudbtn"
 import BackBtn from "./components/backbtn/backbtn"
+import AccntNotFound from "./components/notfound/accountnotfound"
 //import validateHandle from "./twitterAPI/validateHandle"
 
 
@@ -39,10 +40,18 @@ function App() {
     fetch(`/api/users/${submittedName}`) //user=${submittedName}`
       .then((res) => res.json())
       .then(res => {
-        const [tweets, wordCloudtext] = [res[0], res[1]];
-        setData(tweets)
-        setCloudText(wordCloudtext)
-        console.log(wordCloudtext);
+        console.log("yo")
+        if (Array.isArray(res)) { // successful query with followers
+          const [tweets, wordCloudtext] = [res[0], res[1]];
+          setData(tweets)
+          setCloudText(wordCloudtext)
+          console.log(wordCloudtext);
+        } else {
+          console.log("not an array") // account not found 
+          console.log(res)
+          setData(res.notFound)
+        }
+
       })
     //.then((tweets) => setData(tweets))
     //.then((data) => console.log(data))
@@ -72,9 +81,9 @@ function App() {
 
 
         <Grid item >
-          <section>
+          {data === "not found" ? <AccntNotFound /> : <section>
             <TwitterResults results={data} />
-          </section>
+          </section>}
         </Grid>
 
       </Grid> :

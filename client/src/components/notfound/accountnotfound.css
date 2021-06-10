@@ -1,0 +1,14 @@
+.notFoundWrapper{
+    font-size: 40px;
+    background-color: #2A485B;
+    border-radius: 16px;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+
+.notFoundWrapper p{
+    background: -webkit-linear-gradient(45deg, #CF9DDC, white, #89EBCF 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 20px;
+}
