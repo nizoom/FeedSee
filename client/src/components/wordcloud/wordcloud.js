@@ -1,12 +1,11 @@
 import React from "react";
 //import Goo from 'gooey-react'
 import Typography from '@material-ui/core/Typography';
-import randomColor from "randomcolor"
 import "./wordcloud.css"
 import gif from "./../../media/tweetgifv7.gif"
 import Grid from '@material-ui/core/Grid';
+import ToolTip from "./../tooltip/tooltip"
 
-//import test from "./../../media/test.png"
 
 
 
@@ -14,12 +13,25 @@ import Grid from '@material-ui/core/Grid';
 
 const MyCloud = (props) => {
 
+    const [clicked, setClick] = React.useState(false)
 
-
+    const activateToolTip = () => {
+        setClick(!clicked)
+    }
     const droplets = props.text.map((droplet) => (
-        <div key={props.text.indexOf(droplet)} className="droplet"
-            style={{ fontSize: `${droplet.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
-        >  {droplet.word} </div>
+        <div key={props.text.indexOf(droplet)}>
+            <div key={props.text.indexOf(droplet)} className="droplet"
+                style={{ fontSize: `${droplet.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
+                onClick={activateToolTip}
+            >  {droplet.word}
+
+                {clicked ? <ToolTip word={droplet.word} frequency={droplet.frequency} /> : null}
+
+            </div>
+
+        </div>
+
+
     ))
 
     console.log(props.text)
@@ -41,7 +53,6 @@ const MyCloud = (props) => {
 
 
                     <div className="cloud">
-
                         {droplets}
                     </div>
                 </div>
@@ -80,8 +91,7 @@ export default MyCloud;
                         <g id="parent">
                             <circle cx="37%" cy="37%" fill="orchid" r="32" style={{ animation: 'right 1s linear infinite' }} />
                             <circle cx="63%" cy="63%" fill="mediumorchid" r="32" />
-                            <text x="37%" y="37%" text-anchor="middle" stroke="black" stroke-width="5px"
-                                alignment-baseline="middle">Label!</text>
+                          
 
                         </g>
 
