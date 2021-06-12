@@ -1,18 +1,61 @@
 import React from "react";
-//import Tooltip from 'rc-tooltip';
+import Tooltip from '@material-ui/core/Tooltip';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import "../wordcloud/wordcloud.css"
+
+
+
 
 const ToolTip = (props) => {
+
+    const HtmlTooltip = withStyles((theme) => ({
+        tooltip: {
+            backgroundColor: '#f5f5f9',
+            color: 'rgba(0, 0, 0, 0.87)',
+            maxWidth: 220,
+            fontSize: theme.typography.pxToRem(12),
+            border: '1px solid #dadde9',
+            borderRadius: "15px"
+        },
+    }))(Tooltip);
+
+
     return (
 
-        <span style={{ backgroundColor: "gray", color: "black", border: "solid black", fontSize: "20px", float: "right" }}>
-            {props.word} is used {props.frequency}times
-        </span>
+        <HtmlTooltip
+            title={
+                <React.Fragment>
+                    <Typography color="inherit">
+                        <i>{props.word} </i> {`is used ${props.frequency} times`}
+
+                    </Typography>
+
+                </React.Fragment>
+            }
+        >
+            <div style={{ fontSize: `${props.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
+            >{props.word}</div>
+        </HtmlTooltip>
+
+
 
 
     )
 }
 
 export default ToolTip;
+
+
+
+
+{/* <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
+{"It's very engaging. Right?"} */}
+
+
+
+
 
  //const tTip = <ToolTip frequency={droplet.frequency} word={droplet.word} />
 

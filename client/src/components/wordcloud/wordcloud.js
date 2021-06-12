@@ -5,7 +5,9 @@ import "./wordcloud.css"
 import gif from "./../../media/tweetgifv7.gif"
 import Grid from '@material-ui/core/Grid';
 import ToolTip from "./../tooltip/tooltip"
+//{clicked ? <ToolTip word={droplet.word} frequency={droplet.frequency} /> : null}
 
+//import Tooltip from '@material-ui/core/Tooltip';
 
 
 
@@ -18,18 +20,26 @@ const MyCloud = (props) => {
     const activateToolTip = () => {
         setClick(!clicked)
     }
+
+
+
     const droplets = props.text.map((droplet) => (
         <div key={props.text.indexOf(droplet)}>
-            <div key={props.text.indexOf(droplet)} className="droplet"
-                style={{ fontSize: `${droplet.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
-                onClick={activateToolTip}
-            >  {droplet.word}
+            <ToolTip word={droplet.word} frequency={droplet.frequency}>
+                <div key={props.text.indexOf(droplet)} className="droplet"
+                    style={{ fontSize: `${droplet.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
+                    onClick={activateToolTip}
 
-                {clicked ? <ToolTip word={droplet.word} frequency={droplet.frequency} /> : null}
 
-            </div>
 
-        </div>
+                >  {droplet.word}
+                </div>
+
+            </ToolTip>
+
+
+
+        </div >
 
 
     ))

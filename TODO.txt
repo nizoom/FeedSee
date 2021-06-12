@@ -4,8 +4,9 @@
 4. fix error where if valid request follows an invalid one, you have to click twice 
 5. uninstall unused packages
 6. display message if username is valid but doesn't exist 
-7. tool tip of frequency in cloud?
+7. tool tip of frequency in cloud?  -> make onclick work 
 8. placeholder should be the username searched if valid
 9. account not found message √
 10. submit click throttling
 11. blob while the tweets are loading? 
+12. and amp issue in word cloud
