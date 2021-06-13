@@ -2,8 +2,6 @@
     position: relative;
     display: inline-block;
     height: 100%;
-   
-  
 }
 
 .cloudTitle{
@@ -33,6 +31,12 @@
   border-radius: 16px;
   color: #D8E9FA;
 
+}
+
+@media (max-width:1000pc){
+  .outerContainer{
+   
+  }
 }
 
 /*.cloud{

@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import "./input.css"
 import Grid from '@material-ui/core/Grid';
 
+import GetRandomAcctBtn from "./randomize/getrandomacctbtn"
+
 
 const Input = (props) => {
 
@@ -93,9 +95,14 @@ const Input = (props) => {
         <div className="inputWrapper">
 
 
-            <Grid container direction="row" justify="space-evenly" >
+            <Grid container direction="row" justify="space-evenly" spacing={4}>
 
-                <Grid >
+                <Grid item xs={12}>
+
+                    <GetRandomAcctBtn />
+                </Grid>
+
+                <Grid item >
                     <TextField id="standard-basic"
 
                         name="twitterInput"
@@ -110,7 +117,7 @@ const Input = (props) => {
                     />
                 </Grid>
 
-                <Grid>
+                <Grid item>
                     <Button variant="outlined" color="primary" size="large"
 
                         onClick={checkValidity}

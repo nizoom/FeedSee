@@ -58,7 +58,7 @@ const MyCloud = (props) => {
 
                 <div className="outerContainer">
 
-                    <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", height: "995px", width: "1095px", float: "left" }} />
+                    <img src={gif} alt="tweetGif" height="995px" width="1095px" style={{ borderRadius: "16px", float: "left" }} />
 
 
 

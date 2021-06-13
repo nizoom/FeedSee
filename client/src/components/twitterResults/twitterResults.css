@@ -77,3 +77,10 @@ ul{
 .collapsed{
 
 }
+
+@media(max-width: 550px){
+  .tweetDiv{
+    height: 300px;
+    font-size: 95%;
+  }
+}
