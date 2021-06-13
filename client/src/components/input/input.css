@@ -1,7 +1,7 @@
 .inputWrapper{
    background-color: #14394B;
-   margin-left: 35%;
-   width: 30%;
+   margin-left: 30%;
+   margin-right: 30%;
    opacity: .9;
    height: 50%;
    padding-bottom: 20px;
@@ -35,4 +35,29 @@ input[type=text] {
     -webkit-text-fill-color: transparent;
     font-weight: 500;
     font-size: 2em;
+ }
+
+ @media(max-width: 1000px){
+   .inputWrapper{
+    margin-left: 20%;
+    margin-right: 20%;
+   }
+ }
+
+ @media(max-width: 700px){
+   .inputWrapper{
+      margin-left: 10%;
+      margin-right: 10%;
+     }
+ }
+
+ @media(max-width: 550px){
+   .inputWrapper{
+      margin-left: 0%;
+      margin-right: 0%;
+     }
+
+   .inputWrapper button{
+      margin-left: 0;
+   }
  }

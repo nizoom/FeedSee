@@ -13,6 +13,11 @@ const Input = (props) => {
             borderColor: "#89EBCF",
             fontSize: "1.5em",
             borderWidth: "5px",
+            marginLeft: "25px", marginTop: "6px",
+            [theme.breakpoints.up('xl')]: {
+                marginLeft: '0px',
+            },
+
 
             '&:hover': {
                 color: "#89EBCF",
@@ -100,7 +105,7 @@ const Input = (props) => {
 
 
             <Button variant="outlined" color="primary" size="large"
-                style={{ marginLeft: "25px", marginTop: "6px" }}
+
                 onClick={checkValidity}
                 className={classes.root}
             > Submit </Button>

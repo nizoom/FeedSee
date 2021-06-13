@@ -56,13 +56,13 @@ function App() {
             console.log("not an array") // account not found 
             console.log(res)
             setData(res.notFound)
-            setCloudText([]);
+            setCloudText([]); // reset cloud 
           } else { //account exists but follows no one 
             console.log("follows no one")
             setData("0")
-            setCloudText([]);
+            setCloudText([]); // reset cloud 
           }
-          // reset cloud 
+
         }
 
       })
