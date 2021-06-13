@@ -1,7 +1,6 @@
 .inputWrapper{
    background-color: #14394B;
-   margin-left: 30%;
-   margin-right: 30%;
+   width: 30%;
    opacity: .9;
    height: 50%;
    padding-bottom: 20px;
@@ -10,6 +9,7 @@
    padding-right: 0;
    border-radius: 16px;
    border-style: solid white;
+   margin:auto;
   
 }
 
@@ -37,27 +37,49 @@ input[type=text] {
     font-size: 2em;
  }
 
- @media(max-width: 1000px){
+ @media(max-width: 1100px){
    .inputWrapper{
-    margin-left: 20%;
-    margin-right: 20%;
+     width: 40%;
    }
  }
 
- @media(max-width: 700px){
+ @media(max-width: 800px){
    .inputWrapper{
-      margin-left: 10%;
-      margin-right: 10%;
+      width: 70%;
+      font-size: 80%;
      }
  }
 
- @media(max-width: 550px){
+ @media (max-width: 380px) {
    .inputWrapper{
-      margin-left: 0%;
-      margin-right: 0%;
+      width: 60%;
+      padding: 15px;
+     
+  } .inputWrapper button{
+      
+   margin-top: 15px;
+   
+  }
+ }
+ @media(max-width: 350px){
+   .inputWrapper{
+      width: 100%;
+      margin: auto;
+      font-size: 70%;
      }
 
-   .inputWrapper button{
-      margin-left: 0;
-   }
+     .inputWrapper button{
+      
+      margin-top: 15px;
+      
+     }
+ }
+
+ @media(max-width: 330px){
+   .inputWrapper{
+      width: 50%;
+      margin: auto;
+      font-size: 70%;
+     }
+
  }

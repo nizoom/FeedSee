@@ -1,15 +1,19 @@
 .instructionsWrapper{
     color: #E9DBEE;
     background-color: #14394B;
-    margin-right: 60px;
-    margin-left: 60px;
+    width: 70%;
     margin-top: 10px;
+    margin: auto;
     opacity: .9;
     height: 50%;
     padding-bottom: 20px;
     padding-top: 20px;
-    
     border-radius: 16px;
-   
-   
+ }
+
+ @media(max-width:700px){
+    .instructionsWrapper{
+        width: 100%;
+        font-size: 70%;
+    }
  }

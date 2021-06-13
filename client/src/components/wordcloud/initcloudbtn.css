@@ -1,7 +1,7 @@
 .cloudBtnWrapper{
     background: -webkit-linear-gradient(45deg, #CF9DDC, white, #89EBCF 80%);
-    width: 320px;
-    margin: 0 650px 0 650px;
+    width: 20%;
+    margin: auto;
 
     opacity: .7;
  
@@ -11,30 +11,31 @@
     border-radius: 16px;
  }
 
- /* @media(max-width:1500px){
+ @media(max-width:1300px){
      .cloudBtnWrapper{
-        margin: 0 450px 0 450px;
+        width: 35%;
+
 
      }
  }
 
  @media(max-width:1200px){
     .cloudBtnWrapper{
-       margin: 0 350px 0 350px;
+      width: 35%;
 
     }
 }
 
 @media(max-width:1000px){
     .cloudBtnWrapper{
-       margin: 0 200px 0 200px;
+        width: 45%;
 
     }
 }
 
-@media(max-width:1000px){
+@media(max-width:550px){
     .cloudBtnWrapper{
-       margin: 0 100px 0 100px;
-
+   width: 100%;
+   margin: 0 10px 0 10px;
     }
-} */
+}

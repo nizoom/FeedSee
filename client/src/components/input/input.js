@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 
 import { makeStyles } from '@material-ui/core/styles';
 import "./input.css"
+import Grid from '@material-ui/core/Grid';
+
 
 const Input = (props) => {
 
@@ -13,10 +15,10 @@ const Input = (props) => {
             borderColor: "#89EBCF",
             fontSize: "1.5em",
             borderWidth: "5px",
-            marginLeft: "25px", marginTop: "6px",
-            [theme.breakpoints.up('xl')]: {
-                marginLeft: '0px',
-            },
+            height: "70px",
+            // [theme.breakpoints.up('xs')]: {
+            //     marginTop: '10px',
+            // },
 
 
             '&:hover': {
@@ -84,35 +86,44 @@ const Input = (props) => {
     //                 htmlFor="twitterInput"
     //             > Twitter Handle </InputLabel>
 
+    //item xs={6}
+
     return (
 
         <div className="inputWrapper">
 
 
+            <Grid container direction="row" justify="space-evenly" >
 
-            <TextField id="standard-basic"
+                <Grid >
+                    <TextField id="standard-basic"
 
-                name="twitterInput"
-                onChange={handleChange}
-                style={{
-                    backgroundColor: "#C9B7E2",
-                    borderRadius: "5%",
-                    opacity: ".8"
-                }}
-                label="TwitterHandle"
-                InputLabelProps={{ className: "textfield___label" }}
-            />
+                        name="twitterInput"
+                        onChange={handleChange}
+                        style={{
+                            backgroundColor: "#C9B7E2",
+                            borderRadius: "5%",
+                            opacity: ".8"
+                        }}
+                        label="TwitterHandle"
+                        InputLabelProps={{ className: "textfield___label" }}
+                    />
+                </Grid>
 
+                <Grid>
+                    <Button variant="outlined" color="primary" size="large"
 
-            <Button variant="outlined" color="primary" size="large"
+                        onClick={checkValidity}
+                        className={classes.root}
+                    > Submit </Button>
 
-                onClick={checkValidity}
-                className={classes.root}
-            > Submit </Button>
+                    {validity ? null : <p
+                        className="error__message"
+                    > Handle must be 4 to 15 characters of only numbers, letters, and underscores </p>}
+                </Grid>
 
-            {validity ? null : <p
-                className="error__message"
-            > Handle must be 4 to 15 characters of only numbers, letters, and underscores </p>}
+            </Grid>
+
         </div >
     )
 }

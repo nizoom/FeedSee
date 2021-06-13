@@ -16,6 +16,7 @@ const CloudBtn = (props) => {
             borderWidth: "5px",
             padding: "10px 20px 10px 20px",
             borderRadius: "16px",
+            width: "100%",
 
             '&:hover': {
                 color: "#3AC0CB",

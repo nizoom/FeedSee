@@ -11,7 +11,7 @@ async function processWords(text) {
         "since", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these",
         "they", "this", "tis", "to", "too", "twas", "us", "wants", "was", "we", "were", "what",
         "when", "where", "which", "while", "who", "whom", "why", "will", "with", "would", "yet",
-        "you", "your", "it's"
+        "you", "your", "it's", "&", "amp"
     ];
 
     //split text to array 
@@ -48,7 +48,7 @@ async function processWords(text) {
 
         const caughtRepeat = uniqueWords.includes(textToArray[i]); //array of word NOT obj
 
-        console.log(caughtRepeat)
+        //console.log(caughtRepeat)
 
         if (caughtRepeat === false) {
             //console.log(textToArray[i]);
@@ -68,7 +68,7 @@ async function processWords(text) {
 
             //textToArray.forEach(possibleMatch => countMatches(possibleMatch, textToArray[i]))
         } else {
-            console.log("stopped")
+            //console.log("stopped")
             //find relevent index in  wordObjArray
             const allWords = wordObjArray.map(function (wordObj) {
                 return wordObj.word
