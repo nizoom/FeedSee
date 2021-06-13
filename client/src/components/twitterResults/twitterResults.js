@@ -13,8 +13,6 @@ const TwitterResults = (props) => {
 
     const content = useRef("");
 
-    const [height, setHeight] = useState(content.current.scrollHeight);
-
 
     const changeBtnStatus = () => {
         setBtnStatus(!btnStatus)
@@ -23,10 +21,6 @@ const TwitterResults = (props) => {
         //console.log(height);
 
     }
-
-    useEffect(() => {
-        setHeight(btnStatus ? `${content.current.scrollHeight}px` : `0px`)
-    }, [btnStatus])
 
 
     const convertNameToUrl = (handle) => {
@@ -69,17 +63,19 @@ const TwitterResults = (props) => {
                     <div>
                         <CollapseButton btnClicked={changeBtnStatus} status={btnStatus} />
 
-                        <div className="container" ref={content}
-                            style={{ maxHeight: `${height}`, paddingRight: "40px" }}
-                        >
-                            <ul style={{
-                                display: "flex", flexDirection: "row", flexWrap: "wrap",
-                                justifyContent: "space-between"
-                            }}>
-                                {displayTweets}
-                            </ul>
-                        </div >
+                        {btnStatus ?
 
+
+                            <div className="container"
+
+                            >
+                                <ul>
+                                    {displayTweets}
+                                </ul>
+                            </div >
+
+                            : null
+                        }
                     </div>
                     :
                     <p style={{ fontSize: "2em", color: "#89EBCF" }}> ......</p>
@@ -91,3 +87,5 @@ const TwitterResults = (props) => {
 }
 
 export default TwitterResults;
+
+
