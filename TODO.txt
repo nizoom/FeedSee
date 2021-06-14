@@ -1,5 +1,6 @@
 1. get random twitter handle to use √
-2. display message if no followers 
+2. display message if no followers -> needs a second look 
+     Barnstable has 0 followers but doesn’t result in the notification
 3. media queries 
 4. fix error where if valid request follows an invalid one, you have to click twice √
 5. uninstall unused packages
@@ -11,4 +12,3 @@
 10. and amp issue in word cloud √
 11. You are viewing message in the front - > go back button √ / padding √/ two clicks to work? √ 
     show name rather than handle √
-12. Barnstable has 0 followers but doesn’t result in the notification

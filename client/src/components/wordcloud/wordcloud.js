@@ -10,9 +10,6 @@ import ToolTip from "./../tooltip/tooltip"
 //import Tooltip from '@material-ui/core/Tooltip';
 
 
-
-
-
 const MyCloud = (props) => {
 
     const [clicked, setClick] = React.useState(false)
@@ -20,7 +17,6 @@ const MyCloud = (props) => {
     const activateToolTip = () => {
         setClick(!clicked)
     }
-
 
 
     const droplets = props.text.map((droplet) => (

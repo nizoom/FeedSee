@@ -13,7 +13,7 @@ import CurrentlyViewing from './components/currentlyviewing/currentlyviewing';
 
 
 function App() {
-  const [name, setName] = React.useState(null); // handle name
+  const [loading, setLoading] = React.useState(false); // handle name
 
   const [authorName, setAuthorName] = React.useState(null);
 
@@ -38,8 +38,9 @@ function App() {
   }
 
   const handleInput = (submittedName) => {
+    setLoading(true);
     console.log(submittedName);
-    setName(submittedName);
+
 
     console.log("Making request")
 
@@ -58,6 +59,7 @@ function App() {
           setCurrentlyReading(true);
           setAuthorName(authorName)
           console.log(wordCloudtext);
+          setLoading(false);
         } else {
           setsuccessfulQuery(false);
           if (res.hasOwnProperty("notFound")) {
@@ -66,12 +68,14 @@ function App() {
             setData(res.notFound)
             setCloudText([]); // reset cloud 
             setsuccessfulQuery(false);
+            setLoading(false);
           } else { //account exists but follows no one 
             console.log("follows no one")
             setData("0")
             setCloudText([]); // reset cloud 
             setsuccessfulQuery(false);
             setAuthorName(res.authorName)
+            setLoading(false);
           }
 
         }
@@ -102,7 +106,7 @@ function App() {
           {currentlyReading ? <CurrentlyViewing authorName={authorName} changeStatus={returnFromCurrentlyViewing}
             status={currentlyReading}
           />
-            : <Input handleInput={handleInput} />}
+            : <Input handleInput={handleInput} loadingStatus={loading} />}
         </Grid>
 
         <Grid item style={{ padding: "0px" }} >

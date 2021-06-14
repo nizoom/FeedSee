@@ -7,6 +7,7 @@ import "./input.css"
 import Grid from '@material-ui/core/Grid';
 
 import GetRandomAcctBtn from "./randomize/getrandomacctbtn"
+import BlobLoader from "./blob/blob";
 
 
 const Input = (props) => {
@@ -101,49 +102,57 @@ const Input = (props) => {
 
         <div className="inputWrapper">
 
-
-            <Grid container direction="row" justify="space-evenly" spacing={4}>
-
-                <Grid item xs={12}>
-
-                    <GetRandomAcctBtn sendName={getRandomNameFromChild}
-
-                    />  <p style={{
-                        color: "#E1CEEC", fontWeight: "600", padding: "0", margin: "0", marginTop: "20px",
-                        fontSize: "1.2em"
-                    }}
+            {props.loadingStatus ? <BlobLoader /> :
+                <Grid container direction="row" justify="space-evenly" spacing={4}>
 
 
-                    > OR </p>
-                </Grid>
 
-                <Grid item >
-                    <TextField id="standard-basic"
 
-                        name="twitterInput"
-                        onChange={handleChange}
-                        style={{
-                            backgroundColor: "#C9B7E2",
-                            borderRadius: "5%",
-                            opacity: ".8"
+                    <Grid item xs={12}>
+
+
+
+                        <GetRandomAcctBtn sendName={getRandomNameFromChild}
+
+                        />  <p style={{
+                            color: "#E1CEEC", fontWeight: "600", padding: "0", margin: "0", marginTop: "20px",
+                            fontSize: "1.2em"
                         }}
-                        label="TwitterHandle"
-                        InputLabelProps={{ className: "textfield___label" }}
-                    />
+
+
+                        > OR </p>
+                    </Grid>
+
+                    <Grid item >
+                        <TextField id="standard-basic"
+
+                            name="twitterInput"
+                            onChange={handleChange}
+                            style={{
+                                backgroundColor: "#C9B7E2",
+                                borderRadius: "5%",
+                                opacity: ".8"
+                            }}
+                            label="TwitterHandle"
+                            InputLabelProps={{ className: "textfield___label" }}
+                        />
+                    </Grid>
+
+                    <Grid item>
+                        <Button variant="outlined" color="primary" size="large"
+                            onClick={checkValidity}
+                            className={classes.root}
+                        > Submit </Button>
+
+                        {validity ? null : <p
+                            className="error__message"
+                        > Handle must be 4 to 15 characters of only numbers, letters, and underscores </p>}
+                    </Grid>
+
+
+
                 </Grid>
-
-                <Grid item>
-                    <Button variant="outlined" color="primary" size="large"
-                        onClick={checkValidity}
-                        className={classes.root}
-                    > Submit </Button>
-
-                    {validity ? null : <p
-                        className="error__message"
-                    > Handle must be 4 to 15 characters of only numbers, letters, and underscores </p>}
-                </Grid>
-
-            </Grid>
+            }
 
         </div >
     )

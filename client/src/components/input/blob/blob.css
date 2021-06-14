@@ -1,0 +1,9 @@
+svg * { transform-origin: 50% }
+
+@keyframes left {
+  100% { transform: rotate(-360deg) }
+}
+
+@keyframes right {
+  100% { transform: rotate(360deg) }
+}
