@@ -58,6 +58,7 @@ const GetRandomAcctBtn = (props) => {
     const getRandomName = () => {
         const index = getRandomArbitrary(0, 49);
         const chosenName = allNames[index];
+        props.sendName(chosenName)
     }
 
     return (

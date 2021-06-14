@@ -90,6 +90,12 @@ const Input = (props) => {
 
     //item xs={6}
 
+    const getRandomNameFromChild = (randomeName) => {
+        setInputContent(randomeName)
+        console.log(randomeName)
+        passSubmitted()
+    }
+
     return (
 
         <div className="inputWrapper">
@@ -99,7 +105,15 @@ const Input = (props) => {
 
                 <Grid item xs={12}>
 
-                    <GetRandomAcctBtn />
+                    <GetRandomAcctBtn sendName={getRandomNameFromChild}
+
+                    />  <p style={{
+                        color: "#E1CEEC", fontWeight: "600", padding: "0", margin: "0", marginTop: "20px",
+                        fontSize: "1.2em"
+                    }}
+
+
+                    > OR </p>
                 </Grid>
 
                 <Grid item >
