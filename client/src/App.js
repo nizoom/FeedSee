@@ -9,6 +9,7 @@ import MyCloud from "./components/wordcloud/wordcloud"
 import CloudBtn from "./components/wordcloud/initcloudbtn"
 import BackBtn from "./components/backbtn/backbtn"
 import SearchFailed from "./components/notfound/searchfailed"
+import CurrentlyViewing from './components/currentlyviewing/currentlyviewing';
 
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
 
   const [appCSS, setAppCSS] = React.useState("App")
 
-  const [successfulQuery, setsuccessfulQuery] = React.useState(true)
+  const [successfulQuery, setsuccessfulQuery] = React.useState(true);
+
+  const [currentlyReading, setCurrentlyReading] = React.useState(false);
 
   const manageCloudInit = (status) => {
     console.log(status)
@@ -49,6 +52,7 @@ function App() {
           setData(tweets)
           setCloudText(wordCloudtext)
           setsuccessfulQuery(true);
+          setCurrentlyReading(true);
           console.log(wordCloudtext);
         } else {
           setsuccessfulQuery(false);
@@ -57,10 +61,12 @@ function App() {
             console.log(res)
             setData(res.notFound)
             setCloudText([]); // reset cloud 
+            setsuccessfulQuery(false);
           } else { //account exists but follows no one 
             console.log("follows no one")
             setData("0")
             setCloudText([]); // reset cloud 
+            setsuccessfulQuery(false);
           }
 
         }
@@ -69,11 +75,15 @@ function App() {
 
   }
 
+  const returnFromCurrentlyViewing = (newStatus) => {
+    console.log("changed view")
+    setCurrentlyReading(newStatus)
+  }
 
 
   return (
     <div className="App">
-      {appCSS === "App" ? <Grid container spacing={5} direction="column" style={{
+      {appCSS === "App" ? <Grid container spacing={4} direction="column" style={{
         margin: 0,
         width: '100%',
       }}>
@@ -83,8 +93,11 @@ function App() {
           <Instructions />
         </Grid>
 
-        <Grid item>
-          <Input handleInput={handleInput} />
+        <Grid item lg={12} style={{ margin: "0" }}>
+          {currentlyReading ? <CurrentlyViewing handle={name} changeStatus={returnFromCurrentlyViewing}
+            status={currentlyReading}
+          />
+            : <Input handleInput={handleInput} />}
         </Grid>
 
         <Grid item style={{ padding: "0px" }} >
@@ -93,9 +106,11 @@ function App() {
 
 
         <Grid item >
-          {!successfulQuery ? <SearchFailed issue={data} /> : <section>
+          {!successfulQuery ? <SearchFailed issue={data} goBack={returnFromCurrentlyViewing}
+          /> : null}
+          {currentlyReading ? <section>
             <TwitterResults results={data} />
-          </section>}
+          </section> : null}
         </Grid>
 
       </Grid> :

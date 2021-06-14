@@ -1,4 +1,4 @@
-1. get random twitter handle to use 
+1. get random twitter handle to use √
 2. display message if no followers √
 3. media queries 
 4. fix error where if valid request follows an invalid one, you have to click twice 
@@ -10,4 +10,5 @@
 10. submit click throttling
 11. blob while the tweets are loading? 
 12. and amp issue in word cloud √
-13. You are viewing message in the front 
+13. You are viewing message in the front - > go back button / padding / two clicks to work? 
+    show name rather than handle

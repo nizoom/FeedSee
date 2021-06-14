@@ -1,0 +1,29 @@
+
+.current_view_wrapper{
+    font-size: 40px;
+    background-color: #2A485B;
+    border-radius: 16px;
+    margin:auto;
+    width: 40%;
+
+}
+
+
+.current_view_wrapper p{
+    background: -webkit-linear-gradient(45deg, #CF9DDC, white, #89EBCF 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 5px 0px 5px;
+    margin-bottom: 5px;
+    
+}
+
+@media(max-width: 700px){
+
+.current_view_wrapper{
+
+    width: 90%;
+    font-size: 190%;
+
+}
+}
