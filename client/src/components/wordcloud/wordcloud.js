@@ -51,7 +51,7 @@ const MyCloud = (props) => {
             <div className="cloudWrapper" spacing={2} justify="center">
 
                 <div className="cloudTitle">
-                    <Typography variant="h2"> Word Cloud from @{props.accountName}'s feed </Typography>
+                    <Typography variant="h2"> Word Cloud from {props.authorName}'s feed </Typography>
 
                 </div>
 

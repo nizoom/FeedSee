@@ -13,7 +13,9 @@ import CurrentlyViewing from './components/currentlyviewing/currentlyviewing';
 
 
 function App() {
-  const [name, setName] = React.useState(null);
+  const [name, setName] = React.useState(null); // handle name
+
+  const [authorName, setAuthorName] = React.useState(null);
 
   const [data, setData] = React.useState(["No Tweets"]);
 
@@ -47,12 +49,14 @@ function App() {
         console.log("yo")
         if (Array.isArray(res)) { // successful query with followers
 
-          const [tweets, wordCloudtext] = [res[0], res[1]];
+          const [tweets, wordCloudtext, authorName] = [res[0], res[1], res[2]];
+          console.log(authorName)
 
           setData(tweets)
           setCloudText(wordCloudtext)
           setsuccessfulQuery(true);
           setCurrentlyReading(true);
+          setAuthorName(authorName)
           console.log(wordCloudtext);
         } else {
           setsuccessfulQuery(false);
@@ -67,6 +71,7 @@ function App() {
             setData("0")
             setCloudText([]); // reset cloud 
             setsuccessfulQuery(false);
+            setAuthorName(res.authorName)
           }
 
         }
@@ -94,19 +99,20 @@ function App() {
         </Grid>
 
         <Grid item lg={12} style={{ margin: "0" }}>
-          {currentlyReading ? <CurrentlyViewing handle={name} changeStatus={returnFromCurrentlyViewing}
+          {currentlyReading ? <CurrentlyViewing authorName={authorName} changeStatus={returnFromCurrentlyViewing}
             status={currentlyReading}
           />
             : <Input handleInput={handleInput} />}
         </Grid>
 
         <Grid item style={{ padding: "0px" }} >
-          {cloudText.length > 0 ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
+          {cloudText.length > 0 && currentlyReading ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
         </Grid>
 
 
         <Grid item >
-          {!successfulQuery ? <SearchFailed issue={data} goBack={returnFromCurrentlyViewing}
+          {!successfulQuery ? <SearchFailed authorName={authorName}
+            issue={data} goBack={returnFromCurrentlyViewing}
           /> : null}
           {currentlyReading ? <section>
             <TwitterResults results={data} />
@@ -119,7 +125,7 @@ function App() {
             <BackBtn handler={handleBackBtn} />
           </div>
           <div>
-            <MyCloud text={cloudText} accountName={name} />
+            <MyCloud text={cloudText} authorName={authorName} />
           </div>
         </div>
 

@@ -42,7 +42,8 @@ const GetRandomAcctBtn = (props) => {
         "NASA", "JLo", "Oprah", "BeingSalmanKhan", "Drake", "realmadrid", "espn", "FCBarcelona",
         "Harry_Styles", "KevinHart4real", "BTS_twt", "wizkhalifa", "ChampionsLeague", "JoeBiden",
         "ConanOBrien", "deepikapadukone", "premierleague", "MesutOzil1088", "NatGeo", "TheEconomist",
-        "danieltosh", "Reuters", "coldplay", "Eminem", "BernieSanders", "AOC", "KamalaHarris", "chooselove", "amnestyusa"
+        "danieltosh", "Reuters", "coldplay", "Eminem", "BernieSanders", "AOC", "KamalaHarris", "chooselove", "amnestyusa",
+        "VICE"
     ]
 
 
@@ -58,6 +59,7 @@ const GetRandomAcctBtn = (props) => {
     const getRandomName = () => {
         const index = getRandomArbitrary(0, 49);
         const chosenName = allNames[index];
+        console.log("random Name fired")
         props.sendName(chosenName)
     }
 

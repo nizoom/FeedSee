@@ -52,6 +52,9 @@ app.get("/api/users/:handle", (req, res) => {
 
         let drillDown = obj[0][0];
 
+
+        const name = drillDown.name;
+
         //invalid name 
 
         if (drillDown.id != undefined) { // valid name -> get followers -> get tweets of followers
@@ -67,7 +70,7 @@ app.get("/api/users/:handle", (req, res) => {
             //if not following anyone 
 
             if (allFollowers.length === 0) {
-                res.send({ numberOfFollowing: "0" })
+                res.send({ numberOfFollowing: "0", authorName: name })
 
             } else { // continue with successful query 
 
@@ -93,24 +96,9 @@ app.get("/api/users/:handle", (req, res) => {
                 //ALL OF THE ABOVE IS TO CREATE THE TWEET CARDS 
 
 
-                //the object will be word: " " and frequency: # (for frequency of appearance)
-
-                /*let allTweetText = ""
- 
-                arrOfSortedTweets.forEach(tweet => extractAndAddText(tweet));
- 
-                function extractAndAddText(tweet) {
-                    allTweetText += tweet.text
-                }
-                   */
-                //console.log(cloudTextObj)
-
                 console.log("sending to front end")
-
-                res.send([sortedMostRecentTweets, cloudTextObj])
-
-
-
+                console.log(name)
+                res.send([sortedMostRecentTweets, cloudTextObj, name])
 
             }
 
@@ -133,4 +121,3 @@ app.listen(PORT, () => {
 });
 
 
-//validateHandle("kendricklamar14554", credentials)

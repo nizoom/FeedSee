@@ -44,7 +44,7 @@ const CloudBtn = (props) => {
         <div className="cloudBtnWrapper">
             <Button variant="outlined" color="primary" size="large" className={classes.root}
                 onClick={handleClick}>
-                Tweet Word Cloud
+                View Word Cloud
             </Button>
         </div>
     )

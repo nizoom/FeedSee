@@ -37,7 +37,7 @@ const CurrentlyViewing = (props) => {
     return (
         <div className="current_view_wrapper">
 
-            <p>  See @{props.handle}'s feed below</p>
+            <p>  See {props.authorName}'s feed below</p>
 
             <Button variant="outlined" size="large" className={classes.root}
                 onClick={handleClick} style={{ marginBottom: "5px" }}

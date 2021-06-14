@@ -44,14 +44,16 @@ const Input = (props) => {
         setInputContent(usernameAttempt);
     }
 
-    const passSubmitted = () => {
+    const passSubmitted = (name) => {
         console.log("passed")
-        props.handleInput(inputContent);
+        props.handleInput(name);
         //reset for next search
         setValidity(true)
     }
 
     const checkValidity = () => {
+
+
 
         console.log(validity)
 
@@ -74,26 +76,25 @@ const Input = (props) => {
             return setValidity(false);
         }
 
-        if (validity) {
-            console.log(validity)
-            passSubmitted()
-        }
+        passSubmitted(inputContent) // no if needed because of the returns earlier on would 
+        //catch everything else 
+
+        // if (validity) { // problem is its not valid here 
+        //     console.log(validity)
+        //     passSubmitted(inputContent)
+        // }
 
         //reset for next search
+
         return setValidity(true)
     }
 
 
-    //    <InputLabel style={{ color: "white", fontWeight: "bold", }}
-    //                 htmlFor="twitterInput"
-    //             > Twitter Handle </InputLabel>
-
-    //item xs={6}
 
     const getRandomNameFromChild = (randomeName) => {
         setInputContent(randomeName)
         console.log(randomeName)
-        passSubmitted()
+        passSubmitted(randomeName)
     }
 
     return (
@@ -133,7 +134,6 @@ const Input = (props) => {
 
                 <Grid item>
                     <Button variant="outlined" color="primary" size="large"
-
                         onClick={checkValidity}
                         className={classes.root}
                     > Submit </Button>
