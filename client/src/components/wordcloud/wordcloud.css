@@ -1,7 +1,9 @@
+
 .outerContainer{
     position: relative;
     display: inline-block;
     height: 100%;
+  
 }
 
 .cloudTitle{
@@ -13,6 +15,11 @@
   margin-left: 250px;
   opacity: .9;
   border-radius: 16px;
+}
+
+img{
+  height:995px;
+  width:1095px;
 }
 
 .cloud{
@@ -33,9 +40,134 @@
 
 }
 
-@media (max-width:1000pc){
+
+@media (max-width:1000px){
+
   .outerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  img{
+    max-width: 95%;
+    max-height: 65%;
+  }
+
+  .cloud{
+    font-size: 40%;
+    width: 50.5%;
+    left: 24.4%;
+    margin-bottom: 4.2%;
+  }
+}
+
+@media (max-width: 900px){
+
+  .cloudTitle{
+    width: 70%;
+    margin:auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .cloud{
+    margin-bottom: 1.2%;
+  }
+
+ 
+}
+
+@media(max-width: 850px){ 
+  
+  /* EGG */
+
+  .outerContainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+  }
+
+
+  .cloud{
+    margin-top: 37.6%;
+    width: 96%;
+    left:2%;
    
+
+    border-radius: 50%;     
+
+    
+  }
+}
+
+@media (max-width: 750px){
+  .cloudTitle{
+    width: 60%;
+    margin-top: 5%;
+  }
+
+  .cloud{
+    margin-top: 45%;
+  }
+  
+}
+
+@media(max-width: 650px) {
+    .cloud{
+      margin-top: 50%;
+    }
+}
+
+@media (max-width: 550px){
+  .cloudTitle{
+    width: 50%;
+    margin-top: 5%;
+  }
+  img{
+    width: 100%;
+    height: 80%;
+  }
+
+  .cloud{
+    margin-top: 30%;
+  }
+}
+
+@media (max-width: 520px){
+  .cloud{
+    margin-top: 35%;
+  }
+}
+
+
+@media (max-width: 495px){
+  .cloudTitle{
+    width: 65%;
+    margin-top: 20%;
+  }
+
+  .cloudWrapper{
+    padding-bottom: 50vh;
+  
+  }
+
+  img{
+    width: 100%;
+    height: 500px;
+  }
+  .cloud{
+    height:100%;
+    margin-top: 60vh;
+  }
+ 
+}
+
+@media(max-width: 300px){
+  .cloudTitle{
+    width: 60%;
+    margin-top: 30%;
   }
 }
 

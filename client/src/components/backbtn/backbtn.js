@@ -1,6 +1,7 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import "./backbtn.css"
 
 const BackBtn = (props) => {
 
@@ -34,7 +35,7 @@ const BackBtn = (props) => {
             <Button variant="outlined" color="primary" size="large" className={classes.root}
                 onClick={handleClick} style={{ marginTop: "10px", marginLeft: "10px" }}
             >
-                <span style={{ fontSize: "25px" }}>&#8617;</span>
+                <span className="buttonSpan">&#8617;</span>
 
             </Button>
 

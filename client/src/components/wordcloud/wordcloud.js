@@ -1,16 +1,26 @@
 import React from "react";
-//import Goo from 'gooey-react'
 import Typography from '@material-ui/core/Typography';
 import "./wordcloud.css"
 import gif from "./../../media/tweetgifv7.gif"
 import Grid from '@material-ui/core/Grid';
 import ToolTip from "./../tooltip/tooltip"
-//{clicked ? <ToolTip word={droplet.word} frequency={droplet.frequency} /> : null}
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-//import Tooltip from '@material-ui/core/Tooltip';
 
 
 const MyCloud = (props) => {
+
+    const theme = createMuiTheme();
+
+    theme.typography.h2 = {
+        fontSize: '2rem',
+        '@media (min-width:600px)': {
+            fontSize: '2.5rem',
+        },
+        [theme.breakpoints.up('md')]: {
+            fontSize: '3rem',
+        },
+    };
 
     const [clicked, setClick] = React.useState(false)
 
@@ -18,15 +28,21 @@ const MyCloud = (props) => {
         setClick(!clicked)
     }
 
+    // const setFontSize = (frequency) => {
+    //     console.log("fired size")
+    //     const fontSize = window.innerWidth / 120 * frequency
+    //     return `${fontSize}px`
+    // }
+    // window.addEventListener('resize', setFontSize);
+
+    //setFontSize(droplet.frequency)
 
     const droplets = props.text.map((droplet) => (
         <div key={props.text.indexOf(droplet)}>
             <ToolTip word={droplet.word} frequency={droplet.frequency}>
                 <div key={props.text.indexOf(droplet)} className="droplet"
-                    style={{ fontSize: `${droplet.frequency * 9.5}px`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
+                    style={{ fontSize: `${.5 * droplet.frequency}vw`, fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
                     onClick={activateToolTip}
-
-
 
                 >  {droplet.word}
                 </div>
@@ -43,23 +59,24 @@ const MyCloud = (props) => {
     console.log(props.text)
 
     return (
-        <Grid container direction="column">
-            <div className="cloudWrapper" spacing={2} justify="center">
+        <Grid container direction="column" spacing={2} justify="center">
+            <div className="cloudWrapper" >
 
                 <div className="cloudTitle">
-                    <Typography variant="h2"> Word Cloud from {props.authorName}'s feed </Typography>
-
+                    <ThemeProvider theme={theme}>
+                        <Typography variant="h2"> Word Cloud of what {props.authorName} sees </Typography>
+                    </ThemeProvider>
                 </div>
 
 
                 <div className="outerContainer">
 
-                    <img src={gif} alt="tweetGif" height="995px" width="1095px" style={{ borderRadius: "16px", float: "left" }} />
+                    <img src={gif} alt="tweetGif" style={{ borderRadius: "16px", float: "left" }} />
 
 
 
                     <div className="cloud">
-                        {droplets}
+
                     </div>
                 </div>
 
@@ -70,7 +87,7 @@ const MyCloud = (props) => {
     );
 
 }
-
+// {droplets}
 
 export default MyCloud;
 
@@ -83,26 +100,4 @@ export default MyCloud;
 //border: "solid", borderColor: "black", borderWidth: ".5px",
 
 
-{/* 
-
-
-    width: "450px", height: "600px",
-                    overflow: "hidden"
-
-
-
-                          <Goo instenity="weak" style={{ animation: 'left 4s linear infinite' }}>
-                    <svg width="192" height="192">
-
-                        <g id="parent">
-                            <circle cx="37%" cy="37%" fill="orchid" r="32" style={{ animation: 'right 1s linear infinite' }} />
-                            <circle cx="63%" cy="63%" fill="mediumorchid" r="32" />
-                          
-
-                        </g>
-
-                    </svg>
-
-                </Goo>
-                        */}
 

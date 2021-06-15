@@ -12,3 +12,7 @@
 10. and amp issue in word cloud √
 11. You are viewing message in the front - > go back button √ / padding √/ two clicks to work? √ 
     show name rather than handle √
+12. TypeError: Cannot read property '0' of undefined
+    at /Users/nissimram/Desktop/Programming/Twitter Project/twitter-project/server/twitterAPI/gettweets.js:60:47
+
+13. scroll up button for tweets
