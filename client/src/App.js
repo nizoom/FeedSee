@@ -58,7 +58,7 @@ function App() {
           setsuccessfulQuery(true);
           setCurrentlyReading(true);
           setAuthorName(authorName)
-          console.log(wordCloudtext);
+          console.log(wordCloudtext.length);
           setLoading(false);
         } else {
           setsuccessfulQuery(false);

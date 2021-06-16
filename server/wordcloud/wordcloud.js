@@ -11,7 +11,7 @@ async function processWords(text) {
         "since", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these",
         "they", "this", "tis", "to", "too", "twas", "us", "wants", "was", "we", "were", "what",
         "when", "where", "which", "while", "who", "whom", "why", "will", "with", "would", "yet",
-        "you", "your", "it's", "&", "amp"
+        "you", "your", "it's", "&", "amp", "I"
     ];
 
     //split text to array 
@@ -112,7 +112,7 @@ async function processWords(text) {
         }
     })
 
-    const finalReturn = removeUndefined(reducedToMostCommonWords).slice(0, 100); //can't fit more than 95 in word cloud space
+    const finalReturn = removeUndefined(reducedToMostCommonWords).slice(0, 90); //can't fit more than 95 in word cloud space
 
 
 
