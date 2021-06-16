@@ -109,14 +109,28 @@ const MyCloud = (props) => {
 
     const checkForShove = () => {
         console.log(counter)
-        console.log("hook " + dimensions.width)
-        console.log("vanilla " + window.innerWidth)
+        // console.log("hook " + dimensions.width)
+        // console.log("vanilla " + window.innerWidth)
+        let styles = {};
+        if (counter > 260) { // A ton of repeated words like when trying Bill Gates 
+            console.log("BIG SHOVED!") //change to rectangle 
+            const bigShoveStyles = {
+                marginTop: "200vh", height: "800px", borderRadius: "5px",
+                paddingBottom: "20px", fontWeight: "200"
+            }
+            styles = Object.assign(styles, bigShoveStyles)
+        }
         if (counter > 235 && window.innerWidth < 650) { //if critical mass of words and if screen size small enough
             console.log("SHOVED!") //change to rectangle 
-            return true;
+            const regularShove = {
+                marginTop: "100vh", height: "800px", borderRadius: "5px",
+                paddingBottom: "20px"
+            }
+            styles = Object.assign(styles, regularShove)
+
         }
-        console.log("doomba")
-        return false;
+        console.log(styles)
+        return styles;
     }
 
     //{checkForShove}
@@ -165,10 +179,7 @@ const MyCloud = (props) => {
 
 
 
-                    <div className="cloud" style={checkForShove() ? {
-                        marginTop: "100vh", height: "800px", borderRadius: "5px",
-                        paddingBottom: "20px"
-                    } : null} >
+                    <div className="cloud" styles={checkForShove()} >
 
                         {droplets}
 

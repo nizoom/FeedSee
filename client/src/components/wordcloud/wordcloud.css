@@ -40,9 +40,6 @@ img{
 
 }
 
-.extended_cloud{
-
-}
 
 .droplet{
   -ms-word-break: break-all;
@@ -50,6 +47,11 @@ img{
   word-break: break-word;
 }
 
+@media (max-width:1200px){
+.cloudWrapper{
+  padding-bottom: 55vh;
+}
+}
 
 @media (max-width:1000px){
 
@@ -104,11 +106,11 @@ img{
     margin-top: 37.6%;
     width: 96%;
     left:2.1%;
-   
-
     border-radius: 50%;     
+  }
 
-    
+  .cloudWrapper{
+    padding-bottom: 45vh;
   }
 }
 
@@ -137,7 +139,7 @@ img{
   }
   img{
     width: 100%;
-    height: 80%;
+    height: 90%;
   }
 
   .cloud{
@@ -149,11 +151,15 @@ img{
   .cloud{
     margin-top: 55%;
   }
-
   img{
     width: 100%;
-    height: 850px;
+    height: 90%;
   }
+
+  /* img{
+    width: 100%;
+    height: 950px;
+  } */
 }
 
 
@@ -164,7 +170,7 @@ img{
   }
 
   .cloudWrapper{
-    padding-bottom: 40vh;
+    padding-bottom: 60vh;
   
   }
 
@@ -201,7 +207,7 @@ img{
   .cloud{
     width:95.2%;
     border-radius: 5px;
-    margin-top: 150vh;
+    margin-top: 140vh;
     height: 150%;
   }
 
