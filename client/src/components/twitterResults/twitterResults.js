@@ -66,11 +66,9 @@ const TwitterResults = (props) => {
 
                         {btnStatus ?
                             <div>
-                                <ScrollUp />
 
-                                <div className="container"
-
-                                >
+                                <div className="container">
+                                    <ScrollUp />
                                     <ul>
                                         {displayTweets}
                                     </ul>
