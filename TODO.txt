@@ -1,7 +1,7 @@
 1. get random twitter handle to use √
 2. display message if no followers -> needs a second look 
      Barnstable has 0 followers but doesn’t result in the notification
-3. media queries 
+3. media queries √
 4. fix error where if valid request follows an invalid one, you have to click twice √
 5. uninstall unused packages
 6. display message if username is valid but doesn't exist √
@@ -16,3 +16,4 @@
     at /Users/nissimram/Desktop/Programming/Twitter Project/twitter-project/server/twitterAPI/gettweets.js:60:47
 
 13. scroll up button for tweets
+14. get rid of issue message when new search occurs

@@ -330,6 +330,7 @@ img{
   }
 
   .cloudBigShove{
+    word-break: break-word;
     margin-top: 280vh;
     font-size: 40%;
     width: 100%;
@@ -337,6 +338,7 @@ img{
 
   }
   .cloudRegularShove{
+    word-break: break-word;
     height: 205%;
     margin-top: 350%;
   }
@@ -347,7 +349,7 @@ img{
 @media(max-width: 350px){
 
   img{
-    height: 600px;
+    height: 550px;
   }
 
   .cloud{

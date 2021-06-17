@@ -109,6 +109,7 @@ function App() {
             : <Input handleInput={handleInput} loadingStatus={loading} />}
         </Grid>
 
+
         <Grid item style={{ padding: "0px" }} >
           {cloudText.length > 0 && currentlyReading ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
         </Grid>

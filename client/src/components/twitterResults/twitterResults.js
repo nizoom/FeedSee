@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./twitterResults.css"
 import CollapseButton from "../minimize/minimize"
+import ScrollUp from "./scrollup";
 
 
 const TwitterResults = (props) => {
@@ -64,16 +65,17 @@ const TwitterResults = (props) => {
                         <CollapseButton btnClicked={changeBtnStatus} status={btnStatus} />
 
                         {btnStatus ?
+                            <div>
+                                <ScrollUp />
 
+                                <div className="container"
 
-                            <div className="container"
-
-                            >
-                                <ul>
-                                    {displayTweets}
-                                </ul>
-                            </div >
-
+                                >
+                                    <ul>
+                                        {displayTweets}
+                                    </ul>
+                                </div >
+                            </div>
                             : null
                         }
                     </div>

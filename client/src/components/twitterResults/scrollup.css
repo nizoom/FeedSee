@@ -1,0 +1,16 @@
+.scrollUpBtn{
+    scroll-behavior: smooth;
+    position: -webkit-sticky;
+}
+
+@media(max-width: 1200px){
+    .scrollUpBtn{
+        right: 94%;
+    }
+}
+
+@media(max-width: 1100px){
+    .scrollUpBtn{
+        right: 90%;
+    }
+}
