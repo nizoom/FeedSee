@@ -10,6 +10,7 @@ import CloudBtn from "./components/wordcloud/initcloudbtn"
 import BackBtn from "./components/backbtn/backbtn"
 import SearchFailed from "./components/notfound/searchfailed"
 import CurrentlyViewing from './components/currentlyviewing/currentlyviewing';
+import { yellow } from '@material-ui/core/colors';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 
   const [currentlyReading, setCurrentlyReading] = React.useState(false);
 
+
   const manageCloudInit = (status) => {
     console.log(status)
     status ? setAppCSS("CloudApp") : setAppCSS("App")
@@ -39,6 +41,7 @@ function App() {
 
   const handleInput = (submittedName) => {
     setLoading(true);
+    setsuccessfulQuery(true);
     console.log(submittedName);
 
 
@@ -60,6 +63,7 @@ function App() {
           setAuthorName(authorName)
           console.log(wordCloudtext.length);
           setLoading(false);
+          //setPresentIssueMsg(false)
         } else {
           setsuccessfulQuery(false);
           if (res.hasOwnProperty("notFound")) {
@@ -69,6 +73,7 @@ function App() {
             setCloudText([]); // reset cloud 
             setsuccessfulQuery(false);
             setLoading(false);
+            //setPresentIssueMsg(true)
           } else { //account exists but follows no one 
             console.log("follows no one")
             setData("0")
@@ -76,6 +81,7 @@ function App() {
             setsuccessfulQuery(false);
             setAuthorName(res.authorName)
             setLoading(false);
+            //setPresentIssueMsg(true)
           }
 
         }
@@ -106,7 +112,9 @@ function App() {
           {currentlyReading ? <CurrentlyViewing authorName={authorName} changeStatus={returnFromCurrentlyViewing}
             status={currentlyReading}
           />
-            : <Input handleInput={handleInput} loadingStatus={loading} />}
+            :
+            < Input handleInput={handleInput} loadingStatus={loading} />}
+
         </Grid>
 
 

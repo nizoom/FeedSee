@@ -69,7 +69,8 @@ app.get("/api/users/:handle", (req, res) => {
 
             //if not following anyone 
 
-            if (allFollowers.length === 0) {
+            if (allFollowers.length < 1) {
+                console.log("not following anyone")
                 res.send({ numberOfFollowing: "0", authorName: name })
 
             } else { // continue with successful query 
@@ -81,6 +82,11 @@ app.get("/api/users/:handle", (req, res) => {
 
 
                 const tweets = await getTweets(allFollowers, credentials)
+
+                if (tweets.length === 1 && tweets[0] === undefined) {
+                    res.send({ notFound: "not found" })
+                    return
+                }
 
                 const processedTweets = await processTweets(tweets);
 
