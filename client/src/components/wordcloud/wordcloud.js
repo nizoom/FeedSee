@@ -28,9 +28,11 @@ const MyCloud = (props) => {
         setClick(!clicked)
     }
 
-    // const determineFrequency = (frequency) => {
+    const determineFrequency = (frequency) => {
+        return (frequency > 10 ? 10 : frequency)
+    }
 
-    // }
+
     const setFontSize = (frequency) => {
 
         const width = window.innerWidth
@@ -39,12 +41,15 @@ const MyCloud = (props) => {
         const medium = 700
         const large = 1000
         let currentSize = 0;
-        const freq = frequency > 10 ? 10 : frequency
 
+        //if frequency over 10 then it will stil get sized with a frequency of 10
+
+        const freq = determineFrequency(frequency)
+        console.log("freq " + freq)
         if (width > large) { //if large 
             currentSize = large;
 
-            const fontSize = currentSize / 100 * freq
+            const fontSize = currentSize / 130 * freq
             //console.log(`${fontSize} , ${freq}`)
             return `${fontSize}px`
 
@@ -59,7 +64,7 @@ const MyCloud = (props) => {
         if (width < medium) { //if small 
             currentSize = small;
             const fontSize = currentSize / 600 * (freq / 2)
-            console.log(`rendered ${fontSize} , ${freq}`)
+            //console.log(`rendered ${fontSize} , ${freq}`)
             return `${fontSize}px`
         }
 
@@ -111,26 +116,25 @@ const MyCloud = (props) => {
         console.log(counter)
         // console.log("hook " + dimensions.width)
         // console.log("vanilla " + window.innerWidth)
-        let styles = {};
+        //let styles = {};
         if (counter > 260) { // A ton of repeated words like when trying Bill Gates 
             console.log("BIG SHOVED!") //change to rectangle 
-            const bigShoveStyles = {
-                marginTop: "200vh", height: "800px", borderRadius: "5px",
-                paddingBottom: "20px", fontWeight: "200"
-            }
-            styles = Object.assign(styles, bigShoveStyles)
+
+            //styles = Object.assign(styles, bigShoveStyles)
+            return "cloudBigShove"
         }
         if (counter > 235 && window.innerWidth < 650) { //if critical mass of words and if screen size small enough
             console.log("SHOVED!") //change to rectangle 
+            return "cloudRegularShove"
             const regularShove = {
                 marginTop: "100vh", height: "800px", borderRadius: "5px",
                 paddingBottom: "20px"
             }
-            styles = Object.assign(styles, regularShove)
+            //styles = Object.assign(styles, regularShove)
 
         }
-        console.log(styles)
-        return styles;
+        //console.log(styles)
+        return "cloud";
     }
 
     //{checkForShove}
@@ -143,7 +147,10 @@ const MyCloud = (props) => {
         < div key={props.text.indexOf(droplet)} >
             <ToolTip word={droplet.word} frequency={droplet.frequency}>
                 <div key={props.text.indexOf(droplet)} className="droplet"
-                    style={{ fontSize: setFontSize(droplet.frequency), fontWeight: "700", paddingLeft: "2px", paddingRight: "2px" }}
+                    style={{
+                        fontSize: setFontSize(droplet.frequency), fontWeight: "700", paddingLeft: "2px",
+                        paddingRight: "2px", overflowWrap: "break-word"
+                    }}
                     onClick={activateToolTip}
 
                 >  {droplet.word}
@@ -179,7 +186,7 @@ const MyCloud = (props) => {
 
 
 
-                    <div className="cloud" styles={checkForShove()} >
+                    <div className="cloud" className={checkForShove()} >
 
                         {droplets}
 
@@ -197,16 +204,3 @@ const MyCloud = (props) => {
 
 export default MyCloud;
 
-//{droplets}
-
-// <img src={gif} alt="tweetGif" />
-
-//<img src={gif} alt="tweetGif">  </img>
-
-//border: "solid", borderColor: "black", borderWidth: ".5px",
-
-
-
-//  {checkForShove ?
-// <div className="extended_cloud"> </div>
-// : null}
