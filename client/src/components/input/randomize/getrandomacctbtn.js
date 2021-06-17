@@ -38,11 +38,11 @@ const GetRandomAcctBtn = (props) => {
     const allNames = [
         "BarackObama", "justinbieber", "katyperry", "rihanna", "Cristiano", "taylorswift13", "ladygaga",
         "ArianaGrande", "KimKardashian", "narendramodi", "cnnbrk", "elonmusk", "britneyspears", "BillGates",
-        "ddlovato", "neymarjr", "shakira", "jimmyfallon", "nytimes", "KingJames", "SrBachchan",
-        "NASA", "JLo", "Oprah", "BeingSalmanKhan", "Drake", "realmadrid", "espn", "FCBarcelona",
+        "BIGKRIT", "neymarjr", "shakira", "jimmyfallon", "nytimes", "KingJames", "SrBachchan",
+        "NASA", "JLo", "Oprah", "princeonyeji1", "Drake", "realmadrid", "espn", "FCBarcelona",
         "Harry_Styles", "KevinHart4real", "BTS_twt", "wizkhalifa", "ChampionsLeague", "JoeBiden",
-        "ConanOBrien", "deepikapadukone", "premierleague", "MesutOzil1088", "NatGeo", "TheEconomist",
-        "danieltosh", "Reuters", "coldplay", "Eminem", "BernieSanders", "AOC", "KamalaHarris", "chooselove", "amnestyusa",
+        "tylerthecreator", "deepikapadukone", "premierleague", "MesutOzil1088", "NatGeo", "TheEconomist",
+        "danieltosh", "Reuters", "coldplay", "kendricklnation", "BernieSanders", "AOC", "KamalaHarris", "chooselove", "amnestyusa",
         "VICE"
     ]
 
@@ -57,7 +57,7 @@ const GetRandomAcctBtn = (props) => {
 
 
     const getRandomName = () => {
-        const index = getRandomArbitrary(0, 49);
+        const index = getRandomArbitrary(0, 50);
         const chosenName = allNames[index];
         console.log("random Name fired")
         props.sendName(chosenName)

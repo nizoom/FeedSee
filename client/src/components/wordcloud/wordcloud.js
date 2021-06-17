@@ -146,11 +146,13 @@ const MyCloud = (props) => {
         counter += droplet.frequency,
 
         < div key={props.text.indexOf(droplet)} >
-            <ToolTip word={droplet.word} frequency={droplet.frequency}>
+            <ToolTip word={droplet.word} frequency={droplet.frequency}
+
+            >
                 <div key={props.text.indexOf(droplet)} className="droplet"
                     style={{
                         fontSize: setFontSize(droplet.frequency), fontWeight: "700", paddingLeft: "2px",
-                        paddingRight: "2px", overflowWrap: "break-word"
+                        paddingRight: "2px",
                     }}
                     onClick={activateToolTip}
 

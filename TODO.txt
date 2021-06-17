@@ -1,13 +1,13 @@
 1. get random twitter handle to use √
 2. display message if no followers -> needs a second look 
-     Barnstable has 0 followers but doesn’t result in the notification
+     Barnstable has 0 followers but doesn’t result in the notification √?
 3. media queries √
 4. fix error where if valid request follows an invalid one, you have to click twice √
 5. uninstall unused packages
 6. display message if username is valid but doesn't exist √
 7. tool tip of frequency in cloud?  -> make onclick work for mobile
 8. account not found message √
-9. submit click throttling / blob while the tweets are loading? 
+9. submit click throttling / blob while the tweets are loading? √
 
 10. and amp issue in word cloud √
 11. You are viewing message in the front - > go back button √ / padding √/ two clicks to work? √ 
@@ -15,5 +15,6 @@
 12. TypeError: Cannot read property '0' of undefined
     at /Users/nissimram/Desktop/Programming/Twitter Project/twitter-project/server/twitterAPI/gettweets.js:60:47
 
-13. scroll up button for tweets
-14. get rid of issue message when new search occurs
+13. scroll up button for tweets√
+14. get rid of issue message when new search occurs √
+15. link to site

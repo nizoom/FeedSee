@@ -56,14 +56,62 @@
 @media(max-width: 450px){
     .scrollUpBtn{
         right: 90.2%;
+        bottom: 10px;
     }
 }
+
+@media(max-width: 430px){
+    .scrollUpBtn{
+        right: 90.2%;
+        bottom: 510px;
+    }
+}
+
+@media(max-width: 418px){
+    .scrollUpBtn{
+        right: 90.2%;
+        bottom: 10px;
+    }
+}
+
+@media(max-width: 380px){
+    .scrollUpBtn{
+        right: 90.2%;
+        bottom: 7px;
+    }
+}
+
+@media(max-width: 376px){
+    .scrollUpBtn{
+        right: 90.2%;
+        bottom: 10px;
+    }
+}
+
+@media(max-width: 330px){
+    .scrollUpBtn{
+        right: 90.2%;
+        bottom: 510px;
+    }
+}
+
+
+@media(max-width: 290px){
+    .scrollUpBtn{
+        right: 91.2%;
+        padding: 5px 0px 1px 0px;
+        bottom: 660px;
+    }
+}
+
 @media(max-width: 310px){
     .scrollUpBtn{
         right: 91.2%;
         padding: 5px 0px 1px 0px;
+      
     }
 }
+
 
 
 @media(min-height: 1000px){

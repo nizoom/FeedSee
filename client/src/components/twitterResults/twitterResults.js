@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./twitterResults.css"
-import CollapseButton from "../minimize/minimize"
+//import CollapseButton from "../minimize/minimize"
 import ScrollUp from "./scrollup";
 
 
@@ -62,20 +62,20 @@ const TwitterResults = (props) => {
             {
                 props.results[0] !== "No Tweets" ?
                     <div>
-                        <CollapseButton btnClicked={changeBtnStatus} status={btnStatus} />
 
-                        {btnStatus ?
-                            <div>
 
-                                <div className="container">
-                                    <ScrollUp />
-                                    <ul>
-                                        {displayTweets}
-                                    </ul>
-                                </div >
-                            </div>
-                            : null
-                        }
+
+                        <div>
+
+                            <div className="container">
+                                <ScrollUp />
+                                <ul>
+                                    {displayTweets}
+                                </ul>
+                            </div >
+                        </div>
+                        : null
+
                     </div>
                     :
                     <p style={{ fontSize: "2em", color: "#89EBCF" }}> ......</p>
@@ -89,3 +89,4 @@ const TwitterResults = (props) => {
 export default TwitterResults;
 
 
+// <CollapseButton btnClicked={changeBtnStatus} status={btnStatus} />

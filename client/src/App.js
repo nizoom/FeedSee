@@ -10,7 +10,7 @@ import CloudBtn from "./components/wordcloud/initcloudbtn"
 import BackBtn from "./components/backbtn/backbtn"
 import SearchFailed from "./components/notfound/searchfailed"
 import CurrentlyViewing from './components/currentlyviewing/currentlyviewing';
-import { yellow } from '@material-ui/core/colors';
+import HomeBtn from './components/homebtn/homebtn';
 
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
 
 
   const manageCloudInit = (status) => {
-    console.log(status)
+    //console.log(status)
     status ? setAppCSS("CloudApp") : setAppCSS("App")
     //return (status ? "show cloud" : "don't show")
   }
@@ -42,15 +42,15 @@ function App() {
   const handleInput = (submittedName) => {
     setLoading(true);
     setsuccessfulQuery(true);
-    console.log(submittedName);
+    //.log(submittedName);
 
 
-    console.log("Making request")
+    //console.log("Making request")
 
     fetch(`/api/users/${submittedName}`) //user=${submittedName}`
       .then((res) => res.json())
       .then(res => {
-        console.log("yo")
+        //console.log("yo")
         if (Array.isArray(res)) { // successful query with followers
 
           const [tweets, wordCloudtext, authorName] = [res[0], res[1], res[2]];
@@ -61,21 +61,21 @@ function App() {
           setsuccessfulQuery(true);
           setCurrentlyReading(true);
           setAuthorName(authorName)
-          console.log(wordCloudtext.length);
+          //console.log(wordCloudtext.length);
           setLoading(false);
-          //setPresentIssueMsg(false)
+
         } else {
           setsuccessfulQuery(false);
           if (res.hasOwnProperty("notFound")) {
-            console.log("not an array") // account not found 
-            console.log(res)
+            //console.log("not an array") // account not found 
+            //console.log(res)
             setData(res.notFound)
             setCloudText([]); // reset cloud 
             setsuccessfulQuery(false);
             setLoading(false);
             //setPresentIssueMsg(true)
           } else { //account exists but follows no one 
-            console.log("follows no one")
+            //console.log("follows no one")
             setData("0")
             setCloudText([]); // reset cloud 
             setsuccessfulQuery(false);
@@ -91,7 +91,7 @@ function App() {
   }
 
   const returnFromCurrentlyViewing = (newStatus) => {
-    console.log("changed view")
+    //console.log("changed view")
     setCurrentlyReading(newStatus)
   }
 
@@ -103,7 +103,7 @@ function App() {
         width: '100%',
       }}>
 
-
+        <HomeBtn />
         <Grid item lg={12}>
           <Instructions />
         </Grid>
