@@ -40,6 +40,23 @@ img{
 
 }
 
+.cloudRegularShove{
+  z-index: 100;
+  margin-top: 85%;
+  width: 80%;
+  height: 73.2%;
+  position: absolute;
+  left: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-around;
+  align-items: center;
+  background-image: linear-gradient( #5178A3, #3FB07B);
+  border-radius: 16px;
+  color: #D8E9FA;
+}
+
 .cloudBigShove {
 
   z-index: 100;
@@ -100,10 +117,11 @@ img{
   }
 
   .cloud{
+    margin-top: 50%;
     font-size: 40%;
-    width: 50.5%;
-    left: 24.4%;
-    margin-bottom: 4.2%;
+    width: 55.5%;
+    left: 22.4%;
+    height: 75%;
   }
 
   .cloudBigShove{
@@ -201,7 +219,10 @@ img{
       height: 1300px;
   
     }
-
+    .cloudRegularShove{
+      height: 85%;
+      margin-top: 125%;
+    }
 
 }
 
@@ -227,7 +248,10 @@ img{
     width: 100%;
     left: 0;
     height: 1300px;
-
+  }
+  .cloudRegularShove{
+    height: 205%;
+    margin-top: 200%;
   }
 }
 
@@ -247,6 +271,10 @@ img{
     left: 0;
     height: 1450px;
 
+  }
+  .cloudRegularShove{
+    height: 205%;
+    margin-top: 200%;
   }
 
   
@@ -283,6 +311,11 @@ img{
 
   }
 
+  .cloudRegularShove{
+    height: 205%;
+    margin-top: 290%;
+  }
+
  
 }
 
@@ -302,6 +335,10 @@ img{
     width: 100%;
     height: 1800px;
 
+  }
+  .cloudRegularShove{
+    height: 205%;
+    margin-top: 350%;
   }
 }
 
@@ -333,8 +370,12 @@ img{
     height: 2300px;
     word-break: break-word;
   }
+  .cloudRegularShove{
+    height: 225%;
+    margin-top: 450%;
+    word-break: break-word;
+  }
  
 
 }
-
 

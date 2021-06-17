@@ -45,7 +45,7 @@ const MyCloud = (props) => {
         //if frequency over 10 then it will stil get sized with a frequency of 10
 
         const freq = determineFrequency(frequency)
-        console.log("freq " + freq)
+        //console.log("freq " + freq)
         if (width > large) { //if large 
             currentSize = large;
 
@@ -123,8 +123,9 @@ const MyCloud = (props) => {
             //styles = Object.assign(styles, bigShoveStyles)
             return "cloudBigShove"
         }
-        if (counter > 235 && window.innerWidth < 650) { //if critical mass of words and if screen size small enough
-            console.log("SHOVED!") //change to rectangle 
+        console.log(window.screen.width)
+        if (counter > 235 && window.screen.width < 650) { //if critical mass of words and if screen size small enough
+            console.log("----SHOVED!----") //change to rectangle 
             return "cloudRegularShove"
             const regularShove = {
                 marginTop: "100vh", height: "800px", borderRadius: "5px",
