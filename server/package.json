@@ -5,7 +5,8 @@
     "dotenv": "^9.0.2",
     "nodemon": "^2.0.7",
     "time-ago": "^0.2.1",
-    "twitter-v2": "^1.1.0"
+    "twitter-v2": "^1.1.0",
+    "cors": "^2.8.5"
   },
   "scripts": {
     "heroku-postbuild": "cd client && npm install && npm run build"
