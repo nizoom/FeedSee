@@ -18,3 +18,4 @@
 13. scroll up button for tweets√
 14. get rid of issue message when new search occurs √
 15. link to site
+16. DELETE MODI 
