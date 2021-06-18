@@ -4,6 +4,10 @@ const express = require("express");
 
 const app = express();
 
+const path = require('path');
+
+const createError = require('createerror');
+
 const validateHandle = require("./twitterAPI/validateHandle");
 
 const getFollowers = require("./twitterAPI/getfollowers");
@@ -16,6 +20,11 @@ const sortByMostRecent = require("./processTweets/mostrecenttweets")
 
 const textToWordCloud = require("./wordcloud/wordcloud");
 
+const cors = require("cors");
+
+const indexRouter = require('./routes');
+
+
 const PORT = process.env.PORT || 3001; //process.env 
 
 const credentials = {
@@ -25,9 +34,20 @@ const credentials = {
     access_token_secret: `${process.env.ACCESS_TOKEN_SECRET}`
 }
 
+app.use(cors());
+
+// --------------------------------
+// ---------------- ADD THIS ----------------
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+// --------------------------------
+
+app.use('/', indexRouter);
+
 
 
 app.get("/api/users/:handle", (req, res) => {
+    console.log("Querying")
     //res.json({ message: "Hello from server" })
 
     //i80i
@@ -122,8 +142,25 @@ app.get("/api/users/:handle", (req, res) => {
     //console.log(finalReturn);
 })
 
+
+
+
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
 });
 
 
+app.use(function (req, res, next) {
+    next(createError(404));
+});
+
+
+// ---------------- ADD THIS ----------------
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+    console.log("getting")
+    //res.sendFile(path.join(__dirname + '/client/build/index.html'));
+    res.sendFile(path.join("/Users/nissimram/Desktop/Programming/Twitter Project/twitter-project"
+        + '/client/build/index.html'));
+});

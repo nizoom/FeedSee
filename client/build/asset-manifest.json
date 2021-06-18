@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.14cd9280.chunk.css",
+    "main.js": "/static/js/main.b6137a47.chunk.js",
+    "main.js.map": "/static/js/main.b6137a47.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.57636295.js",
+    "runtime-main.js.map": "/static/js/runtime-main.57636295.js.map",
+    "static/js/2.8e2e04bb.chunk.js": "/static/js/2.8e2e04bb.chunk.js",
+    "static/js/2.8e2e04bb.chunk.js.map": "/static/js/2.8e2e04bb.chunk.js.map",
+    "static/js/3.20f8623a.chunk.js": "/static/js/3.20f8623a.chunk.js",
+    "static/js/3.20f8623a.chunk.js.map": "/static/js/3.20f8623a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.14cd9280.chunk.css.map": "/static/css/main.14cd9280.chunk.css.map",
+    "static/js/2.8e2e04bb.chunk.js.LICENSE.txt": "/static/js/2.8e2e04bb.chunk.js.LICENSE.txt",
+    "static/media/twitterResults.css": "/static/media/card.7cc91316.png",
+    "static/media/App.css": "/static/media/mountain.96bd0dc3.jpg",
+    "static/media/tweetgifv7.23060304.gif": "/static/media/tweetgifv7.23060304.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.57636295.js",
+    "static/js/2.8e2e04bb.chunk.js",
+    "static/css/main.14cd9280.chunk.css",
+    "static/js/main.b6137a47.chunk.js"
+  ]
+}
