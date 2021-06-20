@@ -159,8 +159,5 @@ app.use(function (req, res, next) {
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-    console.log("getting")
-    //res.sendFile(path.join(__dirname + '/client/build/index.html'));
-    res.sendFile(path.join("/Users/nissimram/Desktop/Programming/Twitter Project/twitter-project"
-        + '/client/build/index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });

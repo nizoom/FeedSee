@@ -9,9 +9,15 @@
     "cors": "^2.8.5"
   },
   "scripts": {
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
   },
   "devDependencies": {
-    "dotenv": "^9.0.2"
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "twitter-v2": "^1.1.0"
+  },
+  "engines": {
+    "node": "12.18.4"
   }
 }
