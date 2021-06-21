@@ -46,7 +46,8 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/', indexRouter);
 
 
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
+//app.set('views', path.join(__dirname, 'views'))
 
 app.get("/api/users/:handle", (req, res) => {
     console.log("Querying")
