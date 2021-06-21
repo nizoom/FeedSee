@@ -27,6 +27,8 @@ const indexRouter = require('./routes');
 
 const PORT = process.env.PORT || 3001; //process.env 
 
+app.set('view engine', 'ejs');
+
 const credentials = {
     consumer_key: `${process.env.CONSUMER_KEY}`,
     consumer_secret: `${process.env.CONSUMER_SECRET}`,
