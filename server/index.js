@@ -45,7 +45,6 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', indexRouter);
 
-res.json({ error: err })
 
 app.set('view engine', 'ejs');
 
@@ -164,3 +163,8 @@ app.use(function (req, res, next) {
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
+
+function errorHandler(err, req, res, next) {
+    res.status(500);
+    res.json({ error: err })
+};
