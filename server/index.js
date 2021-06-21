@@ -27,7 +27,6 @@ const indexRouter = require('./routes');
 
 const PORT = process.env.PORT || 3001; //process.env 
 
-app.set('view engine', 'ejs');
 
 const credentials = {
     consumer_key: `${process.env.CONSUMER_KEY}`,
@@ -46,7 +45,9 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', indexRouter);
 
+res.json({ error: err })
 
+app.set('view engine', 'ejs');
 
 app.get("/api/users/:handle", (req, res) => {
     console.log("Querying")
