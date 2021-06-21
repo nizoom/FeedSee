@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 
+
 import Instructions from "./components/instructions/instructions"
 import Input from "./components/input/input"
 import TwitterResults from "./components/twitterResults/twitterResults"
@@ -12,6 +13,10 @@ import SearchFailed from "./components/notfound/searchfailed"
 import CurrentlyViewing from './components/currentlyviewing/currentlyviewing';
 import HomeBtn from './components/homebtn/homebtn';
 
+
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = React.useState(false); // handle name
@@ -97,54 +102,56 @@ function App() {
 
 
   return (
-    <div className="App">
-      {appCSS === "App" ? <Grid container spacing={4} direction="column" style={{
-        margin: 0,
-        width: '100%',
-      }}>
+    <Router>
+      <div className="App">
+        {appCSS === "App" ? <Grid container spacing={4} direction="column" style={{
+          margin: 0,
+          width: '100%',
+        }}>
 
-        <HomeBtn />
-        <Grid item lg={12}>
-          <Instructions />
-        </Grid>
+          <HomeBtn />
+          <Grid item lg={12}>
+            <Instructions />
+          </Grid>
 
-        <Grid item lg={12} style={{ margin: "0" }}>
-          {currentlyReading ? <CurrentlyViewing authorName={authorName} changeStatus={returnFromCurrentlyViewing}
-            status={currentlyReading}
-          />
-            :
-            < Input handleInput={handleInput} loadingStatus={loading} />}
+          <Grid item lg={12} style={{ margin: "0" }}>
+            {currentlyReading ? <CurrentlyViewing authorName={authorName} changeStatus={returnFromCurrentlyViewing}
+              status={currentlyReading}
+            />
+              :
+              < Input handleInput={handleInput} loadingStatus={loading} />}
 
-        </Grid>
-
-
-        <Grid item style={{ padding: "0px" }} >
-          {cloudText.length > 0 && currentlyReading ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
-        </Grid>
+          </Grid>
 
 
-        <Grid item >
-          {!successfulQuery ? <SearchFailed authorName={authorName}
-            issue={data} goBack={returnFromCurrentlyViewing}
-          /> : null}
-          {currentlyReading ? <section>
-            <TwitterResults results={data} />
-          </section> : null}
-        </Grid>
+          <Grid item style={{ padding: "0px" }} >
+            {cloudText.length > 0 && currentlyReading ? <CloudBtn returnClickToParent={manageCloudInit} /> : null}
+          </Grid>
 
-      </Grid> :
-        <div className="CloudApp">
-          <div>
-            <BackBtn handler={handleBackBtn} />
+
+          <Grid item >
+            {!successfulQuery ? <SearchFailed authorName={authorName}
+              issue={data} goBack={returnFromCurrentlyViewing}
+            /> : null}
+            {currentlyReading ? <section>
+              <TwitterResults results={data} />
+            </section> : null}
+          </Grid>
+
+        </Grid> :
+          <div className="CloudApp">
+            <div>
+              <BackBtn handler={handleBackBtn} />
+            </div>
+            <div>
+              <MyCloud text={cloudText} authorName={authorName} />
+            </div>
           </div>
-          <div>
-            <MyCloud text={cloudText} authorName={authorName} />
-          </div>
-        </div>
 
-      }
+        }
 
-    </div >
+      </div >
+    </Router>
   );
 }
 
