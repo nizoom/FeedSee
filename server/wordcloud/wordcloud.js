@@ -131,5 +131,4 @@ async function processWords(text) {
 
 //processWords("#Yo The quick brown fox jumped over the lazy dog This post is about building my first web application, Global News. I’d had the idea for the project for around a year, and at first it was in a very different form. Before I had begun learning to code there was an established view that immigration was going to be an important feature of the modern world. Between climate change creating unsafe homes and global economic inequality there would be a compounding need for travel both today and in the future. And so, I was thinking about how to facilitate information to those considering a journey to a new place.  ")
 
-//processWords("#!Yo. ((***SHmurrple hello hello a a a us to with a gargoyle we of guzzle guzzle")
 module.exports = processWords;
