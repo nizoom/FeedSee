@@ -20,14 +20,22 @@ Click view word cloud to see a custom word cloud made from the combined text of 
 
 ## Installation and set up instructions
 
-After cloning this repo, run npm install to install all dependencies. Please note that in order for the app to get news you will need a Twitter API 
+After cloning this repo, run npm install in both the client and server folder to install all dependencies. Please note that in order for the app to get news you will need a Twitter API 
 keys which can be found here https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api. There should be 4 keys: a consumer key,
+
 consumer secret, access token key, and access token secret. These keys should be stored in a .env file and be accessible to server/index.js. Here they are stored as
 `const credentials`. 
 
+### Setting up the proxy server in `client/package.json`
+
+This step enables the backend to communicate with the front end. Make sure you're in the server directory and run npm start. The terminal should say :
+`Server listening on <Port Number>.` This is usually 3001 or 4000. Now in `client/package.json` copy in the line ` "proxy": "http://localhost:3001",`
+
+
 ### To Visit App locally on your machine:
 
-Make sure you're in the src folder and run npm start
+
+Make sure you're in the server directory and run npm start. Then move to the client directory and do the same thing.
 
 The React server should automatically start on: `localhost:3000`
 
