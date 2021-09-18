@@ -1,5 +1,5 @@
 # Enter-the-Echo-Chamber
-A web app that provides a peek into what a twitter user's feed exposes them to
+A web app that provides a peek into what a given person on Twitter is exposed to.
 
 ## What is it? 
 The Echo Chamber is a web scraping app that provides a peak into the public social network of your
@@ -20,11 +20,8 @@ Click view word cloud to see a custom word cloud made from the combined text of 
 
 ## Installation and set up instructions
 
-After cloning this repo, run npm install in both the client and server folder to install all dependencies. Please note that in order for the app to get news you will need a Twitter API 
-keys which can be found here https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api. There should be 4 keys: a consumer key,
-
-consumer secret, access token key, and access token secret. These keys should be stored in a .env file and be accessible to server/index.js. Here they are stored as
-`const credentials`. 
+After cloning this repo, run npm install in both the client and server folder to install all dependencies. Please note that in order for the app to get news you will need Twitter API 
+keys which can be found here https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api. There should be 4 keys: a consumer key, consumer secret, access token key, and access token secret. These keys should be stored in a .env file. Please make sure the keys are accessible to server/index.js. Here they are stored as `const credentials`. 
 
 ### Setting up the proxy server in `client/package.json`
 
@@ -37,14 +34,14 @@ This step enables the backend to communicate with the front end. Make sure you'r
 
 Make sure you're in the server directory and run npm start. Then move to the client directory and do the same thing.
 
-The React server should automatically start on: `localhost:3000`
+The React server should automatically start on: `localhost:3000`. Happy scraping! 
 
 ## Reflection
 
-This web app was a personal project that helped push my web development skills beyond front end. I set out to build a tool that was kind an omnicient eye looking down onto social media from a broader view point than simply looking at somoeone's profile. I think that much was achieved. It helped color in a fuller picture of someone's presence online. 
+This web app was a personal project that helped push my web development skills beyond front end and into data processing. I set out to build a tool that was kind an omnicient eye looking down onto social media from a broader view point than simply looking at somoeone's profile. I think that much was achieved. It helped color in a fuller picture of someone's presence online. 
 
 There were certainly some technical challenges along the way. Querying the API in this way required at least 2 steps. Firstly getting the initial user information
-including their following list, and lastly iterating over that list to get each most recent tweets. The process involved a lot of asynchronous javascript and processing of the resulting JSON objects. The word cloud was also a good excersise in manipulating strings and creating objects conditionally based on what was already inside the object. 
+including their following list, and lastly iterating over that list to get each most recent tweets. These steps involved a lot of asynchronous javascript and processing of the resulting JSON objects. The word cloud was also a good excersise in manipulating strings and creating objects conditionally based on what was already inside the object. 
 
 Technologies used for this app: ReactJS, NodeJS, Express, CSS, HTML.
 
