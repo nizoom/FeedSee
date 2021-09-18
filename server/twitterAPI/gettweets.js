@@ -55,55 +55,6 @@ async function getTweets(allFollowers, credentials) {
                 const tweetMetaData = Object.values(tweets.includes)[0][0];
 
                 const allDataForTweet = [textAndUTC, tweetMetaData]
-                //const mostRecentTweet = Object.values(tweets)[0][0];
-                //console.log(names[followerIndex])
-                //[0][0].username //get handle for twitter link in front end 
-                //console.log(handle)
-                //console.log("______________")
-
-                //add author to most recent tweet obj -- this is not the same as handle
-
-
-
-                // if (tweets.includes === undefined) {
-                //     console.log("failed to get metadata")
-                //     return;
-                // } else {
-                //     const handle = Object.values(tweets.includes)[0][0].username //get handle for twitter link in front end 
-                //     mostRecentTweet.handle = handle;
-
-                // }
-                //console.log("2 " + tweets.include)
-
-                //console.log(handle)
-                //curl "https://api.twitter.com/2/users/2244994945/tweets?expansions=author_id&tweet.fields=created_at,author_id,conversation_id,public_metrics,context_annotations&user.fields=username&max_results=5" - H "Authorization: Bearer $BEARER_TOKEN"
-
-
-                //console.log(tweetAuthor);
-
-                // const tweetAuthor = names[followerIndex] // get author
-
-                // if (tweetAuthor === undefined || tweetAuthor === null) {
-                //     console.log("failed to get authorName")
-                //     return
-                // } else {
-                //     mostRecentTweet.authorName = tweetAuthor
-                // }
-
-                //console.log(mostRecentTweet)
-
-                // const timeStamp = mostRecentTweet.created_at; // get tweet time
-
-                // //seconds since Jan 1, 1970 from when the tweet was published 
-                // const recency = calcRecency(mostRecentTweet.created_at)
-
-                // mostRecentTweet.recencyLevel = recency;
-
-                // const timeSince = ta.ago(timeStamp);
-
-                // mostRecentTweet.timeSince = timeSince;
-                // //console.log(timeSince);
-
 
                 return allDataForTweet
 
