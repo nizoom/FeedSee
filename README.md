@@ -39,6 +39,14 @@ Make sure you're in the server directory and run npm start. Then move to the cli
 
 The React server should automatically start on: `localhost:3000`
 
+## Reflection
 
+This web app was a personal project that helped push my web development skills beyond front end. I set out to build a tool that was kind an omnicient eye looking down onto social media from a broader view point than simply looking at somoeone's profile. I think that much was achieved. It helped color in a fuller picture of someone's presence online. 
 
+There were certainly some technical challenges along the way. Querying the API in this way required at least 2 steps. Firstly getting the initial user information
+including their following list, and lastly iterating over that list to get each most recent tweets. The process involved a lot of asynchronous javascript and processing of the resulting JSON objects. The word cloud was also a good excersise in manipulating strings and creating objects conditionally based on what was already inside the object. 
+
+Technologies used for this app: ReactJS, NodeJS, Express, CSS, HTML.
+
+####For more information please read post 3 of my blog! https://www.nissimram.com/#/Blog
 
