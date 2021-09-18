@@ -15,22 +15,19 @@ async function getTweets(allFollowers, credentials) {
 
 
     console.log(ids)
-    //allFollowers.forEach(follower => names.push(follower.name));
 
-    // console.log(names);
     const calcRecency = (creationTimestamp) => {
         const date = new Date(creationTimestamp)
 
         const seconds = date.getTime() / 1000
-        //console.log(seconds)
+        
         //seconds since Jan 1, 1970 from when the tweet was published 
         return Math.round(seconds);
         //bigger the number the more recent the tweet 
     }
 
     async function getFirstTweetFromAcc(idNumber) {
-        //console.log(idNumber)
-        //https://api.twitter.com/2/tweets
+       
 
         const fetchedTweet = await client.get(`users/${idNumber}/tweets`, {
             max_results: 5,
@@ -41,17 +38,11 @@ async function getTweets(allFollowers, credentials) {
             expansions: "author_id"
 
 
-
-            //expansions: "author_id"
-
-
         }) // get first tweet 
             .then(function (tweets) {
-                //console.log("STARTING TWEETS for " + idNumber + "--------------------")
 
-                //console.log(tweets.data[0])
-                const textAndUTC = tweets.data[0]; //created at, text 
-                //console.log(Object.values(tweets.includes)[0][0]) //username, name, img url
+                const textAndUTC = tweets.data[0]; 
+                
                 const tweetMetaData = Object.values(tweets.includes)[0][0];
 
                 const allDataForTweet = [textAndUTC, tweetMetaData]
@@ -77,20 +68,14 @@ async function getTweets(allFollowers, credentials) {
 
     const tweets = await promisedTweets().then(data => {
 
-        //console.log("This is data " + data)
-        //console.log(typeof data)
         return data;
 
     })
-    //console.log("HERE ARE TWEETS " + tweets)
     return tweets;
 
 
 }
 
-//const arrOfFollowers = [813286, 29327002, 101885579];
-
-//getTweets(arrOfFollowers);
 
 
 
