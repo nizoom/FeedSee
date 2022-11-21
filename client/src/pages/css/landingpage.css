@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
+.landingpage-wrapper {
+  background-color: #4361EE;
+  color: white;
+  height: 100vh;
+}
+
+.app-title {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 39.06px;
+  font-weight: 500;
+  margin-top: 0;
+  letter-spacing: 10px;
+}
+
+.sub-header {
+  font-family: "Hind", sans-serif;
+  font-size: 31.25px;
+  font-weight: 400;
+  letter-spacing: 4px;
+}
+
+.landingpage-header {
+  padding-left: 50px;
+  padding-top: 45px;
+}
+
+.hero-img {
+  position: relative;
+  top: -150px;
+  left: 170px;
+  width: 80%;
+  height: 80%;
+}
+
+.call-to-action-section {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+}
+
+.call-to-action {
+  font-family: "Hind", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  width: 400px;
+  margin: auto;
+}
+
+.auth-btns-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+  margin-right: 25px;
+  gap: 50px;
+}
+
+.auth-btn {
+  background-color: #42b2d4;
+  font-size: 25px;
+  font-family: "Hind", sans-serif;
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .hero-img {
+    height: 50%;
+    width: 60%;
+    top: 75%;
+    left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .hero-img {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=landingpage.css.map */

@@ -1,22 +1,10 @@
 
 .App {
   text-align: center;
- 
-  
- 
-}
-
-.CloudApp{
-  
 }
 
 body{
-  background-image: url("media/mountain.jpg");
-  -webkit-background-size: contain;
-  -moz-background-size: 100%;
-  -o-background-size: cover;
-  background-size: 100%;
-  background-attachment: fixed;
+  height: 100%;
 }
 
 @media(max-width: 950px){

@@ -1,0 +1,87 @@
+@use "globalstyles";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+
+.landingpage-wrapper{
+   background-color: map-get(globalstyles.$colors, Ultramarine-Blue);
+   color: white;
+   height: 100vh;
+}
+
+.app-title{
+    font-family: globalstyles.$primary-font;
+    font-size: map-get(globalstyles.$font-sizes, large);
+    font-weight: 500;
+    margin-top: 0;
+    letter-spacing: 10px;
+}
+
+.sub-header{
+    font-family: globalstyles.$secondary-font;
+    font-size: map-get(globalstyles.$font-sizes, medium-large);
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+.landingpage-header{
+    padding-left: 50px;
+    padding-top: 45px;
+}
+
+.hero-img{
+   position: relative;
+   top: -150px;
+   left: 170px;
+   width: 80%;
+   height: 80%;
+}
+
+.call-to-action-section{
+    position: absolute;
+    top: 50%;
+    right: 10%;
+}
+
+.call-to-action{
+    font-family: globalstyles.$secondary-font;
+    font-size: map-get(globalstyles.$font-sizes, medium);
+    font-weight: 400;
+    letter-spacing: 4px;
+    width: 400px;
+    margin: auto;
+}
+
+.auth-btns-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 375px;
+    margin: auto;
+    margin-top: 40px;
+    position: relative;
+    margin-right: 25px;
+    gap: 50px;
+}
+
+.auth-btn{
+    background-color: map-get(globalstyles.$colors, Vivid-Sky-Blue);
+    font-size: map-get(globalstyles.$font-sizes, medium);
+    font-family: globalstyles.$secondary-font;
+    border: none;
+    height: 50px;
+    border-radius: 10px;
+    letter-spacing: 2.5px;
+    cursor: pointer;
+}
+
+@media(max-width:1200px){
+    .hero-img{
+        height: 50%;
+        width: 60%;
+        top: 75%;
+        left: 0;
+    }
+}
+@media(max-width:map-get(globalstyles.$breakpoints, tablet)){
+    .hero-img{
+        display: none;
+    }
+}

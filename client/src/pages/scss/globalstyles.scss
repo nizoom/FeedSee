@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+$primary-font: "Montserrat Alternates", sans-serif;
+$secondary-font: "Hind", sans-serif;
+
+$font-sizes: (
+    "largest": 48.83px,
+    "large": 39.06px,
+    "medium-large": 31.25px,
+    "medium": 25.00px,
+    "medium-small": 20.00px,
+    "small": 16.00px,
+    "smallest": 12px
+);
+
+$colors:(
+    "Flickr-Pink": #F72585,
+    "Byzantine": #B5179E,
+    "Purple": #7209B7,
+    "Dark-purple": #560BAD,
+    "Trypan-Blue": #480CA8,
+    "Trypan-Blue-Dark": #3A0CA3,
+    "Persian-Blue":#3F37C9,
+    "Ultramarine-Blue": #4361EE,
+    "Dodger-Blue": #4895EF,
+    "Vivid-Sky-Blue": #42b2d4
+); 
+
+$breakpoints:(
+    "tablet": 768px,
+    "mobile": 480px
+);
