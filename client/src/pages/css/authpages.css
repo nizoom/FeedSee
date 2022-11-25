@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
+.auth-page-wrapper {
+  background-color: #4361EE;
+  color: white;
+  height: 100vh;
+}
+
+.app-title {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-size: 39.06px;
+  font-weight: 500;
+  margin-top: 0;
+  letter-spacing: 10px;
+}
+
+.auth-form-title {
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin: auto;
+  left: 34%;
+  margin-top: 40px;
+  position: fixed;
+  background-color: #3A0CA3;
+  padding: 10px;
+  border-radius: 16px 16px;
+}
+
+.top-of-formbox {
+  position: absolute;
+  right: 25%;
+  display: flex;
+  flex-direction: row-reverse;
+  z-index: 1;
+}
+
+.overlapping-cards {
+  margin-right: -45%;
+  margin-top: -50px;
+}
+
+.auth-form-box {
+  background-color: #3A0CA3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 35%;
+  margin: auto;
+  height: 525px;
+  border-radius: 18px;
+  margin-top: 100px;
+}
+.auth-form-box form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  gap: 35px;
+}
+.auth-form-box form label {
+  letter-spacing: 3px;
+  font-family: "Hind", sans-serif;
+  margin-bottom: 10px;
+}
+.auth-form-box form .go-back {
+  width: 150px;
+}
+.auth-form-box .input-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-input {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  height: 35px;
+  background-color: #c1c1c8;
+  width: 20vw;
+  border-radius: 6px;
+}
+
+.auth-form-btn {
+  background-color: #7209B7;
+  border: none;
+  color: white;
+  border-radius: 16px;
+  height: 50px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  width: 250px;
+}
+.auth-form-btn p {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+}
+
+@media (max-width: 1100px) {
+  .overlapping-cards {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=authpages.css.map */

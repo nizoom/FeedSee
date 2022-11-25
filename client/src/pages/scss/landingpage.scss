@@ -17,7 +17,7 @@
 
 .sub-header{
     font-family: globalstyles.$secondary-font;
-    font-size: map-get(globalstyles.$font-sizes, medium-large);
+    font-size: map-get(globalstyles.$font-sizes, medium);
     font-weight: 400;
     letter-spacing: 4px;
 }
@@ -48,6 +48,7 @@
     letter-spacing: 4px;
     width: 400px;
     margin: auto;
+    text-align: justify;
 }
 
 .auth-btns-wrapper{
@@ -63,13 +64,18 @@
 
 .auth-btn{
     background-color: map-get(globalstyles.$colors, Vivid-Sky-Blue);
-    font-size: map-get(globalstyles.$font-sizes, medium);
+    font-size: map-get(globalstyles.$font-sizes, medium-small);
     font-family: globalstyles.$secondary-font;
     border: none;
     height: 50px;
     border-radius: 10px;
     letter-spacing: 2.5px;
     cursor: pointer;
+    text-align: center;
+}
+
+.btn-name{
+    margin: 0;
 }
 
 @media(max-width:1200px){

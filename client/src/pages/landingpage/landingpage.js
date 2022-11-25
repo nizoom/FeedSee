@@ -1,7 +1,16 @@
 import React from "react";
 import "../css/landingpage.css";
 import Hero from "../../media/hero.png";
+import { useHistory } from "react-router-dom";
 const LandingPage = () => {
+  const history = useHistory();
+  const linkToAuth = (loginOrSignup) => {
+    console.log("clicked");
+    history.push({
+      pathname: "/auth",
+      state: { loginOrSignup: loginOrSignup },
+    });
+  };
   return (
     <div className="landingpage-wrapper">
       <header className="landingpage-header">
@@ -20,13 +29,17 @@ const LandingPage = () => {
         </h3>
         <nav className="auth-btns-wrapper">
           <button type="button" className="auth-btn">
-            Log in
+            <p className="btn-name" onClick={() => linkToAuth("Login")}>
+              Log in
+            </p>
           </button>
           <button type="button" className="auth-btn">
-            Sign up
+            <p className="btn-name" onClick={() => linkToAuth("Signup")}>
+              Sign up
+            </p>
           </button>
           <button type="button" className="auth-btn">
-            Sign in with Google
+            <p className="btn-name">Sign in with Google</p>
           </button>
         </nav>
       </section>
