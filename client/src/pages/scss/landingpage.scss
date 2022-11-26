@@ -88,6 +88,88 @@
 }
 @media(max-width:map-get(globalstyles.$breakpoints, tablet)){
     .hero-img{
-        display: none;
+        height: 30%;
+        width: 40%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 2%;
+        
     }
+
+    .sub-header{
+        text-align: center;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    
+        
+    }
+
+    .call-to-action-section{
+        text-align: center;
+        margin: auto;
+        width: 80%;
+        margin-top: 10px;
+    }
+    .call-to-action{
+        text-align: center;
+        line-height: 45px;
+    }
+
+    .auth-btns-wrapper{
+        margin-right: auto;
+    }
+    .landingpage-header{
+        padding: 0;
+        padding-top: 30px;
+    }
+
+    .app-title{
+        text-align: center;
+    }
+
+    .auth-btns-wrapper{
+        gap: 25px;
+    }
+}
+
+@media(max-width:map-get(globalstyles.$breakpoints, mobile)){
+    header{
+        .app-title{
+            font-size: map-get(globalstyles.$font-sizes, medium-large);
+        }
+
+        .sub-header{
+            font-size: map-get(globalstyles.$font-sizes, medium-small);
+        }
+    }
+
+    .call-to-action-section{
+        top: 45%;
+    }
+
+    .call-to-action{
+        font-size: map-get(globalstyles.$font-sizes, medium-small);
+        width: auto;
+    }
+
+    .auth-btn{
+        width: 250px;
+        font-size: map-get(globalstyles.$font-sizes, small);
+
+    }
+
+    .auth-btns-wrapper{
+        align-items: center;
+        width: auto;
+    }
+
+    .hero-img{
+        margin-top: 7%;
+        width: 55%;
+    }
+   
 }

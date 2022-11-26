@@ -87,7 +87,70 @@
 }
 @media (max-width: 768px) {
   .hero-img {
-    display: none;
+    height: 30%;
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 2%;
+  }
+  .sub-header {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .call-to-action-section {
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-top: 10px;
+  }
+  .call-to-action {
+    text-align: center;
+    line-height: 45px;
+  }
+  .auth-btns-wrapper {
+    margin-right: auto;
+  }
+  .landingpage-header {
+    padding: 0;
+    padding-top: 30px;
+  }
+  .app-title {
+    text-align: center;
+  }
+  .auth-btns-wrapper {
+    gap: 25px;
+  }
+}
+@media (max-width: 480px) {
+  header .app-title {
+    font-size: 31.25px;
+  }
+  header .sub-header {
+    font-size: 20px;
+  }
+  .call-to-action-section {
+    top: 45%;
+  }
+  .call-to-action {
+    font-size: 20px;
+    width: auto;
+  }
+  .auth-btn {
+    width: 250px;
+    font-size: 16px;
+  }
+  .auth-btns-wrapper {
+    align-items: center;
+    width: auto;
+  }
+  .hero-img {
+    margin-top: 7%;
+    width: 55%;
   }
 }
 
