@@ -4,7 +4,7 @@ import Hero from "../../media/hero.png";
 import { useHistory } from "react-router-dom";
 const LandingPage = () => {
   const history = useHistory();
-  const linkToAuth = (loginOrSignup) => {
+  const linkToAuth = (loginOrSignup: string) => {
     console.log("clicked");
     history.push({
       pathname: "/auth",
@@ -16,7 +16,7 @@ const LandingPage = () => {
       <header className="landingpage-header">
         <h1 className="app-title">FeedSee</h1>
         <h2 className="sub-header">
-          <span>Enter a Twitter user,</span> <span>see what they see</span>
+          1<span>Enter a Twitter user,</span> <span>see what they see</span>
         </h2>
         <img
           className="hero-img"

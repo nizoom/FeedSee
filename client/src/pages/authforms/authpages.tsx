@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "../css/authpages.css";
 import OverlappingCards from "../../media/overlappingcards.png";
+
 const AuthPages = (props) => {
   const [signupForm, setSignupForm] = useState("");
   const history = useHistory();
@@ -40,11 +41,11 @@ const AuthPages = (props) => {
               </div>
               <div className="input-div">
                 <label>Password</label>
-                <input type="text" className="auth-input" />
+                <input type="password" className="auth-input" />
               </div>
               <div className="input-div">
                 <label>Confirm Password</label>
-                <input type="text" className="auth-input" />
+                <input type="password" className="auth-input" />
               </div>
 
               <button type="submit" className="auth-form-btn">
@@ -68,7 +69,7 @@ const AuthPages = (props) => {
               </div>
               <div className="input-div">
                 <label>Password</label>
-                <input type="text" className="auth-input" />
+                <input type="password" className="auth-input" />
               </div>
               <button type="submit" className="auth-form-btn">
                 <p> Login</p>

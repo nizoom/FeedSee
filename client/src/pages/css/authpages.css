@@ -76,9 +76,13 @@
   font-family: "Hind", sans-serif;
   font-size: 16px;
   height: 35px;
-  background-color: #c1c1c8;
+  background-color: #cbe0e8;
   width: 20vw;
   border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  padding-left: 5px;
 }
 
 .auth-form-btn {
@@ -95,6 +99,7 @@
 .auth-form-btn p {
   font-family: "Hind", sans-serif;
   font-size: 16px;
+  margin: 0;
 }
 
 @media (max-width: 1100px) {
