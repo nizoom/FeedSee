@@ -16,7 +16,7 @@ const LandingPage = () => {
       <header className="landingpage-header">
         <h1 className="app-title">FeedSee</h1>
         <h2 className="sub-header">
-          1<span>Enter a Twitter user,</span> <span>see what they see</span>
+          <span>Enter a Twitter user,</span> <span>see what they see</span>
         </h2>
         <img
           className="hero-img"

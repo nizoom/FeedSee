@@ -64,9 +64,6 @@
   font-family: "Hind", sans-serif;
   margin-bottom: 10px;
 }
-.auth-form-box form .go-back {
-  width: 150px;
-}
 .auth-form-box .input-div {
   display: flex;
   flex-direction: column;
@@ -77,12 +74,14 @@
   font-size: 16px;
   height: 35px;
   background-color: #cbe0e8;
+  border: none;
   width: 20vw;
   border-radius: 6px;
   font-size: 16px;
   font-weight: 500;
   color: black;
   padding-left: 5px;
+  border: none;
 }
 
 .auth-form-btn {
@@ -94,7 +93,7 @@
   cursor: pointer;
   letter-spacing: 3px;
   margin-top: 10px;
-  width: 250px;
+  width: 200px;
 }
 .auth-form-btn p {
   font-family: "Hind", sans-serif;

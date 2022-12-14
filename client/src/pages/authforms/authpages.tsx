@@ -3,7 +3,9 @@ import { useHistory } from "react-router-dom";
 import "../css/authpages.css";
 import OverlappingCards from "../../media/overlappingcards.png";
 
-const AuthPages = (props) => {
+const AuthPages = (props: {
+  history: { location: { state: { loginOrSignup: string } } };
+}) => {
   const [signupForm, setSignupForm] = useState("");
   const history = useHistory();
   useEffect(() => {
