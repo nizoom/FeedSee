@@ -3,6 +3,7 @@ import "../css/landingpage.css";
 import Hero from "../../media/hero.png";
 import { useHistory } from "react-router-dom";
 const LandingPage = () => {
+  console.log("rendering");
   const history = useHistory();
   const linkToAuth = (loginOrSignup: string) => {
     console.log("clicked");
@@ -31,12 +32,12 @@ const LandingPage = () => {
         </h3>
         <nav className="auth-btns-wrapper">
           <button type="button" className="auth-btn">
-            <p className="btn-name" onClick={() => linkToAuth("Login")}>
+            <p className="btn-name" onClick={(event) => linkToAuth("Login")}>
               Log in
             </p>
           </button>
           <button type="button" className="auth-btn">
-            <p className="btn-name" onClick={() => linkToAuth("Signup")}>
+            <p className="btn-name" onClick={(event) => linkToAuth("Signup")}>
               Sign up
             </p>
           </button>
