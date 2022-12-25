@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  HashRouter,
-  BrowserRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import LandingPage from "./pages/landingpage/landingpage";
 import AuthPages from "./pages/authforms/authpages";

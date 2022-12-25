@@ -29,7 +29,7 @@
 .hero-img {
   position: relative;
   top: -150px;
-  left: 170px;
+  left: 1px;
   width: 80%;
   height: 80%;
 }
@@ -87,7 +87,6 @@
 }
 @media (max-width: 768px) {
   .hero-img {
-    height: 30%;
     width: 40%;
     display: block;
     margin-left: auto;
@@ -149,7 +148,7 @@
     width: auto;
   }
   .hero-img {
-    margin-top: 7%;
+    margin-top: 9%;
     width: 55%;
   }
 }

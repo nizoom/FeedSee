@@ -8,10 +8,8 @@ const AuthPages = (props: {
 }) => {
   const [signupForm, setSignupForm] = useState("");
   const history = useHistory();
-  console.log("in auth page");
 
   useEffect(() => {
-    console.log(signupForm);
     const userHasRefreshed = props.history.location.state;
     if (userHasRefreshed) {
       const userDecision = props.history.location.state.loginOrSignup;

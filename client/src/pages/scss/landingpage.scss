@@ -1,175 +1,169 @@
 @use "globalstyles";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
 
-.landingpage-wrapper{
-   background-color: map-get(globalstyles.$colors, Ultramarine-Blue);
-   color: white;
-   height: 100vh;
+.landingpage-wrapper {
+  background-color: map-get(globalstyles.$colors, Ultramarine-Blue);
+  color: white;
+  height: 100vh;
 }
 
-.app-title{
-    font-family: globalstyles.$primary-font;
-    font-size: map-get(globalstyles.$font-sizes, large);
-    font-weight: 500;
-    margin-top: 0;
-    letter-spacing: 10px;
+.app-title {
+  font-family: globalstyles.$primary-font;
+  font-size: map-get(globalstyles.$font-sizes, large);
+  font-weight: 500;
+  margin-top: 0;
+  letter-spacing: 10px;
 }
 
-.sub-header{
-    font-family: globalstyles.$secondary-font;
-    font-size: map-get(globalstyles.$font-sizes, medium);
-    font-weight: 400;
-    letter-spacing: 4px;
+.sub-header {
+  font-family: globalstyles.$secondary-font;
+  font-size: map-get(globalstyles.$font-sizes, medium);
+  font-weight: 400;
+  letter-spacing: 4px;
 }
 
-.landingpage-header{
-    padding-left: 50px;
-    padding-top: 45px;
+.landingpage-header {
+  padding-left: 50px;
+  padding-top: 45px;
 }
 
-.hero-img{
-   position: relative;
-   top: -150px;
-   left: 170px;
-   width: 80%;
-   height: 80%;
+.hero-img {
+  position: relative;
+  top: -150px;
+  left: 1px;
+  width: 80%;
+  height: 80%;
 }
 
-.call-to-action-section{
-    position: absolute;
-    top: 50%;
-    right: 10%;
+.call-to-action-section {
+  position: absolute;
+  top: 50%;
+  right: 10%;
 }
 
-.call-to-action{
-    font-family: globalstyles.$secondary-font;
-    font-size: map-get(globalstyles.$font-sizes, medium);
-    font-weight: 400;
-    letter-spacing: 4px;
-    width: 400px;
+.call-to-action {
+  font-family: globalstyles.$secondary-font;
+  font-size: map-get(globalstyles.$font-sizes, medium);
+  font-weight: 400;
+  letter-spacing: 4px;
+  width: 400px;
+  margin: auto;
+  text-align: justify;
+}
+
+.auth-btns-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 375px;
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+  margin-right: 25px;
+  gap: 50px;
+}
+
+.auth-btn {
+  background-color: map-get(globalstyles.$colors, Vivid-Sky-Blue);
+  font-size: map-get(globalstyles.$font-sizes, medium-small);
+  font-family: globalstyles.$secondary-font;
+  border: none;
+  height: 50px;
+  border-radius: 10px;
+  letter-spacing: 2.5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-name {
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .hero-img {
+    height: 50%;
+    width: 60%;
+    top: 75%;
+    left: 0;
+  }
+}
+@media (max-width: map-get(globalstyles.$breakpoints, tablet)) {
+  .hero-img {
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: 2%;
+  }
+
+  .sub-header {
+    text-align: center;
     margin: auto;
-    text-align: justify;
-}
-
-.auth-btns-wrapper{
     display: flex;
     flex-direction: column;
-    width: 375px;
-    margin: auto;
-    margin-top: 40px;
-    position: relative;
-    margin-right: 25px;
-    gap: 50px;
-}
+    gap: 20px;
+  }
 
-.auth-btn{
-    background-color: map-get(globalstyles.$colors, Vivid-Sky-Blue);
-    font-size: map-get(globalstyles.$font-sizes, medium-small);
-    font-family: globalstyles.$secondary-font;
-    border: none;
-    height: 50px;
-    border-radius: 10px;
-    letter-spacing: 2.5px;
-    cursor: pointer;
+  .call-to-action-section {
     text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-top: 10px;
+  }
+  .call-to-action {
+    text-align: center;
+    line-height: 45px;
+  }
+
+  .auth-btns-wrapper {
+    margin-right: auto;
+  }
+  .landingpage-header {
+    padding: 0;
+    padding-top: 30px;
+  }
+
+  .app-title {
+    text-align: center;
+  }
+
+  .auth-btns-wrapper {
+    gap: 25px;
+  }
 }
 
-.btn-name{
-    margin: 0;
-}
-
-@media(max-width:1200px){
-    .hero-img{
-        height: 50%;
-        width: 60%;
-        top: 75%;
-        left: 0;
-    }
-}
-@media(max-width:map-get(globalstyles.$breakpoints, tablet)){
-    .hero-img{
-        height: 30%;
-        width: 40%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
-        margin-top: 2%;
-        
+@media (max-width: map-get(globalstyles.$breakpoints, mobile)) {
+  header {
+    .app-title {
+      font-size: map-get(globalstyles.$font-sizes, medium-large);
     }
 
-    .sub-header{
-        text-align: center;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    
-        
+    .sub-header {
+      font-size: map-get(globalstyles.$font-sizes, medium-small);
     }
+  }
 
-    .call-to-action-section{
-        text-align: center;
-        margin: auto;
-        width: 80%;
-        margin-top: 10px;
-    }
-    .call-to-action{
-        text-align: center;
-        line-height: 45px;
-    }
+  .call-to-action-section {
+    top: 45%;
+  }
 
-    .auth-btns-wrapper{
-        margin-right: auto;
-    }
-    .landingpage-header{
-        padding: 0;
-        padding-top: 30px;
-    }
+  .call-to-action {
+    font-size: map-get(globalstyles.$font-sizes, medium-small);
+    width: auto;
+  }
 
-    .app-title{
-        text-align: center;
-    }
+  .auth-btn {
+    width: 250px;
+    font-size: map-get(globalstyles.$font-sizes, small);
+  }
 
-    .auth-btns-wrapper{
-        gap: 25px;
-    }
-}
+  .auth-btns-wrapper {
+    align-items: center;
+    width: auto;
+  }
 
-@media(max-width:map-get(globalstyles.$breakpoints, mobile)){
-    header{
-        .app-title{
-            font-size: map-get(globalstyles.$font-sizes, medium-large);
-        }
-
-        .sub-header{
-            font-size: map-get(globalstyles.$font-sizes, medium-small);
-        }
-    }
-
-    .call-to-action-section{
-        top: 45%;
-    }
-
-    .call-to-action{
-        font-size: map-get(globalstyles.$font-sizes, medium-small);
-        width: auto;
-    }
-
-    .auth-btn{
-        width: 250px;
-        font-size: map-get(globalstyles.$font-sizes, small);
-
-    }
-
-    .auth-btns-wrapper{
-        align-items: center;
-        width: auto;
-    }
-
-    .hero-img{
-        margin-top: 7%;
-        width: 55%;
-    }
-   
+  .hero-img {
+    margin-top: 9%;
+    width: 55%;
+  }
 }

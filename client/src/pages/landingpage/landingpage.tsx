@@ -2,8 +2,9 @@ import React from "react";
 import "../css/landingpage.css";
 import Hero from "../../media/hero.png";
 import { useHistory } from "react-router-dom";
+import { AspectRatio, Box, Center, Image } from "@chakra-ui/react";
+
 const LandingPage = () => {
-  console.log("rendering");
   const history = useHistory();
   const linkToAuth = (loginOrSignup: string) => {
     console.log("clicked");
@@ -19,12 +20,17 @@ const LandingPage = () => {
         <h2 className="sub-header">
           <span>Enter a Twitter user,</span> <span>see what they see</span>
         </h2>
-        <img
-          className="hero-img"
-          src={Hero}
-          alt="The Twitter bird mascot looking out onto square boxes representing tweets"
-          title="The Twitter bird mascot looking out onto square boxes representing tweets"
-        />
+        {/* <AspectRatio ratio={2 / 1} maxWidth="80%"> */}
+        <Center>
+          <Image
+            className="hero-img"
+            src={Hero}
+            alt="The Twitter bird mascot looking out onto square boxes representing tweets"
+            title="The Twitter bird mascot looking out onto square boxes representing tweets"
+          />
+        </Center>
+
+        {/* </AspectRatio> */}
       </header>
       <section className="call-to-action-section">
         <h3 className="call-to-action">
@@ -32,12 +38,12 @@ const LandingPage = () => {
         </h3>
         <nav className="auth-btns-wrapper">
           <button type="button" className="auth-btn">
-            <p className="btn-name" onClick={(event) => linkToAuth("Login")}>
+            <p className="btn-name" onClick={() => linkToAuth("Login")}>
               Log in
             </p>
           </button>
           <button type="button" className="auth-btn">
-            <p className="btn-name" onClick={(event) => linkToAuth("Signup")}>
+            <p className="btn-name" onClick={() => linkToAuth("Signup")}>
               Sign up
             </p>
           </button>
