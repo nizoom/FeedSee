@@ -2,7 +2,7 @@ import React from "react";
 import "../css/landingpage.css";
 import Hero from "../../media/hero.png";
 import { useHistory } from "react-router-dom";
-import { AspectRatio, Box, Center, Image } from "@chakra-ui/react";
+import { Center, Image } from "@chakra-ui/react";
 
 const LandingPage = () => {
   const history = useHistory();

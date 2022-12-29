@@ -4,9 +4,11 @@
   "private": true,
   "proxy": "http://localhost:4000",
   "dependencies": {
-    "@chakra-ui/react": "^2.4.3",
+    "@chakra-ui/react": "^2.4.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/hind": "^4.5.10",
+    "@fontsource/montserrat-alternates": "^4.5.11",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",

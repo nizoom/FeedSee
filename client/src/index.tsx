@@ -5,7 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Router } from "react-router-dom";
-
+import { ChakraBaseProvider } from "@chakra-ui/react";
+import { theme } from "./pages/css/theme";
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
 const root = createRoot(rootElement);

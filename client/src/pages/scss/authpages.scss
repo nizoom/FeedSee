@@ -1,118 +1,113 @@
 @use "globalstyles";
-.auth-page-wrapper{
-    background-color: map-get(globalstyles.$colors, Ultramarine-Blue);
-    color: white;
-    height: 100vh;
+.auth-page-wrapper {
+  background-color: map-get(globalstyles.$colors, Ultramarine-Blue);
+  color: white;
+  height: 100vh;
 }
 
-.app-title{
-    font-family: globalstyles.$primary-font;
-    font-size: map-get(globalstyles.$font-sizes, large);
-    font-weight: 500;
-    margin-top: 0;
-    letter-spacing: 10px;
+.app-title {
+  font-family: globalstyles.$primary-font;
+  font-size: map-get(globalstyles.$font-sizes, large);
+  font-weight: 500;
+  margin-top: 0;
+  letter-spacing: 10px;
 }
 
-.auth-form-title{
-    font-family: globalstyles.$secondary-font;
-    font-size: map-get(globalstyles.$font-sizes, medium-small);
-    font-weight: 400;
-    letter-spacing: 3px;
-    margin: auto;
-    left: 34%;
-    margin-top: 40px;
-    position: fixed;
-    background-color: map-get(globalstyles.$colors, Trypan-Blue-Dark);
-    padding: 10px;
-    border-radius: 16px 16px;
+.auth-form-title {
+  font-family: globalstyles.$secondary-font;
+  font-size: map-get(globalstyles.$font-sizes, medium-small);
+  font-weight: 400;
+  letter-spacing: 3px;
+  margin: auto;
+  left: 34%;
+  margin-top: 40px;
+  position: fixed;
+  background-color: map-get(globalstyles.$colors, Trypan-Blue-Dark);
+  padding: 10px;
+  border-radius: 16px 16px;
 }
-.top-of-formbox{
-    position: absolute;
-    right: 25%;
-    display: flex;
-    flex-direction: row-reverse;
-    z-index: 1;
+.top-of-formbox {
+  position: absolute;
+  right: 25%;
+  display: flex;
+  flex-direction: row-reverse;
+  z-index: 1;
 }
 
-.overlapping-cards{
-    margin-right: -45%;
-    margin-top: -50px;
+.overlapping-cards {
+  margin-right: -45%;
+  margin-top: -50px;
 }
-.auth-form-box{
-    background-color: map-get(globalstyles.$colors, Trypan-Blue-Dark);
+.auth-form-box {
+  background-color: map-get(globalstyles.$colors, Trypan-Blue-Dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 35%;
+  margin: auto;
+  height: 525px;
+  border-radius: 18px;
+  margin-top: 100px;
+
+  form {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    width: 35%;
+    justify-content: center;
     margin: auto;
-    height: 525px;
-    border-radius: 18px;
-    margin-top: 100px;
-
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: auto;
-        align-items: center;
-        gap: 35px;
-        label{
-            letter-spacing: 3px;
-            font-family: globalstyles.$secondary-font;
-            margin-bottom: 10px;
-        }
-        .go-back{
-         
-        }
+    align-items: center;
+    gap: 35px;
+    label {
+      letter-spacing: 3px;
+      font-family: globalstyles.$secondary-font;
+      margin-bottom: 10px;
     }
-
-    .input-div{
-        display: flex;
-        flex-direction: column;
+    .go-back {
     }
+  }
+
+  .input-div {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
+.auth-input {
+  font-family: globalstyles.$secondary-font;
+  font-size: map-get(globalstyles.$font-sizes, small);
+  height: 35px;
+  background-color: #cbe0e8;
+  border: none;
+  width: 20vw;
+  border-radius: 6px;
+  font-weight: 500;
+  color: black;
+  padding-left: 5px;
+  border: none;
+}
 
-.auth-input{
+.auth-form-btn {
+  background-color: map-get(globalstyles.$colors, Purpled);
+  border: none;
+  color: white;
+  border-radius: 16px;
+  height: 50px;
+  cursor: pointer;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  width: 200px;
+
+  p {
     font-family: globalstyles.$secondary-font;
     font-size: map-get(globalstyles.$font-sizes, small);
-    height: 35px;
-    background-color: #cbe0e8;
-    border: none;
-    width: 20vw;
-    border-radius: 6px;
-    font-size: map-get(globalstyles.$font-sizes, small);
-    font-weight: 500;
-    color: black;
-    padding-left: 5px;
-    border: none;
+    margin: 0;
+  }
 }
 
-.auth-form-btn{
-    
-    background-color: map-get(globalstyles.$colors, Purpled);
-    border: none;
-    color: white;
-    border-radius: 16px;
-    height: 50px;
-    cursor: pointer;
-    letter-spacing: 3px;
-    margin-top: 10px;
-    width: 200px;
-
-    p{
-        font-family: globalstyles.$secondary-font;
-        font-size: map-get(globalstyles.$font-sizes, small);
-        margin: 0;
-    }
+@media (max-width: 1100px) {
+  .overlapping-cards {
+    display: none;
+  }
 }
 
-@media(max-width: 1100px){
-    .overlapping-cards{
-        display: none;
-    }
-}
-
-@media(max-width:map-get(globalstyles.$breakpoints, tablet)){
-
+@media (max-width: map-get(globalstyles.$breakpoints, tablet)) {
 }
