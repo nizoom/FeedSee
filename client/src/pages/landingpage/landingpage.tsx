@@ -20,7 +20,6 @@ const LandingPage = () => {
         <h2 className="sub-header">
           <span>Enter a Twitter user,</span> <span>see what they see</span>
         </h2>
-        {/* <AspectRatio ratio={2 / 1} maxWidth="80%"> */}
         <Center>
           <Image
             className="hero-img"
@@ -29,8 +28,6 @@ const LandingPage = () => {
             title="The Twitter bird mascot looking out onto square boxes representing tweets"
           />
         </Center>
-
-        {/* </AspectRatio> */}
       </header>
       <section className="call-to-action-section">
         <h3 className="call-to-action">
