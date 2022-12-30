@@ -1,20 +1,18 @@
-
 .App {
-  text-align: center;
 }
 
-body{
-  height: 100%;
+html {
+  background-color: #4361ee;
 }
 
-@media(max-width: 950px){
-  body{
+/* @media (max-width: 950px) {
+  body {
     -webkit-background-size: cover;
   }
 }
 
-@media(min-height: 780px){
-  body{
+@media (min-height: 780px) {
+  body {
     -webkit-background-size: cover;
   }
-}
+} */

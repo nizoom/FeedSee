@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import "../css/authpages.css";
-import OverlappingCards from "../../media/overlappingcards.png";
+import "./css/authpages.css";
+import OverlappingCards from "../media/overlappingcards.png";
 import {
   Box,
   Flex,
@@ -14,9 +14,9 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import Logo from "../../components/logo";
-import { AuthFormInput, AuthFormLabel } from "../../components/inputs+labels";
-import { theme } from "../css/theme";
+import Logo from "../components/logo";
+import { AuthFormInput, AuthFormLabel } from "../components/inputs+labels";
+import { theme } from "./css/theme";
 const AuthPages = (props: {
   history: { location: { state: { loginOrSignup: string } } };
 }) => {
@@ -47,8 +47,8 @@ const AuthPages = (props: {
             <Image
               src={OverlappingCards}
               position="absolute"
-              top="2%"
-              right="23%"
+              top="1%"
+              right="15%"
             />
           </Show>
         </div>

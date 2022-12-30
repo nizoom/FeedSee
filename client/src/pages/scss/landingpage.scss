@@ -4,7 +4,6 @@
 .landingpage-wrapper {
   background-color: map-get(globalstyles.$colors, Ultramarine-Blue);
   color: white;
-  height: 100vh;
 }
 
 .app-title {
@@ -12,7 +11,7 @@
   font-size: map-get(globalstyles.$font-sizes, large);
   font-weight: 500;
   margin-top: 0;
-  letter-spacing: 10px;
+  letter-spacing: 8px;
 }
 
 .sub-header {

@@ -23,7 +23,7 @@ type LabelName = {
 };
 export const AuthFormLabel: React.FC<LabelName> = (props: LabelName) => {
   return (
-    <FormHelperText letterSpacing="3px" mb="10px" w="60%">
+    <FormHelperText letterSpacing="3px" mb="10px" w="60%" color="white">
       {props.labelName}
     </FormHelperText>
   );

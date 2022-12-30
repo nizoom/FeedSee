@@ -1,6 +1,6 @@
 import React from "react";
-import "../css/landingpage.css";
-import Hero from "../../media/hero.png";
+import "./css/landingpage.css";
+import Hero from "../media/hero.png";
 import { useHistory } from "react-router-dom";
 import { Center, Image } from "@chakra-ui/react";
 

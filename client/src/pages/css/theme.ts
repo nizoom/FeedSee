@@ -12,7 +12,7 @@ const colors = {
   TrypanBlue: "#480CA8",
   TrypanBlueDark: "#3A0CA3",
   PersianBlue: "#3F37C9",
-  UltrmarineBlue: "#4361EE",
+  UltramarineBlue: "#4361EE",
   DodgerBlue: "#4895EF",
   ViidSkyBlue: "#42b2d4",
 };
@@ -31,10 +31,11 @@ const buttons = {
 
 const heading = {
   fontFamily: fonts.primary,
-  fontSize: "5xl",
+  fontSize: "39.06px",
   p: "30px",
-  fontWeight: "400",
-  letterSpacing: "4px",
+  fontWeight: "500",
+  letterSpacing: "8px",
+  color: "white",
 };
 
 const authForm = {
