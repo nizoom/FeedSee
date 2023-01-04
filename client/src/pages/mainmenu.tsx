@@ -9,6 +9,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Logo from "../components/logo";
 import { theme } from "./css/theme";
 import "@fontsource/montserrat-alternates";
@@ -19,6 +20,13 @@ type FeatureContent = {
 };
 
 const Feature: React.FC<FeatureContent> = (props: FeatureContent) => {
+  const history = useHistory();
+  const handleFeatureClick = (selectionTitle) => {
+    history.push({
+      pathname: "/homepage",
+      state: { pathSelection: selectionTitle },
+    });
+  };
   return (
     <Box
       borderRadius={7}
@@ -27,9 +35,10 @@ const Feature: React.FC<FeatureContent> = (props: FeatureContent) => {
       color="white"
       minW="100%"
       cursor="pointer"
+      onClick={() => handleFeatureClick(props.title)}
       _hover={{
-        background: "#4CC9F0",
-        color: "#560BAD",
+        background: "#4895EF",
+        color: "white",
       }}
     >
       <Heading

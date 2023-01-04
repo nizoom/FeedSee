@@ -17,6 +17,7 @@ import {
 import Logo from "../components/logo";
 import { AuthFormInput, AuthFormLabel } from "../components/inputs+labels";
 import { theme } from "./css/theme";
+
 const AuthPages = (props: {
   history: { location: { state: { loginOrSignup: string } } };
 }) => {

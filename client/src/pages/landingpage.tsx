@@ -7,7 +7,6 @@ import { Center, Image } from "@chakra-ui/react";
 const LandingPage = () => {
   const history = useHistory();
   const linkToAuth = (loginOrSignup: string) => {
-    console.log("clicked");
     history.push({
       pathname: "/auth",
       state: { loginOrSignup: loginOrSignup },

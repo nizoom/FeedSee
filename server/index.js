@@ -1,39 +1,28 @@
 const path = require("path");
-require("dotenv").config({ path: __dirname + "/./../../.env" });
-
+require("dotenv").config({ path: __dirname + "/./../.env" });
 const express = require("express");
-
 const app = express();
-
 const createError = require("createerror");
-
 const validateHandle = require("./twitterAPI/validateHandle");
-
 const getFollowers = require("./twitterAPI/getfollowers");
-
 const getTweets = require("./twitterAPI/gettweets");
-
 const processTweets = require("./processTweets/processtweets");
-
 const sortByMostRecent = require("./processTweets/mostrecenttweets");
-
 const textToWordCloud = require("./wordcloud/wordcloud");
-
 const cors = require("cors");
-
 const indexRouter = require("./routes");
 
 const PORT = process.env.PORT || 3001; //process.env
 
-const credentials = {
-  consumer_key: `${process.env.REACT_APP_CONSUMER_KEY}`,
-  consumer_secret: `${process.env.REACT_APP_CONSUMER_SECRET}`,
-  access_token_key: `${process.env.REACT_APP_ACCESS_TOKEN_KEY}`,
-  access_token_secret: `${process.env.REACT_APP_ACCESS_TOKEN_SECRET}`,
-};
+// const credentials = {
+//   consumer_key: `${process.env.REACT_APP_CONSUMER_KEY}`,
+//   consumer_secret: `${process.env.REACT_APP_CONSUMER_SECRET}`,
+//   access_token_key: `${process.env.REACT_APP_ACCESS_TOKEN_KEY}`,
+//   access_token_secret: `${process.env.REACT_APP_ACCESS_TOKEN_SECRET}`,
+// };
 
-console.log(credentials);
-console.log(__dirname);
+// console.log(credentials);
+// console.log(__dirname);
 
 app.use(cors());
 
@@ -58,13 +47,9 @@ app.get("/api/users/:handle", (req, res) => {
     const valid = await validateHandle(twitterHandle, credentials);
 
     let obj = Object.values(valid);
-
     console.log(obj);
-
     let drillDown = obj[0][0];
-
     const name = drillDown.name;
-
     //invalid name
 
     if (drillDown.id != undefined) {
@@ -119,7 +104,6 @@ app.get("/api/users/:handle", (req, res) => {
       console.log("There's an error / deleted account SEND");
     }
   }
-
   //console.log(finalReturn);
 });
 
