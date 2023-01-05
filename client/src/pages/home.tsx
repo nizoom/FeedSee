@@ -9,7 +9,6 @@ const HomePage = (props: {
   return (
     <Container className="landingpage-wrapper">
       <Logo />
-
       <RandomTweetView />
     </Container>
   );
