@@ -27,7 +27,7 @@ export const ViewRandomTweets: React.FC = () => {
     // logic where you get top 100 accounts and select one at random and return tweets
   };
   const handleFetchTweetsFromHandle = (handle: string) => {
-    // should add returning type tweet object
+    // should add returning type tweet object /
   };
   const testTweet = useFetchTweets("Bob");
   return (
