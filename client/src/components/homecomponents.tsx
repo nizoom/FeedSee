@@ -1,22 +1,19 @@
 import React from "react";
 import {
-  Box,
   Button,
   Center,
-  CircularProgress,
   Container,
   Flex,
   GridItem,
   Input,
-  InputGroup,
-  Progress,
   SimpleGrid,
-  Stack,
+  Fade,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
 import useFetchTweets from "../customhooks/usefetchtweets";
 import TweetCard from "./tweetcard";
+import ProgressBar from "./progressbar";
 import { v4 as uuidv4 } from "uuid";
 export interface Tweet {
   author: string;
@@ -70,7 +67,6 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
   const testTweet = useFetchTweets("Bob");
   return (
     <Container>
-      <CircularProgress isIndeterminate color="green.300" />
       <Center gap="50px">
         <Input
           variant="flushed"
@@ -101,9 +97,8 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
           Submit{" "}
         </Button>
       </Center>
-
+      <ProgressBar />
       <RenderTweetsComponent listOfTweets={testTweet} />
-      <Progress size="xs" isIndeterminate />
     </Container>
   );
 };
