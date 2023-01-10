@@ -7,6 +7,8 @@ import {
   Text,
   Divider,
   Center,
+  Progress,
+  CircularProgress,
 } from "@chakra-ui/react";
 import React from "react";
 import { useHistory } from "react-router-dom";

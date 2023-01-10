@@ -3,12 +3,15 @@ import {
   Box,
   Button,
   Center,
+  CircularProgress,
   Container,
   Flex,
-  Grid,
   GridItem,
+  Input,
+  InputGroup,
+  Progress,
   SimpleGrid,
-  UnorderedList,
+  Stack,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
@@ -21,9 +24,13 @@ export interface Tweet {
   date: Date;
 }
 
-export const RandomTweetView: React.FC = () => {
+export const ViewRandomTweets: React.FC = () => {
   const handleFetchRandomTwts = () => {
+    // should add returning type tweet object
     // logic where you get top 100 accounts and select one at random and return tweets
+  };
+  const handleFetchTweetsFromHandle = (handle: string) => {
+    // should add returning type tweet object
   };
   const testTweet = useFetchTweets("Bob");
   return (
@@ -58,6 +65,48 @@ export const RandomTweetView: React.FC = () => {
 interface TweetComponentProps {
   listOfTweets: Tweet[];
 }
+
+export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
+  const testTweet = useFetchTweets("Bob");
+  return (
+    <Container>
+      <CircularProgress isIndeterminate color="green.300" />
+      <Center gap="50px">
+        <Input
+          variant="flushed"
+          placeholder="Enter handle"
+          textIndent="10px"
+          color="white"
+          bg={theme.colors.DodgerBlue}
+          height="50px"
+          _placeholder={{ color: "white", fontSize: "smaller" }}
+          borderRadius={10}
+        />
+        <Button
+          type="submit"
+          bg={theme.colors.DodgerBlue}
+          p={15}
+          borderRadius={30}
+          fontSize="smaller"
+          transition=".25s ease-in"
+          _hover={{
+            background: "#42b2d4",
+            color: "#B5179E",
+            transition: ".25 ease-in",
+            fontWeight: "700",
+            fontSize: "small",
+          }}
+        >
+          {" "}
+          Submit{" "}
+        </Button>
+      </Center>
+
+      <RenderTweetsComponent listOfTweets={testTweet} />
+      <Progress size="xs" isIndeterminate />
+    </Container>
+  );
+};
 export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   listOfTweets,
 }) => {
@@ -71,7 +120,7 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   return (
     <SimpleGrid
       minChildWidth="250px"
-      spacing="40px"
+      spacing="60px"
       width="80%"
       m="auto"
       mt="100px"
@@ -80,17 +129,3 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
     </SimpleGrid>
   );
 };
-
-{
-  /* <SimpleGrid minChildWidth="120px" spacing="40px">
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-<Box bg="tomato" height="80px"></Box>
-</SimpleGrid> */
-}

@@ -1,7 +1,10 @@
-import { Container } from "@chakra-ui/react";
+import { Container, Progress } from "@chakra-ui/react";
 import React from "react";
 import Logo from "../components/logo";
-import { RandomTweetView } from "../components/homecomponents";
+import {
+  ViewRandomTweets,
+  ViewTweetsFrmInputedHandle,
+} from "../components/homecomponents";
 
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };
@@ -9,7 +12,8 @@ const HomePage = (props: {
   return (
     <Container className="landingpage-wrapper">
       <Logo />
-      <RandomTweetView />
+      {/* <ViewRandomTweets /> */}
+      <ViewTweetsFrmInputedHandle />
     </Container>
   );
 };
