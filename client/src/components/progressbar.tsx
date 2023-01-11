@@ -1,5 +1,5 @@
-import { Container, Fade, Text, useDisclosure } from "@chakra-ui/react";
-import Reat, { useEffect, useState } from "react";
+import { Container } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 
 interface ProgressBarProps {
   isLoading: boolean;
