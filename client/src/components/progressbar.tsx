@@ -1,6 +1,25 @@
-import { Container, Text } from "@chakra-ui/react";
-import Reat from "react";
-const ProgressBar: React.FC = () => {
+import { Container, Fade, Text, useDisclosure } from "@chakra-ui/react";
+import Reat, { useEffect, useState } from "react";
+
+interface ProgressBarProps {
+  isLoading: boolean;
+}
+const ProgressBar: React.FC<ProgressBarProps> = ({ isLoading }) => {
+  //   const { isOpen } = useDisclosure();
+  const [progressBarClass, setProgressBarClass] = useState<string>(
+    "progress-bar-inactive"
+  );
+  useEffect(() => {
+    if (isLoading && progressBarClass === "progress-bar-inactive") {
+      setProgressBarClass("progress-bar-active");
+    }
+    if (isLoading) {
+      setTimeout(() => {
+        setProgressBarClass("progress-bar-inactive");
+      }, 4000);
+    }
+  }, [isLoading]);
+  console.log(isLoading);
   return (
     <Container>
       <style>
@@ -31,11 +50,32 @@ const ProgressBar: React.FC = () => {
                 to {
                     left: 100%;
                 }
-            }`}
+            }
+            @keyframes fadeInOut {
+                0% {
+                  opacity: 0;
+                }
+                50% {
+                  opacity: 1;
+                }
+                100% {
+                  opacity: 0;
+                }
+              }
+            .progress-bar-active {
+                animation: fadeInOut 4s linear 1 forwards;
+            }
+            .progress-bar-inactive {
+                display: none;
+            }
+            .
+            `}
       </style>
-      <div className="indeterminate-progress-bar">
-        <div className="indeterminate-progress-bar__progress"></div>
-      </div>
+      <Container className={progressBarClass}>
+        <div className="indeterminate-progress-bar">
+          <div className="indeterminate-progress-bar__progress"></div>
+        </div>
+      </Container>
     </Container>
   );
 };

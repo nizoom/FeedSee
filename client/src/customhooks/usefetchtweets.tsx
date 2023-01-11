@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Tweet } from "../components/homecomponents";
+import { Tweet, TweetComponentProps } from "../components/homecomponents";
 
 // const add placeholder tweets
-function useFetchTweets(twitterHandle: string) {
+const useFetchTweets = () => {
   const testTweet = {
     author: "Bob",
     content: "this is Bob's tweet",
@@ -10,18 +10,15 @@ function useFetchTweets(twitterHandle: string) {
   };
 
   const typedTweet = testTweet as Tweet;
-  const [listOfTweets, setListOfTweets] = useState<Tweet[]>([
-    typedTweet,
-    typedTweet,
-    typedTweet,
-    typedTweet,
-  ]);
-  useEffect(() => {
-    // fetch tweets
-    // setListOfTweets(fetchedTweets)
-  });
+  const [listOfTweets, setListOfTweets] = useState<
+    TweetComponentProps["listOfTweets"]
+  >([typedTweet, typedTweet, typedTweet, typedTweet]);
+  // useEffect(() => {
+  // fetch tweets
+  // setListOfTweets(fetchedTweets)
+  // });
   return listOfTweets;
-}
+};
 
 export default useFetchTweets;
 

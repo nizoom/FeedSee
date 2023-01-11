@@ -12,8 +12,8 @@ const HomePage = (props: {
   return (
     <Container className="landingpage-wrapper">
       <Logo />
-      {/* <ViewRandomTweets /> */}
-      <ViewTweetsFrmInputedHandle />
+      <ViewRandomTweets />
+      {/* <ViewTweetsFrmInputedHandle /> */}
     </Container>
   );
 };

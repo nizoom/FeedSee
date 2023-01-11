@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Center,
@@ -15,21 +15,72 @@ import useFetchTweets from "../customhooks/usefetchtweets";
 import TweetCard from "./tweetcard";
 import ProgressBar from "./progressbar";
 import { v4 as uuidv4 } from "uuid";
+
 export interface Tweet {
   author: string;
   content: string;
   date: Date;
 }
 
+export interface TweetComponentProps {
+  listOfTweets: Tweet[] | undefined;
+  noTweets: null;
+}
+
+export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
+  listOfTweets,
+  noTweets,
+}) => {
+  if (listOfTweets) {
+    // if there are tweets
+    const listTweets = listOfTweets.map((tweet) => {
+      return (
+        <GridItem justifySelf="center" key={uuidv4()}>
+          <TweetCard tweet={tweet} />
+        </GridItem>
+      );
+    });
+
+    return (
+      <SimpleGrid
+        minChildWidth="250px"
+        spacing="60px"
+        width="80%"
+        m="auto"
+        mt="100px"
+      >
+        {listTweets}
+      </SimpleGrid>
+    );
+  } // else
+  return noTweets;
+};
+
 export const ViewRandomTweets: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [listOfTweetsState, setListOfTweetsState] = useState<
+    TweetComponentProps["listOfTweets"] | undefined
+  >();
+
+  const returnTestTweets = useFetchTweets();
+
+  useEffect(() => {
+    if (isLoading) {
+      setTimeout(async () => {
+        // replace setTimeout with named function
+        console.log("getting tweets");
+        // const testTweets = await returnTestTweets();
+        setListOfTweetsState(returnTestTweets);
+        setIsLoading(false);
+      }, 5000);
+    }
+  }, [isLoading]);
   const handleFetchRandomTwts = () => {
-    // should add returning type tweet object
-    // logic where you get top 100 accounts and select one at random and return tweets
+    setListOfTweetsState(undefined);
+    setIsLoading(true);
+    // useEffect is triggered and handles the rest
   };
-  const handleFetchTweetsFromHandle = (handle: string) => {
-    // should add returning type tweet object /
-  };
-  const testTweet = useFetchTweets("Bob");
+
   return (
     <Container>
       <Flex direction="column">
@@ -53,21 +104,22 @@ export const ViewRandomTweets: React.FC = () => {
             Randomize
           </Button>
         </Center>
-        <RenderTweetsComponent listOfTweets={testTweet} />
+        <ProgressBar isLoading={isLoading} />
+        <RenderTweetsComponent
+          listOfTweets={listOfTweetsState}
+          noTweets={null}
+        />
       </Flex>
     </Container>
   );
 };
 
-interface TweetComponentProps {
-  listOfTweets: Tweet[];
-}
-
 export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
-  const testTweet = useFetchTweets("Bob");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const testTweet = useFetchTweets();
   return (
     <Container>
-      <Center gap="50px">
+      {/* <Center gap="50px">
         <Input
           variant="flushed"
           placeholder="Enter handle"
@@ -93,34 +145,11 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
             fontSize: "small",
           }}
         >
-          {" "}
-          Submit{" "}
+          Submit
         </Button>
       </Center>
-      <ProgressBar />
-      <RenderTweetsComponent listOfTweets={testTweet} />
+      <ProgressBar isLoading={isLoading} />
+      <RenderTweetsComponent listOfTweets={testTweet} noTweets={null} /> */}
     </Container>
-  );
-};
-export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
-  listOfTweets,
-}) => {
-  const listTweets = listOfTweets.map((tweet) => {
-    return (
-      <GridItem justifySelf="center" key={uuidv4()}>
-        <TweetCard tweet={tweet} />
-      </GridItem>
-    );
-  });
-  return (
-    <SimpleGrid
-      minChildWidth="250px"
-      spacing="60px"
-      width="80%"
-      m="auto"
-      mt="100px"
-    >
-      {listTweets}
-    </SimpleGrid>
   );
 };
