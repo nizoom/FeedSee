@@ -36,7 +36,7 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
     const listTweets = listOfTweets.map((tweet) => {
       return (
         <GridItem justifySelf="center" key={uuidv4()}>
-          <TweetCard tweet={tweet} />
+          <TweetCard tweet={tweet} author={tweet.author} />
         </GridItem>
       );
     });
@@ -72,7 +72,7 @@ export const ViewRandomTweets: React.FC = () => {
         // const testTweets = await returnTestTweets();
         setListOfTweetsState(returnTestTweets);
         setIsLoading(false);
-      }, 5000);
+      }, 4000);
     }
   }, [isLoading]);
   const handleFetchRandomTwts = () => {
