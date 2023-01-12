@@ -33,17 +33,14 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet, author }) => {
   const handleMouseOnCard = () => {
     setSubscribeMenuStatus(true);
   };
-  const handleMouseOutOfCard = () => {
+  const closeMenu = () => {
     setSubscribeMenuStatus(false);
   };
+
   return (
     <Container position="relative" ml="2px">
       <Image src={TwtCrdImage} minH="400px" minWidth="300px" />
-      <Center
-        w="220px"
-        onMouseOver={handleMouseOnCard}
-        onMouseOut={handleMouseOutOfCard}
-      >
+      <Center w="220px" onMouseOver={handleMouseOnCard} onMouseOut={closeMenu}>
         <Card
           top="-300px"
           left="30px"
@@ -53,7 +50,11 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet, author }) => {
             <Heading mb="2%" fontSize="large">
               {tweet.author}
             </Heading>
-            <SubscribeMenu active={subscribeMenuStatus} author={author} />
+            <SubscribeMenu
+              active={subscribeMenuStatus}
+              author={author}
+              closeMenuWithCancel={closeMenu}
+            />
             <CardBody>
               <Text fontSize="medium" mb="2%">
                 {tweet.content}
@@ -70,8 +71,13 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet, author }) => {
 interface SubscribeMenuProps {
   active: boolean;
   author: string;
+  closeMenuWithCancel: () => void;
 }
-const SubscribeMenu: React.FC<SubscribeMenuProps> = ({ active, author }) => {
+const SubscribeMenu: React.FC<SubscribeMenuProps> = ({
+  active,
+  author,
+  closeMenuWithCancel,
+}) => {
   const [checkmarkStatus, setCharkMarkStatus] = useState<boolean>(false);
   const handleSubscribeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCharkMarkStatus(true);
@@ -79,8 +85,11 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({ active, author }) => {
       setCharkMarkStatus(false);
     }, 1500);
   };
+  const closeMenuBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    closeMenuWithCancel();
+  };
   return (
-    <Fade in={true}>
+    <Fade in={active}>
       <Popover placement="left">
         <PopoverTrigger>
           <Button
@@ -122,6 +131,7 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({ active, author }) => {
                 _hover={{
                   bg: "#3A0CA3",
                 }}
+                onClick={closeMenuBtn}
               >
                 Cancel
               </Button>
