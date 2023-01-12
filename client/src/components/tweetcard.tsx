@@ -14,9 +14,9 @@ import {
   PopoverContent,
   PopoverBody,
   PopoverArrow,
-  PopoverAnchor,
   Flex,
 } from "@chakra-ui/react";
+import { CheckCircleIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import { Tweet } from "./homecomponents";
 import TwtCrdImage from "../media/tweetcard.png";
@@ -72,10 +72,15 @@ interface SubscribeMenuProps {
   author: string;
 }
 const SubscribeMenu: React.FC<SubscribeMenuProps> = ({ active, author }) => {
-  const [checkmarkStatus, setCharkMarkStatus] = useState<boolean>(true);
-  const handleSubscribeClick = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const [checkmarkStatus, setCharkMarkStatus] = useState<boolean>(false);
+  const handleSubscribeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setCharkMarkStatus(true);
+    setTimeout(() => {
+      setCharkMarkStatus(false);
+    }, 1500);
+  };
   return (
-    <Fade in={active}>
+    <Fade in={true}>
       <Popover placement="left">
         <PopoverTrigger>
           <Button
@@ -93,7 +98,6 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({ active, author }) => {
             +
           </Button>
         </PopoverTrigger>
-        {/* <Portal backgroundColor="black"> */}
         <PopoverContent bg="black" mb="20px" borderRadius={30}>
           <PopoverArrow />
           <PopoverBody p={20} bg="#7209B7" borderRadius={30}>
@@ -121,13 +125,18 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({ active, author }) => {
               >
                 Cancel
               </Button>
-              {/* <Fade in={}>
-
-              </Fade> */}
+              <Fade in={checkmarkStatus}>
+                <CheckCircleIcon
+                  color="#2BF1AF"
+                  boxSize={40}
+                  position="absolute"
+                  top="0px"
+                  right="-10px"
+                />
+              </Fade>
             </Flex>
           </PopoverBody>
         </PopoverContent>
-        {/* </Portal> */}
       </Popover>
     </Fade>
   );
