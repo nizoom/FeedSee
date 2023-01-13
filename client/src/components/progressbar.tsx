@@ -19,7 +19,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ isLoading }) => {
       }, 4000);
     }
   }, [isLoading]);
-  console.log(isLoading);
   return (
     <Container>
       <style>

@@ -115,7 +115,7 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({
                 bg="#B5179E"
                 p={20}
                 borderRadius={10}
-                fontSize="large"
+                fontSize="medium"
                 _hover={{
                   bg: "#3A0CA3",
                 }}
@@ -133,7 +133,7 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({
                 }}
                 onClick={closeMenuBtn}
               >
-                Cancel
+                Close
               </Button>
               <Fade in={checkmarkStatus}>
                 <CheckCircleIcon

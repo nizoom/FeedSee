@@ -42,15 +42,17 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
     });
 
     return (
-      <SimpleGrid
-        minChildWidth="250px"
-        spacing="60px"
-        width="80%"
-        m="auto"
-        mt="100px"
-      >
-        {listTweets}
-      </SimpleGrid>
+      <Fade in={listOfTweets.length > 0 ? true : false}>
+        <SimpleGrid
+          minChildWidth="250px"
+          spacing="60px"
+          width="80%"
+          m="auto"
+          mt="100px"
+        >
+          {listTweets}
+        </SimpleGrid>
+      </Fade>
     );
   } // else
   return noTweets;
@@ -66,6 +68,7 @@ export const ViewRandomTweets: React.FC = () => {
 
   useEffect(() => {
     if (isLoading) {
+      setListOfTweetsState(undefined);
       setTimeout(async () => {
         // replace setTimeout with named function
         console.log("getting tweets");
@@ -116,10 +119,42 @@ export const ViewRandomTweets: React.FC = () => {
 
 export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const testTweet = useFetchTweets();
+  const [inputValue, setInputValue] = useState<string>("");
+  const [listOfTweetsState, setListOfTweetsState] = useState<
+    TweetComponentProps["listOfTweets"] | undefined
+  >();
+
+  const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyDownIsEnter = event.key === "Enter";
+    if (keyDownIsEnter && inputValue !== "") {
+      setIsLoading(true);
+      // begin search
+    }
+  };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const characterInput = event.target.value;
+    setInputValue(characterInput);
+  };
+  const returnTestTweets = useFetchTweets();
+  const handleeSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (inputValue !== "") {
+      setIsLoading(true);
+      setListOfTweetsState(undefined);
+      setTimeout(async () => {
+        // replace setTimeout with named function
+        console.log("getting tweets");
+        // const testTweets = await returnTestTweets();
+        setListOfTweetsState(returnTestTweets);
+        setIsLoading(false);
+      }, 4000);
+    } else {
+      // please enter a handle modal
+    }
+  };
   return (
     <Container>
-      {/* <Center gap="50px">
+      <Center gap="50px">
         <Input
           variant="flushed"
           placeholder="Enter handle"
@@ -129,27 +164,41 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
           height="50px"
           _placeholder={{ color: "white", fontSize: "smaller" }}
           borderRadius={10}
+          onKeyDown={handleEnterKey}
+          onChange={(event) => handleInputChange(event)}
+          value={inputValue}
         />
         <Button
           type="submit"
-          bg={theme.colors.DodgerBlue}
           p={15}
-          borderRadius={30}
-          fontSize="smaller"
+          borderRadius={20}
           transition=".25s ease-in"
+          fontWeight={400}
+          fontSize="small"
+          bg={theme.colors.DodgerBlue}
+          color="white"
+          w="90px"
+          h="50px"
           _hover={{
-            background: "#42b2d4",
-            color: "#B5179E",
+            color: "#4895EF",
+            backgroundColor: "#9437D1",
             transition: ".25 ease-in",
-            fontWeight: "700",
-            fontSize: "small",
+            fontSize: "medium",
+            w: "90px",
+            h: "50px",
+            fontWeight: "500",
           }}
+          onClick={handleeSubmit}
         >
           Submit
         </Button>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={testTweet} noTweets={null} /> */}
+      <RenderTweetsComponent listOfTweets={listOfTweetsState} noTweets={null} />
     </Container>
   );
+};
+
+export const ViewTweetsFrmInputedSubscription: React.FC = () => {
+  return <Container></Container>;
 };
