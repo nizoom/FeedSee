@@ -1,5 +1,5 @@
 import { Container } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../components/logo";
 import {
   ViewRandomTweets,
@@ -7,10 +7,19 @@ import {
   ViewTweetsFrmSubscription,
 } from "../components/homecomponents";
 import SignOutAndGoBackBtns from "../components/signout&back";
+import { TweetComponentProps } from "../components/homecomponents";
 
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };
 }) => {
+  interface FeedState extends TweetComponentProps {
+    isLoading: boolean;
+  }
+  const [feedState, setFeedState] = useState<FeedState>({
+    isLoading: false,
+    noTweets: null,
+    listOfTweets: undefined,
+  });
   const displayViewSelection = () => {
     const selectedViewType = props.history.location.state.pathSelection;
     switch (selectedViewType) {
