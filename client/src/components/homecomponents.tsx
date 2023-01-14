@@ -27,12 +27,10 @@ export interface Tweet {
 
 export interface TweetComponentProps {
   listOfTweets: Tweet[] | undefined;
-  noTweets: null;
 }
 
 export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   listOfTweets,
-  noTweets,
 }) => {
   if (listOfTweets) {
     // if there are tweets
@@ -57,36 +55,19 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
         </SimpleGrid>
       </Fade>
     );
-  } // else
-  return noTweets;
+  } // else return none found msg IMPLEMENT LATER
+  return null;
 };
-
-export const ViewRandomTweets: React.FC = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [listOfTweetsState, setListOfTweetsState] = useState<
-    TweetComponentProps["listOfTweets"] | undefined
-  >();
-
-  const returnTestTweets = useFetchTweets();
-
-  useEffect(() => {
-    if (isLoading) {
-      setListOfTweetsState(undefined);
-      setTimeout(async () => {
-        // replace setTimeout with named function
-        console.log("getting tweets");
-        // const testTweets = await returnTestTweets();
-        setListOfTweetsState(returnTestTweets);
-        setIsLoading(false);
-      }, 4000);
-    }
-  }, [isLoading]);
-  const handleFetchRandomTwts = () => {
-    setListOfTweetsState(undefined);
-    setIsLoading(true);
-    // useEffect is triggered and handles the rest
-  };
-
+interface TweetViewFuncs {
+  handleSearchInit: (string) => void;
+  isLoading: boolean;
+  tweets: Tweet[] | undefined;
+}
+export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
+  handleSearchInit,
+  isLoading,
+  tweets,
+}) => {
   return (
     <Container>
       <Flex direction="column">
@@ -105,52 +86,40 @@ export const ViewRandomTweets: React.FC = () => {
               fontWeight: "700",
               fontSize: "20px",
             }}
-            onClick={handleFetchRandomTwts}
+            onClick={handleSearchInit}
           >
             Randomize
           </Button>
         </Center>
         <ProgressBar isLoading={isLoading} />
-        <RenderTweetsComponent
-          listOfTweets={listOfTweetsState}
-          noTweets={null}
-        />
+        <RenderTweetsComponent listOfTweets={tweets} />
       </Flex>
     </Container>
   );
 };
 
-export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
+  handleSearchInit,
+  isLoading,
+  tweets,
+}) => {
   const [inputValue, setInputValue] = useState<string>("");
-  const [listOfTweetsState, setListOfTweetsState] = useState<
-    TweetComponentProps["listOfTweets"] | undefined
-  >();
-
-  const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const keyDownIsEnter = event.key === "Enter";
-    if (keyDownIsEnter && inputValue !== "") {
-      setIsLoading(true);
-      // begin search
-    }
-  };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const characterInput = event.target.value;
     setInputValue(characterInput);
   };
-  const returnTestTweets = useFetchTweets();
+
+  const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyDownIsEnter = event.key === "Enter";
+    if (keyDownIsEnter && inputValue !== "") {
+      handleSearchInit(inputValue);
+    }
+  };
+
   const handleeSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (inputValue !== "") {
-      setIsLoading(true);
-      setListOfTweetsState(undefined);
-      setTimeout(async () => {
-        // replace setTimeout with named function
-        console.log("getting tweets");
-        // const testTweets = await returnTestTweets();
-        setListOfTweetsState(returnTestTweets);
-        setIsLoading(false);
-      }, 4000);
+      handleSearchInit(inputValue);
     } else {
       // please enter a handle modal
     }
@@ -197,36 +166,24 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
         </Button>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={listOfTweetsState} noTweets={null} />
+      <RenderTweetsComponent listOfTweets={tweets} />
     </Container>
   );
 };
 
-export const ViewTweetsFrmSubscription: React.FC = () => {
+export const ViewTweetsFrmSubscription: React.FC<TweetViewFuncs> = ({
+  handleSearchInit,
+  isLoading,
+  tweets,
+}) => {
   const temporaryNames = ["Lebron", "Rihanna", "Conan", "Cleetus", "ryyde"];
   const [currentlyViewing, setCurrentlyViewing] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [listOfTweetsState, setListOfTweetsState] = useState<
-    TweetComponentProps["listOfTweets"] | undefined
-  >();
-  const returnTestTweets = useFetchTweets();
 
   const getSelectionFromChildComp = (sub: string) => {
     setCurrentlyViewing(sub);
-    setIsLoading(true);
+    handleSearchInit(sub);
   };
-  useEffect(() => {
-    if (currentlyViewing !== "") {
-      setListOfTweetsState(undefined);
-      setTimeout(async () => {
-        // replace setTimeout with named function
-        console.log("getting tweets");
-        // const testTweets = await returnTestTweets();
-        setListOfTweetsState(returnTestTweets);
-        setIsLoading(false);
-      }, 4000);
-    }
-  }, [currentlyViewing]);
+
   return (
     <Container>
       <Center position={"relative"} zIndex="10">
@@ -241,7 +198,7 @@ export const ViewTweetsFrmSubscription: React.FC = () => {
         </Flex>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={listOfTweetsState} noTweets={null} />
+      <RenderTweetsComponent listOfTweets={tweets} />
     </Container>
   );
 };
