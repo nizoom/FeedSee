@@ -11,13 +11,22 @@ import SignOutAndGoBackBtns from "../components/signout&back";
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };
 }) => {
+  const displayViewSelection = () => {
+    const selectedViewType = props.history.location.state.pathSelection;
+    switch (selectedViewType) {
+      case "Randomize":
+        return <ViewRandomTweets />;
+      case "Enter handle":
+        return <ViewTweetsFrmInputedHandle />;
+      case "Pick from subscriptions":
+        return <ViewTweetsFrmSubscription />;
+    }
+  };
   return (
     <Container className="landingpage-wrapper">
       <Logo />
       <SignOutAndGoBackBtns />
-      {/* <ViewRandomTweets /> */}
-      {/* <ViewTweetsFrmInputedHandle /> */}
-      <ViewTweetsFrmSubscription />
+      {displayViewSelection()}
     </Container>
   );
 };
