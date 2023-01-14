@@ -8,13 +8,17 @@ import {
   Input,
   SimpleGrid,
   Fade,
+  Text,
+  Box,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
 import useFetchTweets from "../customhooks/usefetchtweets";
 import TweetCard from "./tweetcard";
 import ProgressBar from "./progressbar";
+import SubsList from "./subslist";
 import { v4 as uuidv4 } from "uuid";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export interface Tweet {
   author: string;
@@ -199,6 +203,25 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
   );
 };
 
-export const ViewTweetsFrmInputedSubscription: React.FC = () => {
-  return <Container></Container>;
+export const ViewTweetsFrmSubscription: React.FC = () => {
+  const temporaryNames = ["Lebron", "Rihanna", "Conan", "Cleetus", "ryyde"];
+  const [currentlyViewing, setCurrentlyViewing] = useState<string>("");
+  const getSelectionFromChildComp = (sub: string) => {
+    setCurrentlyViewing(sub);
+  };
+  return (
+    <Container>
+      <Center>
+        <Flex direction="row-reverse" gap={40}>
+          <SubsList
+            listOfSubs={temporaryNames}
+            sendSelectionToParent={getSelectionFromChildComp}
+          />
+          <Box bg="#4895EF" p={10} w="200px">
+            <Text>{currentlyViewing} </Text>
+          </Box>
+        </Flex>
+      </Center>
+    </Container>
+  );
 };

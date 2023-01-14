@@ -4,6 +4,7 @@ import Logo from "../components/logo";
 import {
   ViewRandomTweets,
   ViewTweetsFrmInputedHandle,
+  ViewTweetsFrmSubscription,
 } from "../components/homecomponents";
 
 const HomePage = (props: {
@@ -13,7 +14,8 @@ const HomePage = (props: {
     <Container className="landingpage-wrapper">
       <Logo />
       {/* <ViewRandomTweets /> */}
-      <ViewTweetsFrmInputedHandle />
+      {/* <ViewTweetsFrmInputedHandle /> */}
+      <ViewTweetsFrmSubscription />
     </Container>
   );
 };
