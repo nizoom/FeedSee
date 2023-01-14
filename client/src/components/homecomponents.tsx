@@ -18,7 +18,6 @@ import TweetCard from "./tweetcard";
 import ProgressBar from "./progressbar";
 import SubsList from "./subslist";
 import { v4 as uuidv4 } from "uuid";
-import { ChevronDownIcon } from "@chakra-ui/icons";
 
 export interface Tweet {
   author: string;
@@ -206,12 +205,31 @@ export const ViewTweetsFrmInputedHandle: React.FC = ({}) => {
 export const ViewTweetsFrmSubscription: React.FC = () => {
   const temporaryNames = ["Lebron", "Rihanna", "Conan", "Cleetus", "ryyde"];
   const [currentlyViewing, setCurrentlyViewing] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [listOfTweetsState, setListOfTweetsState] = useState<
+    TweetComponentProps["listOfTweets"] | undefined
+  >();
+  const returnTestTweets = useFetchTweets();
+
   const getSelectionFromChildComp = (sub: string) => {
     setCurrentlyViewing(sub);
+    setIsLoading(true);
   };
+  useEffect(() => {
+    if (currentlyViewing !== "") {
+      setListOfTweetsState(undefined);
+      setTimeout(async () => {
+        // replace setTimeout with named function
+        console.log("getting tweets");
+        // const testTweets = await returnTestTweets();
+        setListOfTweetsState(returnTestTweets);
+        setIsLoading(false);
+      }, 4000);
+    }
+  }, [currentlyViewing]);
   return (
     <Container>
-      <Center>
+      <Center position={"relative"} zIndex="10">
         <Flex direction="row-reverse" gap={40}>
           <SubsList
             listOfSubs={temporaryNames}
@@ -222,6 +240,8 @@ export const ViewTweetsFrmSubscription: React.FC = () => {
           </Box>
         </Flex>
       </Center>
+      <ProgressBar isLoading={isLoading} />
+      <RenderTweetsComponent listOfTweets={listOfTweetsState} noTweets={null} />
     </Container>
   );
 };

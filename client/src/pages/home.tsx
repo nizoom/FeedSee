@@ -1,4 +1,4 @@
-import { Container, Progress } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import React from "react";
 import Logo from "../components/logo";
 import {
@@ -6,6 +6,7 @@ import {
   ViewTweetsFrmInputedHandle,
   ViewTweetsFrmSubscription,
 } from "../components/homecomponents";
+import SignOutAndGoBackBtns from "../components/signout&back";
 
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };
@@ -13,6 +14,7 @@ const HomePage = (props: {
   return (
     <Container className="landingpage-wrapper">
       <Logo />
+      <SignOutAndGoBackBtns />
       {/* <ViewRandomTweets /> */}
       {/* <ViewTweetsFrmInputedHandle /> */}
       <ViewTweetsFrmSubscription />
