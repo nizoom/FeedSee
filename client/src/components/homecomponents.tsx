@@ -10,6 +10,7 @@ import {
   Fade,
   Text,
   Box,
+  Divider,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
@@ -48,17 +49,23 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
     return (
       <Fade in={listOfTweets.length > 0 ? true : false}>
         {viewType !== "ViewTweetsFrmSubscription" ? (
-          <Box width="80%" m="auto">
-            <Text textDecor="underline"> Current Feed: {author}</Text>
+          <Box gridColumn="span">
+            <Text
+              fontSize="larger"
+              letterSpacing={2}
+              fontWeight={600}
+              fontFamily={`"Montserrat Alternates", sans-serif`}
+              mt={60}
+              mb={-70}
+              pb={5}
+              ml={20}
+              // center when screen is narrow
+            >
+              Current Feed: {author}
+            </Text>
           </Box>
         ) : null}
-        <SimpleGrid
-          minChildWidth="250px"
-          spacing="60px"
-          width="80%"
-          m="auto"
-          mt="100px"
-        >
+        <SimpleGrid minChildWidth="250px" spacing="60px" mt="100px">
           {listTweets}
         </SimpleGrid>
       </Fade>
