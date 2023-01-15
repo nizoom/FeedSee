@@ -27,13 +27,16 @@ export interface Tweet {
 
 export interface TweetComponentProps {
   listOfTweets: Tweet[] | undefined;
+  viewType: string;
 }
 
 export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   listOfTweets,
+  viewType,
 }) => {
   if (listOfTweets) {
     // if there are tweets
+    const { author } = listOfTweets[0];
     const listTweets = listOfTweets.map((tweet) => {
       return (
         <GridItem justifySelf="center" key={uuidv4()}>
@@ -44,6 +47,11 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
 
     return (
       <Fade in={listOfTweets.length > 0 ? true : false}>
+        {viewType !== "ViewTweetsFrmSubscription" ? (
+          <Box width="80%" m="auto">
+            <Text textDecor="underline"> Current Feed: {author}</Text>
+          </Box>
+        ) : null}
         <SimpleGrid
           minChildWidth="250px"
           spacing="60px"
@@ -79,20 +87,26 @@ export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
             fontFamily={`"Montserrat Alternates", sans-serif`}
             transition=".25s ease-in"
             w={200}
+            h={65}
             _hover={{
               background: "#42b2d4",
               color: "#B5179E",
               transition: ".25 ease-in",
               fontWeight: "700",
               fontSize: "20px",
+              h: "65",
             }}
             onClick={handleSearchInit}
           >
             Randomize
           </Button>
         </Center>
+
         <ProgressBar isLoading={isLoading} />
-        <RenderTweetsComponent listOfTweets={tweets} />
+        <RenderTweetsComponent
+          listOfTweets={tweets}
+          viewType="ViewRandomTweets"
+        />
       </Flex>
     </Container>
   );
@@ -166,7 +180,10 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
         </Button>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={tweets} />
+      <RenderTweetsComponent
+        listOfTweets={tweets}
+        viewType="ViewTweetsFrmInputedHandle"
+      />
     </Container>
   );
 };
@@ -198,7 +215,10 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewFuncs> = ({
         </Flex>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={tweets} />
+      <RenderTweetsComponent
+        listOfTweets={tweets}
+        viewType="ViewTweetsFrmSubscription"
+      />
     </Container>
   );
 };

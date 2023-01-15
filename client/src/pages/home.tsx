@@ -1,5 +1,5 @@
-import { Container } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Box, Container, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import Logo from "../components/logo";
 import {
   Tweet,
@@ -25,17 +25,20 @@ const HomePage = (props: {
 
   const updateState = (
     stateKey: string,
-    newValue: boolean | Tweet[] | undefined
+    newValue: boolean | Tweet[] | undefined | string
   ) => {
     let newState = { ...feedState, [stateKey]: newValue };
     setFeedState(newState);
   };
   // const handleLoadingChange = (loadState: boolean) => {};
+
   const returnTestTweets = useFetchTweets();
   const handleSearchInit = (handle: string = "randomize") => {
     // init fetch logic
     console.log("loading");
+    updateState("listOfTweets", undefined);
     updateState("isLoading", true);
+
     setTimeout(() => {
       // replace setTimeout with named function
       // if string is randomize than execute random search
