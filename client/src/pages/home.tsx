@@ -1,4 +1,4 @@
-import { Box, Container, Text } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import Logo from "../components/logo";
 import {
@@ -23,28 +23,17 @@ const HomePage = (props: {
     listOfTweets: undefined,
   });
 
-  const updateState = (
-    stateKey: string,
-    newValue: boolean | Tweet[] | undefined | string
-  ) => {
-    let newState = { ...feedState, [stateKey]: newValue };
-    setFeedState(newState);
-  };
-  // const handleLoadingChange = (loadState: boolean) => {};
-
   const returnTestTweets = useFetchTweets();
   const handleSearchInit = (handle: string = "randomize") => {
     // init fetch logic
     console.log("loading");
-    updateState("listOfTweets", undefined);
-    updateState("isLoading", true);
-
+    setFeedState({ isLoading: true, listOfTweets: undefined });
     setTimeout(() => {
       // replace setTimeout with named function
       // if string is randomize than execute random search
       // else do specific handle search
-      updateState("isLoading", false);
-      updateState("listOfTweets", returnTestTweets);
+      setFeedState({ isLoading: false, listOfTweets: returnTestTweets });
+      fetch("http://localhost:3001/api/users/Bob");
     }, 4000);
   };
   const displayViewSelection = () => {
