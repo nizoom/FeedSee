@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
-import useFetchTweets from "../customhooks/usefetchtweets";
+import useFetchTweets from "../customhooks/fetchtweets";
 import TweetCard from "./tweetcard";
 import ProgressBar from "./progressbar";
 import SubsList from "./subslist";

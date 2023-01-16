@@ -9,7 +9,8 @@ import {
 } from "../components/homecomponents";
 import SignOutAndGoBackBtns from "../components/signout&back";
 import { TweetComponentProps } from "../components/homecomponents";
-import useFetchTweets from "../customhooks/usefetchtweets";
+import useFetchTweets from "../customhooks/fetchtweets";
+import fetchTweets from "../customhooks/fetchtweets";
 
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };
@@ -23,21 +24,21 @@ const HomePage = (props: {
     listOfTweets: undefined,
   });
 
-  const returnTestTweets = useFetchTweets();
-  const handleSearchInit = (handle: string = "randomize") => {
+  const handleSearchInit = async (handle: string = "randomize") => {
     // init fetch logic
     console.log("loading");
     setFeedState({ isLoading: true, listOfTweets: undefined });
-    setTimeout(async () => {
-      // replace setTimeout with named function
-      // if string is randomize than execute random search
-      // else do specific handle search
-      setFeedState({ isLoading: false, listOfTweets: returnTestTweets });
-      const result: Response = await fetch(
-        "http://localhost:3001/api/users/Bob"
-      );
-      console.log(result);
-    }, 500);
+    const fetchResponse = await fetchTweets(handle);
+    // setTimeout(async () => {
+    // replace setTimeout with named function
+    // if string is randomize than execute random search
+    // else do specific handle search
+    //   setFeedState({ isLoading: false, listOfTweets: returnTestTweets });
+    //   const result: Response = await fetch(
+    //     "http://localhost:3001/api/users/Bob"
+    //   );
+    //   console.log(result);
+    // }, 3000);
   };
   const displayViewSelection = () => {
     const selectedViewType = props.history.location.state.pathSelection;
