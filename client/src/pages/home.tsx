@@ -28,13 +28,16 @@ const HomePage = (props: {
     // init fetch logic
     console.log("loading");
     setFeedState({ isLoading: true, listOfTweets: undefined });
-    setTimeout(() => {
+    setTimeout(async () => {
       // replace setTimeout with named function
       // if string is randomize than execute random search
       // else do specific handle search
       setFeedState({ isLoading: false, listOfTweets: returnTestTweets });
-      fetch("http://localhost:3001/api/users/Bob");
-    }, 4000);
+      const result: Response = await fetch(
+        "http://localhost:3001/api/users/Bob"
+      );
+      console.log(result);
+    }, 500);
   };
   const displayViewSelection = () => {
     const selectedViewType = props.history.location.state.pathSelection;

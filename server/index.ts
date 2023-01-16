@@ -1,18 +1,11 @@
 import { Request, Response } from "express";
-
 import path from "path";
 require("dotenv").config({ path: __dirname + "/./../.env" });
-// const { express, Request, Response } = require("express");
-// const app = express();
 import express, { Application } from "express";
-
-const app: Application = express();
-
 import cors from "cors";
 const indexRouter = require("./routes.js");
-
 const PORT = process.env.PORT || 3001; //process.env
-
+const app: Application = express();
 interface envVars {
   consumer_key: string;
   consumer_secret: string;
@@ -38,4 +31,8 @@ app.use("/", indexRouter);
 
 app.get("/api/users/:handle", (req: Request, res: Response) => {
   console.log("recieved");
+  res.send("success");
+});
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
 });
