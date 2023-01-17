@@ -10,4 +10,4 @@ const validateHandle = async (handle: string) => {
 
 export default validateHandle;
 
-validateHandle("Bob");
+validateHandle("//");

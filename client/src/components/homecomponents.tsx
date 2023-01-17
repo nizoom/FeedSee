@@ -11,6 +11,8 @@ import {
   Text,
   Box,
   Divider,
+  FormControl,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
@@ -125,42 +127,66 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
   tweets,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
-
+  const [errStatus, setErrStatus] = useState<boolean>(false);
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const characterInput = event.target.value;
     setInputValue(characterInput);
   };
 
+  const checkIfUsernameIsValid = (handle: string): boolean => {
+    const regex = new RegExp("^[a-zA-Z0-9_]*$");
+    const isValid: boolean = regex.test(handle) && handle !== "";
+    return isValid;
+  };
   const handleEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const keyDownIsEnter = event.key === "Enter";
-    if (keyDownIsEnter && inputValue !== "") {
-      handleSearchInit(inputValue);
+    if (keyDownIsEnter) {
+      if (checkIfUsernameIsValid(inputValue)) {
+        setErrStatus(false);
+        handleSearchInit(inputValue);
+      } else {
+        setErrStatus(true);
+      }
     }
   };
 
   const handleeSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (inputValue !== "") {
+    if (checkIfUsernameIsValid(inputValue)) {
+      setErrStatus(false);
       handleSearchInit(inputValue);
     } else {
-      // please enter a handle modal
+      setErrStatus(true);
     }
   };
   return (
     <Container>
       <Center gap="50px">
-        <Input
-          variant="flushed"
-          placeholder="Enter handle"
-          textIndent="10px"
-          color="white"
-          bg={theme.colors.DodgerBlue}
-          height="50px"
-          _placeholder={{ color: "white", fontSize: "smaller" }}
-          borderRadius={10}
-          onKeyDown={handleEnterKey}
-          onChange={(event) => handleInputChange(event)}
-          value={inputValue}
-        />
+        <FormControl isInvalid={errStatus}>
+          <Input
+            variant="flushed"
+            placeholder="Enter handle"
+            textIndent="10px"
+            color="white"
+            bg={theme.colors.DodgerBlue}
+            height="50px"
+            _placeholder={{ color: "white", fontSize: "smaller" }}
+            borderRadius={10}
+            onKeyDown={handleEnterKey}
+            onChange={(event) => handleInputChange(event)}
+            value={inputValue}
+            maxLength={15}
+            minLength={4}
+          />
+          <FormErrorMessage
+            color="#F72585"
+            bg="#3A0CA3"
+            p={6}
+            borderRadius={10}
+            position="absolute"
+          >
+            Only use letters A-Z, numbers, and underscores
+          </FormErrorMessage>
+        </FormControl>
         <Button
           type="submit"
           p={15}
