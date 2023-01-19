@@ -13,7 +13,7 @@ const FetchTweets = async (handle) => {
     `http://localhost:3001/api/users/${handle}`
   );
 
-  console.log(fetchResponse);
+  console.log(fetchResponse.body);
 
   //[typedTweet, typedTweet, typedTweet, typedTweet];
   return fetchResponse;

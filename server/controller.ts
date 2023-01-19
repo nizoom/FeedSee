@@ -1,7 +1,9 @@
 import validateHandle from "./processingfuncs/validatehandle";
-const controller = async (handle: string) => {
+import { NextFunction, Request, Response } from "express";
+
+const controller = async (handle: string, next: NextFunction) => {
   // 1. validate Handle
-  validateHandle(handle);
+  const validatedHandle = validateHandle(handle, next);
 };
 
 export default controller;

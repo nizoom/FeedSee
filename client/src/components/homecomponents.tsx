@@ -178,6 +178,7 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
             minLength={4}
           />
           <FormErrorMessage
+            mt="10px"
             color="#F72585"
             bg="#3A0CA3"
             p={6}
