@@ -1,10 +1,6 @@
-import { credentials } from "../index.module";
-import { TwitterApi } from "twitter-api-v2";
-import { NextFunction, Request, Response } from "express";
-import { readFileIntoBuffer } from "twitter-api-v2/dist/esm/v1/media-helpers.v1";
-import { nextTick } from "process";
-
-interface validHandleObj {
+import { NextFunction } from "express";
+import twitterClient from "./twitterClient";
+export interface validHandleObj {
   id: string;
   name: string;
   username: string;
@@ -24,20 +20,17 @@ const isInvalidHandleObj = (
   return responseObj.errors !== undefined;
 };
 
-const reportError = ({ message }: { message: string }) => {
-  // send the error to our logging service...
-};
-
-const validateHandle = async (handle: string, next: NextFunction) => {
-  const twitterClient = new TwitterApi(credentials.bearer_token);
-  const readOnlyClient = twitterClient.readOnly;
-
+const validateHandle = async (
+  handle: string,
+  next: NextFunction
+): Promise<validHandleObj> => {
   try {
-    const response = await readOnlyClient.v2.userByUsername(handle);
+    const response = await twitterClient().v2.userByUsername(handle);
     // console.log(response);
     if (isValidHandleObj(response)) {
-      const { data: validHandleObj } = response;
-      return validHandleObj;
+      const { data } = response;
+      const specifiedAcc = data as validHandleObj;
+      return specifiedAcc;
     } else if (isInvalidHandleObj(response)) {
       const errorDetails: string = response.errors[0]["detail"];
       throw new Error(errorDetails);
@@ -45,16 +38,16 @@ const validateHandle = async (handle: string, next: NextFunction) => {
     throw new Error("Search failed, please try again");
   } catch (err: unknown) {
     if (err instanceof Error) {
-      console.log(err.message);
       next(err);
-      return {
-        message: err.message,
-      };
     }
-  } finally {
   }
+
+  const satisfyingTS = {
+    id: "string",
+    name: "string",
+    username: "string",
+  } as validHandleObj;
+  return satisfyingTS;
 };
 
 export default validateHandle;
-
-// validateHandle("JoeBiden555z", next);

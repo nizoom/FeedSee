@@ -47,8 +47,8 @@ app.get(
     // console.log(credentials);
     const handle: string = req.params.handle;
     const responseFromController = await controller(handle, next);
-
-    // res.send({ title: "Here is the response" });
+    console.log(responseFromController);
+    res.send(responseFromController);
   }
 );
 

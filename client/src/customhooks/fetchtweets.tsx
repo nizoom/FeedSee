@@ -11,9 +11,16 @@ const FetchTweets = async (handle) => {
 
   const fetchResponse = await fetch(
     `http://localhost:3001/api/users/${handle}`
-  );
-
-  console.log(fetchResponse.body);
+  ).then((response) => {
+    if (response.body) {
+      let reader = response.body.getReader();
+      let decoder = new TextDecoder("utf-8");
+      return reader.read().then(function (result) {
+        console.log(decoder.decode(result.value));
+        return decoder.decode(result.value);
+      });
+    }
+  });
 
   //[typedTweet, typedTweet, typedTweet, typedTweet];
   return fetchResponse;
