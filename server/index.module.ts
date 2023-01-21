@@ -4,7 +4,7 @@ require("dotenv").config({ path: __dirname + "/./../.env" });
 import express, { Application } from "express";
 import cors from "cors";
 const indexRouter = require("./routes.js");
-const PORT = process.env.PORT || 3001; //process.env
+const PORT = process.env.PORT || 3001;
 const app: Application = express();
 import controller from "./controller";
 import { request, STATUS_CODES } from "http";
@@ -28,11 +28,6 @@ export const credentials = {
   //   access_token_secret: `${process.env.REACT_APP_ACCESS_TOKEN_SECRET}`,
 } as envVars;
 
-export interface expressMethods {
-  res: Response;
-  req: Request;
-  next: NextFunction;
-}
 app.use(cors());
 // --------------------------------
 // ---------------- ADD THIS ----------------

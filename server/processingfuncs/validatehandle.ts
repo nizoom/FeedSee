@@ -23,7 +23,7 @@ const isInvalidHandleObj = (
 const validateHandle = async (
   handle: string,
   next: NextFunction
-): Promise<validHandleObj> => {
+): Promise<any> => {
   try {
     const response = await twitterClient().v2.userByUsername(handle);
     // console.log(response);
@@ -42,12 +42,7 @@ const validateHandle = async (
     }
   }
 
-  const satisfyingTS = {
-    id: "string",
-    name: "string",
-    username: "string",
-  } as validHandleObj;
-  return satisfyingTS;
+  return;
 };
 
 export default validateHandle;
