@@ -19,17 +19,20 @@ const getTweetsFromFollowed = async (
   const wholeStringOfFollowedAccs = listOfFolowedUsernames.join(" OR ");
   const followedAccsQuery = cutAndReturnQueryString(wholeStringOfFollowedAccs);
   const tweetResponseObj = await twitterClient().v2.search(followedAccsQuery);
-
+  console.log(tweetResponseObj);
   const idsOfRecentTweetFromFollowedUsers: string[] =
     tweetResponseObj.data.data.map((tweetObj) => tweetObj.id);
   const listOfTweetsResponse = await twitterClient().v2.tweets(
     idsOfRecentTweetFromFollowedUsers,
-    { expansions: "user.fields": 'username' }
+    {
+      expansions: ["author_id"],
+      "tweet.fields": ["created_at", "author_id"],
+      "user.fields": ["name", "username"],
+    }
   );
-  console.log(
-    "🚀 ~ file: getTweets.ts:30 ~ listOfTweetsResponse",
-    listOfTweetsResponse
-  );
+  const { data, includes } = listOfTweetsResponse;
+  console.log("🚀 ~ file: getTweets.ts:34 ~ data", data);
+  console.log("🚀 ~ file: getTweets.ts:34 ~ includes", includes);
 };
 
 export default getTweetsFromFollowed;
@@ -45,3 +48,5 @@ const cutAndReturnQueryString = (wholeString: string): string => {
   );
   return syntacticallyCorrectShortenedQueryString;
 };
+
+// https://api.twitter.com/2/tweets?expansions=author_id&user.fields=username,name&ids=1616935003832582150,1616958246241316865
