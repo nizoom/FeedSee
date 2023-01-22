@@ -2,7 +2,10 @@
 import { NextFunction, Request, Response } from "express";
 import { credentials } from "./index.module";
 import getFollowedUsers from "./processingfuncs/getfollowedusers";
-import getTweetsFromFollowed from "./processingfuncs/getTweets";
+import {
+  fullTweetObject,
+  getTweetsFromFollowed,
+} from "./processingfuncs/getTweets";
 import validateHandle, {
   validHandleObj,
 } from "./processingfuncs/validatehandle";
@@ -20,7 +23,8 @@ const controller = async (handle: string, next: NextFunction) => {
   );
 
   //3. get tweets from followers
-  const tweetsFromFollowers = await getTweetsFromFollowed(followedUsers, next);
+  const tweetsFromFollowers: fullTweetObject[] | undefined =
+    await getTweetsFromFollowed(followedUsers, next);
 };
 
 export default controller;
