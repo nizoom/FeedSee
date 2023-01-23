@@ -49,23 +49,6 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
 
     return (
       <Fade in={listOfTweets.length > 0 ? true : false}>
-        {/* {viewType !== "ViewTweetsFrmSubscription" ? (
-          <Box gridColumn="span">
-            <Text
-              fontSize="larger"
-              letterSpacing={2}
-              fontWeight={600}
-              fontFamily={`"Montserrat Alternates", sans-serif`}
-              mt={60}
-              mb={-70}
-              pb={5}
-              ml={30}
-              // center when screen is narrow
-            >
-              Current Feed: {author}
-            </Text>
-          </Box>
-        ) : null} */}
         <SimpleGrid
           minChildWidth="250px"
           spacing="60px"
@@ -91,6 +74,9 @@ export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
   isLoading,
   tweets,
 }) => {
+  const handleRandomSearchClick = () => {
+    handleSearchInit("randomizeSearch");
+  };
   return (
     <Container>
       <Flex direction="column">
@@ -111,7 +97,7 @@ export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
               fontSize: "20px",
               h: "65",
             }}
-            onClick={handleSearchInit}
+            onClick={handleRandomSearchClick}
           >
             Randomize
           </Button>

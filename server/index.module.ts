@@ -39,6 +39,16 @@ app.get(
     return;
   }
 );
+app.get(
+  "/api/users/randomizeSearch",
+  async (req: Request, res: Response, next: NextFunction) => {
+    // console.log(credentials);
+    const responseFromController = await controller("randomize", next);
+    console.log(responseFromController);
+    res.status(200).send(responseFromController);
+    return;
+  }
+);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log("in next block");

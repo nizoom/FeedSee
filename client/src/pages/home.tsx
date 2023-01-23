@@ -24,7 +24,7 @@ const HomePage = (props: {
     handle: "",
   });
 
-  const handleSearchInit = async (handle: string = "randomize") => {
+  const handleSearchInit = async (handle: string = "randomizeSearch") => {
     // init fetch logic
     console.log("loading");
     setFeedState({ isLoading: true, listOfTweets: undefined, handle: "" });

@@ -5,13 +5,15 @@ export interface ReturnbObject {
   responseStatus: number;
 }
 export const FetchTweets = async (handle) => {
-  // const testTweet = {
-  //   author: "Bob",
-  //   content: "this is Bob's tweet",
-  //   date: new Date(),
-  // };
-  // const typedTweet = testTweet as Tweet;
+  if (handle === "randomizeSearch") {
+    const fetchResponse = await initFetch("randomizeSearch");
+    return fetchResponse;
+  }
+  const fetchResponse = await initFetch(handle);
+  return fetchResponse;
+};
 
+const initFetch = async (handle: string) => {
   const fetchResponse = await fetch(
     `http://localhost:3001/api/users/${handle}`
   ).then((response) => {
@@ -26,6 +28,5 @@ export const FetchTweets = async (handle) => {
       });
     }
   });
-
   return fetchResponse;
 };

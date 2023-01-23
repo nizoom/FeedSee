@@ -97,8 +97,8 @@ const SubscribeMenu: React.FC<SubscribeMenuProps> = ({
         <PopoverTrigger>
           <Button
             position="absolute"
-            right="-90px"
-            top="50%"
+            right="-70px"
+            top="40%"
             bg={theme.colors.DodgerBlue}
             borderRadius="50%"
             w="45px"
