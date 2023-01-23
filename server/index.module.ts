@@ -35,7 +35,8 @@ app.get(
     const handle: string = req.params.handle;
     const responseFromController = await controller(handle, next);
     console.log(responseFromController);
-    res.send(responseFromController);
+    res.status(200).send(responseFromController);
+    return;
   }
 );
 

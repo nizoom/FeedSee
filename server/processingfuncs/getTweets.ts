@@ -4,7 +4,7 @@ import twitterClient from "./twitterClient";
 import { TweetV2, UserV2 } from "twitter-api-v2";
 
 export interface fullTweetObject {
-  name: string;
+  author: string;
   username: string;
   text: string;
   profileUrl: string;
@@ -112,7 +112,7 @@ const matchUpTweetsWithTheirAuthor = (
       (authorObj) => authorObj.id === tweet.author_id
     );
     return {
-      name: matchingAuthor.name,
+      author: matchingAuthor.name,
       username: matchingAuthor.username,
       text: tweet.text,
       profileUrl: `https://twitter.com/${matchingAuthor.username}`,

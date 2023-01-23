@@ -3,7 +3,7 @@ import Typography from "@material-ui/core/Typography";
 import "./wordcloud.css";
 import gif from "./../../media/tweetgifv7.gif";
 import Grid from "@material-ui/core/Grid";
-import ToolTip from "./../tooltip/tooltip";
+import ToolTip from "../tooltip/tooltip";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const MyCloud = (props) => {
@@ -180,9 +180,7 @@ const MyCloud = (props) => {
             style={{ borderRadius: "16px", float: "left" }}
           />
 
-          <div className="cloud" className={checkForShove()}>
-            {droplets}
-          </div>
+          <div className="cloud">{droplets}</div>
         </div>
       </div>
     </Grid>

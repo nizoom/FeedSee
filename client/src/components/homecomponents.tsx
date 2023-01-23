@@ -10,13 +10,11 @@ import {
   Fade,
   Text,
   Box,
-  Divider,
   FormControl,
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
-import useFetchTweets from "../customhooks/fetchtweets";
 import TweetCard from "./tweetcard";
 import ProgressBar from "./progressbar";
 import SubsList from "./subslist";
@@ -24,8 +22,10 @@ import { v4 as uuidv4 } from "uuid";
 
 export interface Tweet {
   author: string;
-  content: string;
-  date: Date;
+  username: string;
+  text: string;
+  profileUrl: string;
+  timeStamp: string;
 }
 
 export interface TweetComponentProps {

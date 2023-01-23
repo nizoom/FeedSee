@@ -57,9 +57,9 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet, author }) => {
             />
             <CardBody>
               <Text fontSize="medium" mb="2%">
-                {tweet.content}
+                {tweet.text}
               </Text>
-              <Text fontSize="small">{tweet.date.toString()}</Text>
+              <Text fontSize="small">{tweet.timeStamp}</Text>
             </CardBody>
           </CardHeader>
         </Card>

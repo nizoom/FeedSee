@@ -1,5 +1,5 @@
 // import validateHandle from "./processingfuncs/validatehandle";
-import { NextFunction, Request, Response } from "express";
+import { NextFunction } from "express";
 import getFollowedUsers from "./processingfuncs/getfollowedusers";
 import {
   fullTweetObject,
