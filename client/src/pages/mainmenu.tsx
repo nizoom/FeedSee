@@ -56,7 +56,7 @@ const Feature: React.FC<FeatureContent> = (props: FeatureContent) => {
 const MainMenu: React.FC = () => {
   return (
     <Container className="landingpage-wrapper">
-      <Logo />
+      <Logo handle={""} />
       <Center mt={120}>
         <Heading
           as="h1"

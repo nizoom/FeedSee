@@ -50,7 +50,7 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
 
     return (
       <Fade in={listOfTweets.length > 0 ? true : false}>
-        {viewType !== "ViewTweetsFrmSubscription" ? (
+        {/* {viewType !== "ViewTweetsFrmSubscription" ? (
           <Box gridColumn="span">
             <Text
               fontSize="larger"
@@ -60,14 +60,21 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
               mt={60}
               mb={-70}
               pb={5}
-              ml={20}
+              ml={30}
               // center when screen is narrow
             >
               Current Feed: {author}
             </Text>
           </Box>
-        ) : null}
-        <SimpleGrid minChildWidth="250px" spacing="60px" mt="100px">
+        ) : null} */}
+        <SimpleGrid
+          minChildWidth="250px"
+          spacing="60px"
+          mt="100px"
+          w="90%"
+          ml="auto"
+          mr="auto"
+        >
           {listTweets}
         </SimpleGrid>
       </Fade>

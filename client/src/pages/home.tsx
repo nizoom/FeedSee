@@ -16,22 +16,28 @@ const HomePage = (props: {
   interface FeedState {
     isLoading: boolean;
     listOfTweets: Tweet[] | undefined;
+    handle: string;
   }
   const [feedState, setFeedState] = useState<FeedState>({
     isLoading: false,
     listOfTweets: undefined,
+    handle: "",
   });
 
   const handleSearchInit = async (handle: string = "randomize") => {
     // init fetch logic
     console.log("loading");
-    setFeedState({ isLoading: true, listOfTweets: undefined });
+    setFeedState({ isLoading: true, listOfTweets: undefined, handle: "" });
     setTimeout(async () => {
       const fetchResponse = await FetchTweets(handle);
       const { data, responseStatus } = fetchResponse as ReturnbObject;
       if (responseStatus === 200) {
         const tweets = JSON.parse(data);
-        setFeedState({ isLoading: false, listOfTweets: tweets });
+        setFeedState({
+          isLoading: false,
+          listOfTweets: tweets,
+          handle: handle,
+        });
       }
     }, 2000);
   };
@@ -66,7 +72,7 @@ const HomePage = (props: {
   };
   return (
     <Container className="landingpage-wrapper">
-      <Logo />
+      <Logo handle={feedState.handle} />
       <SignOutAndGoBackBtns />
       {displayViewSelection()}
     </Container>

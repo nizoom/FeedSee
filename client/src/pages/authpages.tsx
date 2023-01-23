@@ -41,7 +41,7 @@ const AuthPages = (props: {
 
   return (
     <div className="auth-page-wrapper">
-      <Logo />
+      <Logo handle={""} />
       <Box>
         <div>
           <Show above="1100px">
