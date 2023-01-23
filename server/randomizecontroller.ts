@@ -1,18 +1,20 @@
-// import validateHandle from "./processingfuncs/validatehandle";
 import { NextFunction } from "express";
 import getFollowedUsers from "./processingfuncs/getfollowedusers";
 import {
   fullTweetObject,
   getTweetsFromFollowed,
 } from "./processingfuncs/getTweets";
+import { orderTweetsByTime } from "./processingfuncs/orderbytime";
+import selectRandomCeleb from "./processingfuncs/selectrandomceleb";
 import validateHandle, {
   validHandleObj,
 } from "./processingfuncs/validatehandle";
-import { orderTweetsByTime } from "./processingfuncs/orderbytime";
-const controller = async (handle: string, next: NextFunction) => {
-  //   1. validate Handle
+const randomizeController = async (next: NextFunction) => {
+  // randomly pick one of hardcoded list
+  const randomHandle: string = selectRandomCeleb();
+
   const validatedHandle: validHandleObj | undefined = await validateHandle(
-    handle,
+    randomHandle,
     next
   );
 
@@ -28,7 +30,7 @@ const controller = async (handle: string, next: NextFunction) => {
 
   //4. organize tweets in chronological order
   const tweetsInChronoOrder = orderTweetsByTime(tweetsFromFollowers, next);
-  return tweetsInChronoOrder;
+  return [tweetsInChronoOrder, validatedHandle?.name];
 };
 
-export default controller;
+export default randomizeController;

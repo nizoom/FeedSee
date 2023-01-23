@@ -7,7 +7,7 @@ const indexRouter = require("./routes.js");
 const PORT = process.env.PORT || 3001;
 const app: Application = express();
 import controller from "./controller";
-import { request, STATUS_CODES } from "http";
+import randomizeController from "./randomizecontroller";
 interface envVars {
   api_key: string;
   api_secret: string;
@@ -29,21 +29,22 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.use("/", indexRouter);
 
 app.get(
-  "/api/users/:handle",
+  "/api/randomizesearch",
   async (req: Request, res: Response, next: NextFunction) => {
-    // console.log(credentials);
-    const handle: string = req.params.handle;
-    const responseFromController = await controller(handle, next);
+    console.log("in randomize endpoint here");
+    const responseFromController = await randomizeController(next);
     console.log(responseFromController);
     res.status(200).send(responseFromController);
     return;
   }
 );
+
 app.get(
-  "/api/users/randomizeSearch",
+  "/api/users/:handle",
   async (req: Request, res: Response, next: NextFunction) => {
-    // console.log(credentials);
-    const responseFromController = await controller("randomize", next);
+    console.log("in regular search endpoint");
+    const handle: string = req.params.handle;
+    const responseFromController = await controller(handle, next);
     console.log(responseFromController);
     res.status(200).send(responseFromController);
     return;

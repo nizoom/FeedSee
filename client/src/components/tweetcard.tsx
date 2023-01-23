@@ -27,7 +27,6 @@ interface TweetCardProps {
   tweet: Tweet;
 }
 const TweetCard: React.FC<TweetCardProps> = ({ tweet }) => {
-  console.log(tweet);
   const [subscribeMenuStatus, setSubscribeMenuStatus] =
     useState<boolean>(false);
   const handleMouseOnCard = () => {

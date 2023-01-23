@@ -75,7 +75,7 @@ export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
   tweets,
 }) => {
   const handleRandomSearchClick = () => {
-    handleSearchInit("randomizeSearch");
+    handleSearchInit("randomizesearch");
   };
   return (
     <Container>

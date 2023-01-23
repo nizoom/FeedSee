@@ -1,5 +1,5 @@
 import { Container } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../components/logo";
 import {
   Tweet,
@@ -24,19 +24,21 @@ const HomePage = (props: {
     handle: "",
   });
 
-  const handleSearchInit = async (handle: string = "randomizeSearch") => {
+  const handleSearchInit = async (handle: string = "randomizesearch") => {
     // init fetch logic
     console.log("loading");
     setFeedState({ isLoading: true, listOfTweets: undefined, handle: "" });
     setTimeout(async () => {
+      console.log(handle);
       const fetchResponse = await FetchTweets(handle);
       const { data, responseStatus } = fetchResponse as ReturnbObject;
       if (responseStatus === 200) {
         const tweets = JSON.parse(data);
+        console.log(tweets);
         setFeedState({
           isLoading: false,
-          listOfTweets: tweets,
-          handle: handle,
+          listOfTweets: handle === "randomizesearch" ? tweets[0] : tweets,
+          handle: handle === "randomizesearch" ? tweets[1] : handle,
         });
       }
     }, 2000);
