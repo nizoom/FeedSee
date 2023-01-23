@@ -22,7 +22,7 @@ const Logo: React.FC<LogoProps> = ({ handle }) => {
             pt="0"
             alignSelf={"center"}
             fontWeight="500"
-            letterSpacing="8px"
+            letterSpacing="6px"
           >
             - {handle}
           </Text>

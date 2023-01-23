@@ -19,7 +19,6 @@ export const FetchTweets = async (handle) => {
       let reader = response.body.getReader();
       let decoder = new TextDecoder("utf-8");
       return reader.read().then(function (result) {
-        console.log(decoder.decode(result.value));
         return {
           data: decoder.decode(result.value),
           responseStatus: response.status,

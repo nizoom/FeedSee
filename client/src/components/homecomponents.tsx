@@ -39,11 +39,10 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
 }) => {
   if (listOfTweets) {
     // if there are tweets
-    const { author } = listOfTweets[0];
     const listTweets = listOfTweets.map((tweet) => {
       return (
-        <GridItem justifySelf="center" key={uuidv4()}>
-          <TweetCard tweet={tweet} author={tweet.author} />
+        <GridItem justifySelf="center" key={uuidv4()} maxH="400px">
+          <TweetCard tweet={tweet} />
         </GridItem>
       );
     });
