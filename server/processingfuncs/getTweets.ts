@@ -8,7 +8,7 @@ export interface fullTweetObject {
   username: string;
   text: string;
   profileUrl: string;
-  timeStamp: Date | null;
+  timeStamp: string | null;
 }
 export const getTweetsFromFollowed = async (
   followedUsers: validHandleObj[] | undefined,
@@ -116,7 +116,7 @@ const matchUpTweetsWithTheirAuthor = (
       username: matchingAuthor.username,
       text: tweet.text,
       profileUrl: `https://twitter.com/${matchingAuthor.username}`,
-      timeStamp: !tweet.created_at ? null : new Date(tweet.created_at), //new Date(tweet.created_at);
+      timeStamp: !tweet.created_at ? null : tweet.created_at, //new Date(tweet.created_at);
     } as fullTweetObject;
   });
   return listOfTweetObjectsWithAuthorData;

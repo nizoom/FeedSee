@@ -9,10 +9,6 @@ const app: Application = express();
 import controller from "./controller";
 import { request, STATUS_CODES } from "http";
 interface envVars {
-  // consumer_key: string;
-  // consumer_secret: string;
-  // access_token_key: string;
-  // access_token_secret: string;
   api_key: string;
   api_secret: string;
   bearer_token: string;
@@ -22,10 +18,6 @@ export const credentials = {
   api_key: `${process.env.REACT_APP_API_KEY}`,
   api_secret: `${process.env.REACT_APP_API_SECRET}`,
   bearer_token: `${process.env.REACT_APP_BEARER_TOKEN}`,
-  //   consumer_key: `${process.env.REACT_APP_CONSUMER_KEY}`,
-  //   consumer_secret: `${process.env.REACT_APP_CONSUMER_SECRET}`,
-  //   access_token_key: `${process.env.REACT_APP_ACCESS_TOKEN_KEY}`,
-  //   access_token_secret: `${process.env.REACT_APP_ACCESS_TOKEN_SECRET}`,
 } as envVars;
 
 app.use(cors());

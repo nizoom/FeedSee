@@ -1,6 +1,5 @@
 // import validateHandle from "./processingfuncs/validatehandle";
 import { NextFunction, Request, Response } from "express";
-import { credentials } from "./index.module";
 import getFollowedUsers from "./processingfuncs/getfollowedusers";
 import {
   fullTweetObject,
@@ -9,6 +8,7 @@ import {
 import validateHandle, {
   validHandleObj,
 } from "./processingfuncs/validatehandle";
+import { orderTweetsByTime } from "./processingfuncs/orderbytime";
 const controller = async (handle: string, next: NextFunction) => {
   //   1. validate Handle
   const validatedHandle: validHandleObj | undefined = await validateHandle(
@@ -25,6 +25,10 @@ const controller = async (handle: string, next: NextFunction) => {
   //3. get tweets from followers
   const tweetsFromFollowers: fullTweetObject[] | undefined =
     await getTweetsFromFollowed(followedUsers, next);
+
+  //4. organize tweets in chronological order
+  const tweetsInChronoOrder = orderTweetsByTime(tweetsFromFollowers, next);
+  return tweetsInChronoOrder;
 };
 
 export default controller;
