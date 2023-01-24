@@ -4,7 +4,6 @@ export interface ReturnbObject {
 }
 export const FetchTweets = async (handle) => {
   if (handle === "randomizesearch") {
-    console.log("getting random feed");
     const fetchResponse = await initFetch(
       `http://localhost:3001/api/randomizesearch`
     );

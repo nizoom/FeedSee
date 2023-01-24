@@ -12,6 +12,7 @@ import {
   Box,
   FormControl,
   FormErrorMessage,
+  PopoverAnchor,
 } from "@chakra-ui/react";
 import { theme } from "../pages/css/theme";
 import "@fontsource/montserrat-alternates";
@@ -19,6 +20,7 @@ import TweetCard from "./tweetcard";
 import ProgressBar from "./progressbar";
 import SubsList from "./subslist";
 import { v4 as uuidv4 } from "uuid";
+import ResponseErrorMsg from "./errmsg";
 
 export interface Tweet {
   author: string;
@@ -30,12 +32,10 @@ export interface Tweet {
 
 export interface TweetComponentProps {
   listOfTweets: Tweet[] | undefined;
-  viewType: string;
 }
 
 export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   listOfTweets,
-  viewType,
 }) => {
   if (listOfTweets) {
     // if there are tweets
@@ -64,12 +64,13 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   } // else return none found msg IMPLEMENT LATER
   return null;
 };
-interface TweetViewFuncs {
+interface TweetViewProps {
   handleSearchInit: (string) => void;
   isLoading: boolean;
   tweets: Tweet[] | undefined;
+  errMsg: string;
 }
-export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
+export const ViewRandomTweets: React.FC<TweetViewProps> = ({
   handleSearchInit,
   isLoading,
   tweets,
@@ -104,19 +105,17 @@ export const ViewRandomTweets: React.FC<TweetViewFuncs> = ({
         </Center>
 
         <ProgressBar isLoading={isLoading} />
-        <RenderTweetsComponent
-          listOfTweets={tweets}
-          viewType="ViewRandomTweets"
-        />
+        <RenderTweetsComponent listOfTweets={tweets} />
       </Flex>
     </Container>
   );
 };
 
-export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
+export const ViewTweetsFrmInputedHandle: React.FC<TweetViewProps> = ({
   handleSearchInit,
   isLoading,
   tweets,
+  errMsg,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [errStatus, setErrStatus] = useState<boolean>(false);
@@ -179,8 +178,11 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
           >
             Only use letters A-Z, numbers, and underscores
           </FormErrorMessage>
+          <ResponseErrorMsg modalMsg={errMsg} />
         </FormControl>
+
         <Button
+          alignSelf={"start"}
           type="submit"
           p={15}
           borderRadius={20}
@@ -206,15 +208,12 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewFuncs> = ({
         </Button>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent
-        listOfTweets={tweets}
-        viewType="ViewTweetsFrmInputedHandle"
-      />
+      <RenderTweetsComponent listOfTweets={tweets} />
     </Container>
   );
 };
 
-export const ViewTweetsFrmSubscription: React.FC<TweetViewFuncs> = ({
+export const ViewTweetsFrmSubscription: React.FC<TweetViewProps> = ({
   handleSearchInit,
   isLoading,
   tweets,
@@ -241,10 +240,7 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewFuncs> = ({
         </Flex>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent
-        listOfTweets={tweets}
-        viewType="ViewTweetsFrmSubscription"
-      />
+      <RenderTweetsComponent listOfTweets={tweets} />
     </Container>
   );
 };

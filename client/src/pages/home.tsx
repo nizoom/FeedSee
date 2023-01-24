@@ -17,19 +17,25 @@ const HomePage = (props: {
     isLoading: boolean;
     listOfTweets: Tweet[] | undefined;
     handle: string;
+    err: string;
   }
   const [feedState, setFeedState] = useState<FeedState>({
     isLoading: false,
     listOfTweets: undefined,
     handle: "",
+    err: "",
   });
 
   const handleSearchInit = async (handle: string = "randomizesearch") => {
     // init fetch logic
     console.log("loading");
-    setFeedState({ isLoading: true, listOfTweets: undefined, handle: "" });
+    setFeedState({
+      isLoading: true,
+      listOfTweets: undefined,
+      handle: "",
+      err: "",
+    });
     setTimeout(async () => {
-      console.log(handle);
       const fetchResponse = await FetchTweets(handle);
       const { data, responseStatus } = fetchResponse as ReturnbObject;
       if (responseStatus === 200) {
@@ -37,9 +43,27 @@ const HomePage = (props: {
         console.log(tweets);
         setFeedState({
           isLoading: false,
+          err: "",
           listOfTweets: handle === "randomizesearch" ? tweets[0] : tweets,
           handle: handle === "randomizesearch" ? tweets[1] : handle,
         });
+      } else {
+        const errMsg = data;
+        setFeedState({
+          isLoading: false,
+          err: errMsg,
+          listOfTweets: undefined,
+          handle: "",
+        });
+        setTimeout(() => {
+          //remoing err message
+          setFeedState({
+            isLoading: false,
+            err: "",
+            listOfTweets: undefined,
+            handle: "",
+          });
+        }, 3000);
       }
     }, 2000);
   };
@@ -52,6 +76,7 @@ const HomePage = (props: {
             handleSearchInit={handleSearchInit}
             isLoading={feedState.isLoading}
             tweets={feedState.listOfTweets}
+            errMsg={feedState.err}
           />
         );
       case "Enter handle":
@@ -60,6 +85,7 @@ const HomePage = (props: {
             handleSearchInit={handleSearchInit}
             isLoading={feedState.isLoading}
             tweets={feedState.listOfTweets}
+            errMsg={feedState.err}
           />
         );
       case "Pick from subscriptions":
@@ -68,6 +94,7 @@ const HomePage = (props: {
             handleSearchInit={handleSearchInit}
             isLoading={feedState.isLoading}
             tweets={feedState.listOfTweets}
+            errMsg={feedState.err}
           />
         );
     }
