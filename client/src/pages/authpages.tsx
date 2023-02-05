@@ -17,7 +17,7 @@ import {
 import Logo from "../components/logo";
 import { AuthFormInput, AuthFormLabel } from "../components/inputs+labels";
 import { theme } from "./css/theme";
-import { loginWithEmailPassword } from "../firebasefuncs";
+import { createUserWEmailAndPw } from "../firebasefuncs";
 
 const AuthPages = (props: {
   history: { location: { state: { loginOrSignup: string } } };
@@ -41,11 +41,11 @@ const AuthPages = (props: {
   };
 
   const [loginFormState, setLoginFormState] = useState({
-    username: "",
+    email: "",
     pw: "",
   });
   const [createAccFormState, setCreateAccFormState] = useState({
-    username: "",
+    email: "",
     pw: "",
     cnfmPw: "",
   });
@@ -59,8 +59,13 @@ const AuthPages = (props: {
     setCreateAccFormState({ ...prevState, [field]: value });
   };
 
-  const handleAccCreationSubmit = () => {
-    console.log(createAccFormState);
+  const handleAccCreationSubmit = async () => {
+    if (createAccFormState.pw === createAccFormState.cnfmPw) {
+      const result = await createUserWEmailAndPw(
+        createAccFormState.email,
+        createAccFormState.pw
+      );
+    }
   };
 
   return (
@@ -106,12 +111,12 @@ const AuthPages = (props: {
               >
                 <FormControl>
                   <Flex direction="column">
-                    <AuthFormLabel labelName="Username" />
+                    <AuthFormLabel labelName="Email" />
                     <AuthFormInput
-                      inputType="text"
-                      value={createAccFormState.username}
+                      inputType="email"
+                      value={createAccFormState.email}
                       updateState={updateCreateAccFormState}
-                      fieldCategory="username"
+                      fieldCategory="email"
                     />
                     <AuthFormLabel labelName="Password" />
                     <AuthFormInput
@@ -188,12 +193,12 @@ const AuthPages = (props: {
               >
                 <FormControl>
                   <Flex direction="column">
-                    <AuthFormLabel labelName="Username" />
+                    <AuthFormLabel labelName="Email" />
                     <AuthFormInput
-                      inputType="text"
+                      inputType="email"
                       updateState={updateLoginFormState}
-                      value={loginFormState.username}
-                      fieldCategory="username"
+                      value={loginFormState.email}
+                      fieldCategory="email"
                     />
                     <AuthFormLabel labelName="Password" />
                     <AuthFormInput

@@ -2,10 +2,14 @@ import { SmallCloseIcon, ArrowBackIcon } from "@chakra-ui/icons";
 import { Flex, Button } from "@chakra-ui/react";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { logout } from "../firebasefuncs";
 
 const SignOutAndGoBackBtns: React.FC = () => {
   const history = useHistory();
-  const handleSignout = () => {};
+  const handleSignout = async () => {
+    await logout();
+    history.push("/");
+  };
   const handleBackBtn = () => {
     history.push("/mainmenu");
   };

@@ -1,9 +1,59 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { config } from "./fbconfig";
 const auth = getAuth();
+initializeApp(config.firebaseConfig);
 
-export const loginWithGoogle = () => {};
+export const signinWEmailAndPw = (email: string, password: string) => {
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user);
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
+const provider = new GoogleAuthProvider();
+export const loginWithGoogle = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      if (credential) {
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+        return user;
+      }
+      throw new Error("account not found");
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+};
 
-export const loginWithEmailPassword = (email: string, password: string) => {
+export const createUserWEmailAndPw = (email: string, password: string) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
@@ -19,8 +69,18 @@ export const loginWithEmailPassword = (email: string, password: string) => {
     });
 };
 
-export const signupWithGoogle = () => {};
-
 export const getSubscriptions = () => {};
 
 export const addSubscription = () => {};
+
+export const logout = () => {
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+      console.log("signout successful");
+    })
+    .catch((error) => {
+      console.error(error);
+      // An error happened.
+    });
+};

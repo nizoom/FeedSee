@@ -3,9 +3,9 @@ import "./css/landingpage.css";
 import Hero from "../media/hero.png";
 import { useHistory } from "react-router-dom";
 import { Center, Image } from "@chakra-ui/react";
-import { initializeApp } from "firebase/app";
-import { config } from "../fbconfig";
-
+import { loginWithGoogle } from "../firebasefuncs";
+import { onAuthStateChanged, getAuth } from "firebase/auth";
+const auth = getAuth();
 const LandingPage = () => {
   const history = useHistory();
   const linkToAuth = (loginOrSignup: string) => {
@@ -14,6 +14,23 @@ const LandingPage = () => {
       state: { loginOrSignup: loginOrSignup },
     });
   };
+  const initSigninWithGoogle = async () => {
+    loginWithGoogle();
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log(user);
+        history.push({
+          pathname: "/mainmenu",
+        });
+      }
+    });
+  });
 
   return (
     <div className="landingpage-wrapper">
@@ -46,7 +63,11 @@ const LandingPage = () => {
               Sign up
             </p>
           </button>
-          <button type="button" className="auth-btn">
+          <button
+            type="button"
+            className="auth-btn"
+            onClick={initSigninWithGoogle}
+          >
             <p className="btn-name">Sign in with Google</p>
           </button>
         </nav>
