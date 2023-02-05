@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { config } from "./fbconfig";
+import { createUserInFirestore } from "./firestorefuncs";
 const auth = getAuth();
 initializeApp(config.firebaseConfig);
 
@@ -68,10 +69,6 @@ export const createUserWEmailAndPw = (email: string, password: string) => {
       // ..
     });
 };
-
-export const getSubscriptions = () => {};
-
-export const addSubscription = () => {};
 
 export const logout = () => {
   signOut(auth)

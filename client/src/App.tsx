@@ -10,9 +10,6 @@ import AuthPages from "./pages/authpages";
 import MainMenu from "./pages/mainmenu";
 import "./App.css";
 import HomePage from "./pages/home";
-// import { config } from "./fbconfig";
-// import { initializeApp } from "firebase/app";
-// initializeApp(config.firebaseConfig);
 
 const App = () => {
   return (

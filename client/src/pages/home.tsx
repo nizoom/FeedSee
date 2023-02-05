@@ -9,7 +9,8 @@ import {
 } from "../components/homecomponents";
 import SignOutAndGoBackBtns from "../components/signout&back";
 import { FetchTweets, ReturnbObject } from "../components/fetchtweets";
-
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { createUserInFirestore, getSubsList } from "../firestorefuncs";
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };
 }) => {
@@ -24,6 +25,28 @@ const HomePage = (props: {
     listOfTweets: undefined,
     handle: "",
     err: "",
+  });
+  const auth = getAuth();
+  const [loadedSubscriptions, setLoadedSuscriptions] = useState<boolean>(false);
+  const [listOfSubs, setListOfSubs] = useState<string[]>([]);
+  React.useEffect(() => {
+    if (loadedSubscriptions) {
+      onAuthStateChanged(auth, async (user) => {
+        console.log("checking db");
+        if (user) {
+          const uid = user.uid;
+          const { exists: userExistsInFirestore, subs } = await getSubsList(
+            uid
+          );
+          if (userExistsInFirestore) {
+            setListOfSubs(subs);
+          } else {
+            createUserInFirestore(user.email, user.uid);
+          }
+        }
+      });
+      setLoadedSuscriptions(true);
+    }
   });
 
   const handleSearchInit = async (handle: string = "randomizesearch") => {
@@ -95,6 +118,7 @@ const HomePage = (props: {
             isLoading={feedState.isLoading}
             tweets={feedState.listOfTweets}
             errMsg={feedState.err}
+            listOfSubs={listOfSubs}
           />
         );
     }

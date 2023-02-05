@@ -69,6 +69,7 @@ interface TweetViewProps {
   isLoading: boolean;
   tweets: Tweet[] | undefined;
   errMsg: string;
+  listOfSubs?: string[];
 }
 export const ViewRandomTweets: React.FC<TweetViewProps> = ({
   handleSearchInit,
@@ -217,6 +218,7 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewProps> = ({
   handleSearchInit,
   isLoading,
   tweets,
+  listOfSubs,
 }) => {
   const temporaryNames = ["Lebron", "Rihanna", "Conan", "Cleetus", "ryyde"];
   const [currentlyViewing, setCurrentlyViewing] = useState<string>("");
