@@ -17,6 +17,7 @@ import {
 import Logo from "../components/logo";
 import { AuthFormInput, AuthFormLabel } from "../components/inputs+labels";
 import { theme } from "./css/theme";
+import { loginWithEmailPassword } from "../firebasefuncs";
 
 const AuthPages = (props: {
   history: { location: { state: { loginOrSignup: string } } };
@@ -37,6 +38,29 @@ const AuthPages = (props: {
 
   const goBack = () => {
     history.push("/");
+  };
+
+  const [loginFormState, setLoginFormState] = useState({
+    username: "",
+    pw: "",
+  });
+  const [createAccFormState, setCreateAccFormState] = useState({
+    username: "",
+    pw: "",
+    cnfmPw: "",
+  });
+
+  const updateLoginFormState = (field: string, value: string) => {
+    const prevState = { ...loginFormState };
+    setLoginFormState({ ...prevState, [field]: value });
+  };
+  const updateCreateAccFormState = (field: string, value: string) => {
+    const prevState = { ...createAccFormState };
+    setCreateAccFormState({ ...prevState, [field]: value });
+  };
+
+  const handleAccCreationSubmit = () => {
+    console.log(createAccFormState);
   };
 
   return (
@@ -83,11 +107,26 @@ const AuthPages = (props: {
                 <FormControl>
                   <Flex direction="column">
                     <AuthFormLabel labelName="Username" />
-                    <AuthFormInput inputType="text" />
+                    <AuthFormInput
+                      inputType="text"
+                      value={createAccFormState.username}
+                      updateState={updateCreateAccFormState}
+                      fieldCategory="username"
+                    />
                     <AuthFormLabel labelName="Password" />
-                    <AuthFormInput inputType="password" />
+                    <AuthFormInput
+                      inputType="password"
+                      value={createAccFormState.pw}
+                      updateState={updateCreateAccFormState}
+                      fieldCategory="pw"
+                    />
                     <AuthFormLabel labelName="Confirm Password" />
-                    <AuthFormInput inputType="password" />
+                    <AuthFormInput
+                      inputType="password"
+                      value={createAccFormState.cnfmPw}
+                      updateState={updateCreateAccFormState}
+                      fieldCategory="cnfmPw"
+                    />
                     <Flex
                       gap="40px"
                       justify="center"
@@ -100,6 +139,7 @@ const AuthPages = (props: {
                         letterSpacing="3px"
                         w="70%"
                         m="auto"
+                        onClick={handleAccCreationSubmit}
                       >
                         Submit
                       </Button>
@@ -149,9 +189,19 @@ const AuthPages = (props: {
                 <FormControl>
                   <Flex direction="column">
                     <AuthFormLabel labelName="Username" />
-                    <AuthFormInput inputType="text" />
+                    <AuthFormInput
+                      inputType="text"
+                      updateState={updateLoginFormState}
+                      value={loginFormState.username}
+                      fieldCategory="username"
+                    />
                     <AuthFormLabel labelName="Password" />
-                    <AuthFormInput inputType="password" />
+                    <AuthFormInput
+                      inputType="password"
+                      updateState={updateLoginFormState}
+                      value={loginFormState.pw}
+                      fieldCategory="password"
+                    />
 
                     <Flex
                       gap="40px"

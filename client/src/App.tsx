@@ -1,11 +1,19 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
+import {
+  BrowserRouter,
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from "react-router-dom";
 import LandingPage from "./pages/landingpage";
 import AuthPages from "./pages/authpages";
 import MainMenu from "./pages/mainmenu";
 import "./App.css";
 import HomePage from "./pages/home";
+import { config } from "./fbconfig";
+import { initializeApp } from "firebase/app";
+initializeApp(config.firebaseConfig);
+
 const App = () => {
   return (
     <Switch>
@@ -19,8 +27,3 @@ const App = () => {
 };
 
 export default App;
-
-{
-  /* <LandingPage /> */
-}
-//  <AuthPages />

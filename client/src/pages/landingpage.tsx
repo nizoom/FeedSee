@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./css/landingpage.css";
 import Hero from "../media/hero.png";
 import { useHistory } from "react-router-dom";
 import { Center, Image } from "@chakra-ui/react";
+import { initializeApp } from "firebase/app";
+import { config } from "../fbconfig";
 
 const LandingPage = () => {
   const history = useHistory();
@@ -12,6 +14,7 @@ const LandingPage = () => {
       state: { loginOrSignup: loginOrSignup },
     });
   };
+
   return (
     <div className="landingpage-wrapper">
       <header className="landingpage-header">
