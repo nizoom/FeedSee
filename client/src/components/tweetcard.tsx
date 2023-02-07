@@ -22,11 +22,13 @@ import { Tweet } from "./homecomponents";
 import TwtCrdImage from "../media/tweetcard.png";
 import "@fontsource/montserrat-alternates";
 import { theme } from "../pages/css/theme";
-
+import { addSubscription } from "../firestorefuncs";
+import { getAuth } from "firebase/auth";
 interface TweetCardProps {
   tweet: Tweet;
+  refreshSubsList: () => void;
 }
-const TweetCard: React.FC<TweetCardProps> = ({ tweet }) => {
+const TweetCard: React.FC<TweetCardProps> = ({ tweet, refreshSubsList }) => {
   const [subscribeMenuStatus, setSubscribeMenuStatus] =
     useState<boolean>(false);
   const handleMouseOnCard = () => {
@@ -54,6 +56,8 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet }) => {
               author={tweet.author}
               closeMenuWithCancel={closeMenu}
               profileUrl={tweet.profileUrl}
+              refreshSubsList={refreshSubsList}
+              handle={tweet.username}
             />
             <CardBody overflow="scroll" height="275px">
               <Text fontSize="medium" mb="4%">
@@ -73,18 +77,26 @@ interface SubscribeMenuProps {
   author: string;
   closeMenuWithCancel: () => void;
   profileUrl: string;
+  refreshSubsList: () => void;
+  handle: string;
 }
 const SubscribeMenu: React.FC<SubscribeMenuProps> = ({
   active,
   author,
   closeMenuWithCancel,
   profileUrl,
+  refreshSubsList,
+  handle,
 }) => {
   const [checkmarkStatus, setCharkMarkStatus] = useState<boolean>(false);
+  const auth = getAuth();
+  const currentUser = auth.currentUser;
   const handleSubscribeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCharkMarkStatus(true);
+    addSubscription(currentUser?.uid, handle);
     setTimeout(() => {
       setCharkMarkStatus(false);
+      refreshSubsList();
     }, 1500);
   };
   const closeMenuBtn = (e: React.MouseEvent<HTMLButtonElement>) => {

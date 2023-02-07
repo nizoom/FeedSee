@@ -11,16 +11,21 @@ import { v4 as uuidv4 } from "uuid";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 
 interface SubsListProps {
-  listOfSubs: string[];
+  listOfSubs: string[] | undefined;
   sendSelectionToParent: (string) => any;
 }
 const SubsList: React.FC<SubsListProps> = ({
   listOfSubs,
   sendSelectionToParent,
 }) => {
+  console.log(listOfSubs);
+  console.log(typeof listOfSubs);
   const handleMenuSelection = (sub: string) => {
     sendSelectionToParent(sub);
   };
+  if (!listOfSubs) {
+    return null;
+  }
   const generateSubsListHtml = listOfSubs.map((sub) => {
     return (
       <div key={uuidv4()} style={{ margin: "0 10% 10% 10%" }}>

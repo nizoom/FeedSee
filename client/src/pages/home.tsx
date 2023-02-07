@@ -30,24 +30,32 @@ const HomePage = (props: {
   const [loadedSubscriptions, setLoadedSuscriptions] = useState<boolean>(false);
   const [listOfSubs, setListOfSubs] = useState<string[]>([]);
   React.useEffect(() => {
-    if (loadedSubscriptions) {
-      onAuthStateChanged(auth, async (user) => {
-        console.log("checking db");
-        if (user) {
-          const uid = user.uid;
-          const { exists: userExistsInFirestore, subs } = await getSubsList(
-            uid
-          );
-          if (userExistsInFirestore) {
+    if (!loadedSubscriptions) {
+      const auth = getAuth();
+      const currentUser = auth.currentUser;
+      if (currentUser) {
+        (async () => {
+          console.log("checking db");
+          const uid = currentUser.uid;
+          const { userExists, subs } = await getSubsList(uid);
+          console.log(subs);
+          if (userExists) {
             setListOfSubs(subs);
           } else {
-            createUserInFirestore(user.email, user.uid);
+            createUserInFirestore(currentUser.email, currentUser.uid);
           }
-        }
-      });
+        })();
+      }
       setLoadedSuscriptions(true);
+      // console.log(listOfSubs);
     }
   });
+  const refreshSubsList = async () => {
+    const currentUser = auth.currentUser;
+    const { subs } = await getSubsList(currentUser?.uid);
+    console.log(subs);
+    setListOfSubs(subs);
+  };
 
   const handleSearchInit = async (handle: string = "randomizesearch") => {
     // init fetch logic
@@ -96,6 +104,7 @@ const HomePage = (props: {
       case "Randomize":
         return (
           <ViewRandomTweets
+            refreshSubsList={refreshSubsList}
             handleSearchInit={handleSearchInit}
             isLoading={feedState.isLoading}
             tweets={feedState.listOfTweets}
@@ -105,6 +114,7 @@ const HomePage = (props: {
       case "Enter handle":
         return (
           <ViewTweetsFrmInputedHandle
+            refreshSubsList={refreshSubsList}
             handleSearchInit={handleSearchInit}
             isLoading={feedState.isLoading}
             tweets={feedState.listOfTweets}
@@ -119,6 +129,7 @@ const HomePage = (props: {
             tweets={feedState.listOfTweets}
             errMsg={feedState.err}
             listOfSubs={listOfSubs}
+            refreshSubsList={refreshSubsList}
           />
         );
     }

@@ -18,31 +18,43 @@ export const createUserInFirestore = async (
 ) => {
   // if uid does not exist in db then create
   const result = await setDoc(doc(usersRef, uid), {
-    subscribers: ["tony18", "coolio"],
+    subscribers: [],
     name: "user18",
     email: email,
   });
 };
 
 interface subsListReturnObj {
-  exists: boolean;
+  userExists: boolean;
   subs: string[];
 }
 
-export const getSubsList = async (uid: string) => {
+export const getSubsList = async (uid: string | undefined) => {
+  if (!uid) {
+    console.log("Logged in user not found");
+    throw new Error("Logged in user not found");
+  }
   const userRef = doc(db, "users", uid);
   const docSnap = await getDoc(userRef);
 
   if (docSnap.exists()) {
     console.log("Document data:", docSnap.data());
-    return { exists: true, subs: [] } as subsListReturnObj;
+    return {
+      userExists: true,
+      subs: [docSnap.data().subscriptions],
+    } as subsListReturnObj;
   } else {
     // doc.data() will be undefined in this case
     console.log("user does not exist in firestore");
-    return { exists: false, subs: [] } as subsListReturnObj;
+    return { userExists: false, subs: [] } as subsListReturnObj;
   }
 };
 
-export const getSubscriptions = () => {};
-
-export const addSubscription = () => {};
+export const addSubscription = (uid: string | undefined, newSub: string) => {
+  if (!uid) {
+    console.log("Logged in user not found");
+    throw new Error("Logged in user not found");
+  }
+  const userRef = doc(db, "users", uid);
+  setDoc(userRef, { subscriptions: newSub }, { merge: true });
+};

@@ -32,17 +32,19 @@ export interface Tweet {
 
 export interface TweetComponentProps {
   listOfTweets: Tweet[] | undefined;
+  refreshSubsList: () => void;
 }
 
 export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   listOfTweets,
+  refreshSubsList,
 }) => {
   if (listOfTweets) {
     // if there are tweets
     const listTweets = listOfTweets.map((tweet) => {
       return (
         <GridItem justifySelf="center" key={uuidv4()} maxH="400px">
-          <TweetCard tweet={tweet} />
+          <TweetCard tweet={tweet} refreshSubsList={refreshSubsList} />
         </GridItem>
       );
     });
@@ -70,11 +72,13 @@ interface TweetViewProps {
   tweets: Tweet[] | undefined;
   errMsg: string;
   listOfSubs?: string[];
+  refreshSubsList: () => void;
 }
 export const ViewRandomTweets: React.FC<TweetViewProps> = ({
   handleSearchInit,
   isLoading,
   tweets,
+  refreshSubsList,
 }) => {
   const handleRandomSearchClick = () => {
     handleSearchInit("randomizesearch");
@@ -106,7 +110,10 @@ export const ViewRandomTweets: React.FC<TweetViewProps> = ({
         </Center>
 
         <ProgressBar isLoading={isLoading} />
-        <RenderTweetsComponent listOfTweets={tweets} />
+        <RenderTweetsComponent
+          listOfTweets={tweets}
+          refreshSubsList={refreshSubsList}
+        />
       </Flex>
     </Container>
   );
@@ -117,6 +124,7 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewProps> = ({
   isLoading,
   tweets,
   errMsg,
+  refreshSubsList,
 }) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [errStatus, setErrStatus] = useState<boolean>(false);
@@ -209,7 +217,10 @@ export const ViewTweetsFrmInputedHandle: React.FC<TweetViewProps> = ({
         </Button>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={tweets} />
+      <RenderTweetsComponent
+        listOfTweets={tweets}
+        refreshSubsList={refreshSubsList}
+      />
     </Container>
   );
 };
@@ -219,6 +230,7 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewProps> = ({
   isLoading,
   tweets,
   listOfSubs,
+  refreshSubsList,
 }) => {
   const temporaryNames = ["Lebron", "Rihanna", "Conan", "Cleetus", "ryyde"];
   const [currentlyViewing, setCurrentlyViewing] = useState<string>("");
@@ -233,7 +245,7 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewProps> = ({
       <Center position={"relative"} zIndex="10">
         <Flex direction="row-reverse" gap={40}>
           <SubsList
-            listOfSubs={temporaryNames}
+            listOfSubs={listOfSubs}
             sendSelectionToParent={getSelectionFromChildComp}
           />
           <Box bg="#4895EF" p={10} w="200px">
@@ -242,7 +254,10 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewProps> = ({
         </Flex>
       </Center>
       <ProgressBar isLoading={isLoading} />
-      <RenderTweetsComponent listOfTweets={tweets} />
+      <RenderTweetsComponent
+        listOfTweets={tweets}
+        refreshSubsList={refreshSubsList}
+      />
     </Container>
   );
 };
