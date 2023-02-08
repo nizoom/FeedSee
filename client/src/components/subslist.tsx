@@ -8,15 +8,20 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, DeleteIcon } from "@chakra-ui/icons";
+import { deleteSubscription } from "../firestorefuncs";
+import { getAuth } from "firebase/auth";
+const auth = getAuth();
 
 interface SubsListProps {
   listOfSubs: string[] | undefined;
   sendSelectionToParent: (string) => any;
+  refreshSubsList: () => void;
 }
 const SubsList: React.FC<SubsListProps> = ({
   listOfSubs,
   sendSelectionToParent,
+  refreshSubsList,
 }) => {
   const handleMenuSelection = (sub: string) => {
     sendSelectionToParent(sub);
@@ -29,11 +34,21 @@ const SubsList: React.FC<SubsListProps> = ({
   if (!Array.isArray(arrayOfSubs)) {
     return null;
   }
+
+  //   uid: string | undefined,
+  // subToRemove: string,
+  // originalSubsList: string[]
+  const handleDeleteClick = (subToRemove: string) => {
+    const currentUser = auth.currentUser;
+    deleteSubscription(currentUser?.uid, subToRemove, arrayOfSubs);
+    refreshSubsList();
+  };
   const generateSubsListHtml = arrayOfSubs.map((sub) => {
     return (
       <div key={uuidv4()} style={{ margin: "0 10% 10% 10%" }}>
         <MenuItem
-          onClick={() => handleMenuSelection(sub)}
+          display="flex"
+          justifyContent="space-between"
           m="auto"
           w="100%"
           mb="20px"
@@ -41,7 +56,18 @@ const SubsList: React.FC<SubsListProps> = ({
           h="40px"
           boxShadow="2px 1px 5px #458ADA"
         >
-          <Text ml="10px">{sub}</Text>
+          <Text ml="10px" onClick={() => handleMenuSelection(sub)}>
+            {sub}
+          </Text>
+          <DeleteIcon
+            onClick={() => handleDeleteClick(sub)}
+            paddingRight={4}
+            color="purple"
+            w="50"
+            _hover={{
+              color: "red",
+            }}
+          />
         </MenuItem>
       </div>
     );

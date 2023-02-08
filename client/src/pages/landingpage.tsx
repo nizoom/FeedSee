@@ -19,6 +19,7 @@ const LandingPage = () => {
   };
 
   useEffect(() => {
+    console.log("on landing page");
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties

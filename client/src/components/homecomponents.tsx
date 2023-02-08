@@ -247,6 +247,7 @@ export const ViewTweetsFrmSubscription: React.FC<TweetViewProps> = ({
           <SubsList
             listOfSubs={listOfSubs}
             sendSelectionToParent={getSelectionFromChildComp}
+            refreshSubsList={refreshSubsList}
           />
           <Box bg="#4895EF" p={10} w="200px">
             <Text>{currentlyViewing} </Text>

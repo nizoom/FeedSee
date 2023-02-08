@@ -6,6 +6,7 @@ import {
   getDoc,
   arrayUnion,
   updateDoc,
+  FieldValue,
 } from "@firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { config } from "./fbconfig";
@@ -59,4 +60,20 @@ export const addSubscription = (uid: string | undefined, newSub: string) => {
   }
   const userRef = doc(db, "users", uid);
   updateDoc(userRef, { subscriptions: arrayUnion(newSub) });
+};
+
+export const deleteSubscription = (
+  uid: string | undefined,
+  subToRemove: string,
+  originalSubsList: string[]
+) => {
+  if (!uid) {
+    console.log("Logged in user not found");
+    throw new Error("Logged in user not found");
+  }
+  const newSubsList = originalSubsList.filter((sub) => sub !== subToRemove);
+  const userRef = doc(db, "users", uid);
+  // const cityRef = doc(db, 'cities', 'BJ');
+  console.log(newSubsList);
+  setDoc(userRef, { subscriptions: newSubsList }, { merge: true });
 };

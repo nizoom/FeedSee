@@ -6,9 +6,10 @@ import { logout } from "../firebasefuncs";
 
 const SignOutAndGoBackBtns: React.FC = () => {
   const history = useHistory();
-  const handleSignout = async () => {
+  const handleSignout = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     await logout();
-    history.push("/");
+    history.push("/auth");
   };
   const handleBackBtn = () => {
     history.push("/mainmenu");

@@ -71,6 +71,7 @@ export const createUserWEmailAndPw = (email: string, password: string) => {
 };
 
 export const logout = () => {
+  console.log("signing out");
   signOut(auth)
     .then(() => {
       // Sign-out successful.
