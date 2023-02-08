@@ -29,6 +29,7 @@ interface TweetCardProps {
   refreshSubsList: () => void;
 }
 const TweetCard: React.FC<TweetCardProps> = ({ tweet, refreshSubsList }) => {
+  console.log(tweet);
   const [subscribeMenuStatus, setSubscribeMenuStatus] =
     useState<boolean>(false);
   const handleMouseOnCard = () => {

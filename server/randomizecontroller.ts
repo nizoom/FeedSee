@@ -30,7 +30,7 @@ const randomizeController = async (next: NextFunction) => {
 
   //4. organize tweets in chronological order
   const tweetsInChronoOrder = orderTweetsByTime(tweetsFromFollowers, next);
-  return [tweetsInChronoOrder, validatedHandle?.name];
+  return [tweetsInChronoOrder?.flat(), validatedHandle?.name];
 };
 
 export default randomizeController;

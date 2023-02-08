@@ -83,6 +83,8 @@ export const ViewRandomTweets: React.FC<TweetViewProps> = ({
   const handleRandomSearchClick = () => {
     handleSearchInit("randomizesearch");
   };
+
+  // const formattedList = tweets[0][0];
   return (
     <Container>
       <Flex direction="column">

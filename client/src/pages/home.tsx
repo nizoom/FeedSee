@@ -68,10 +68,11 @@ const HomePage = (props: {
       const { data, responseStatus } = fetchResponse as ReturnbObject;
       if (responseStatus === 200) {
         const tweets = JSON.parse(data);
+
         setFeedState({
           isLoading: false,
           err: "",
-          listOfTweets: handle === "randomizesearch" ? tweets : tweets,
+          listOfTweets: handle === "randomizesearch" ? tweets[0] : tweets,
           handle: handle === "randomizesearch" ? tweets[1] : handle,
         });
       } else {
