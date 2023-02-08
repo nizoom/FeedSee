@@ -4,6 +4,8 @@ import {
   setDoc,
   collection,
   getDoc,
+  arrayUnion,
+  updateDoc,
 } from "@firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { config } from "./fbconfig";
@@ -18,7 +20,7 @@ export const createUserInFirestore = async (
 ) => {
   // if uid does not exist in db then create
   const result = await setDoc(doc(usersRef, uid), {
-    subscribers: [],
+    subscriptions: [],
     name: "user18",
     email: email,
   });
@@ -56,5 +58,5 @@ export const addSubscription = (uid: string | undefined, newSub: string) => {
     throw new Error("Logged in user not found");
   }
   const userRef = doc(db, "users", uid);
-  setDoc(userRef, { subscriptions: newSub }, { merge: true });
+  updateDoc(userRef, { subscriptions: arrayUnion(newSub) });
 };

@@ -18,15 +18,18 @@ const SubsList: React.FC<SubsListProps> = ({
   listOfSubs,
   sendSelectionToParent,
 }) => {
-  console.log(listOfSubs);
-  console.log(typeof listOfSubs);
   const handleMenuSelection = (sub: string) => {
     sendSelectionToParent(sub);
   };
   if (!listOfSubs) {
     return null;
   }
-  const generateSubsListHtml = listOfSubs.map((sub) => {
+  //type checking
+  const arrayOfSubs = listOfSubs[0];
+  if (!Array.isArray(arrayOfSubs)) {
+    return null;
+  }
+  const generateSubsListHtml = arrayOfSubs.map((sub) => {
     return (
       <div key={uuidv4()} style={{ margin: "0 10% 10% 10%" }}>
         <MenuItem
@@ -43,6 +46,7 @@ const SubsList: React.FC<SubsListProps> = ({
       </div>
     );
   });
+
   return (
     <Menu>
       <MenuButton

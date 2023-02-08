@@ -38,7 +38,6 @@ const HomePage = (props: {
           console.log("checking db");
           const uid = currentUser.uid;
           const { userExists, subs } = await getSubsList(uid);
-          console.log(subs);
           if (userExists) {
             setListOfSubs(subs);
           } else {
@@ -47,13 +46,11 @@ const HomePage = (props: {
         })();
       }
       setLoadedSuscriptions(true);
-      // console.log(listOfSubs);
     }
   });
   const refreshSubsList = async () => {
     const currentUser = auth.currentUser;
     const { subs } = await getSubsList(currentUser?.uid);
-    console.log(subs);
     setListOfSubs(subs);
   };
 
@@ -71,11 +68,10 @@ const HomePage = (props: {
       const { data, responseStatus } = fetchResponse as ReturnbObject;
       if (responseStatus === 200) {
         const tweets = JSON.parse(data);
-        console.log(tweets);
         setFeedState({
           isLoading: false,
           err: "",
-          listOfTweets: handle === "randomizesearch" ? tweets[0] : tweets,
+          listOfTweets: handle === "randomizesearch" ? tweets : tweets,
           handle: handle === "randomizesearch" ? tweets[1] : handle,
         });
       } else {
