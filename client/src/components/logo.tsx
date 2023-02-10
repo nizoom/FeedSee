@@ -10,26 +10,59 @@ interface LogoProps {
 const Logo: React.FC<LogoProps> = ({ handle }) => {
   return (
     <ChakraProvider theme={theme}>
-      {handle ? (
-        <Flex alignItems={"center"}>
-          <Heading sx={theme.heading} mr="-10px">
-            FeedSee
-          </Heading>
+      <style>
+        {`  @media (max-width: 600px){
+            .responsive-logo{
+              width: 50vw;
+              margin: auto;
+            }
+          }
+          @media(max-width: 600px){
+            .logo-mobile{
+              display: none
+            }
+            .handle{
+              width: 108%;
+              margin: 40px  auto ;
+              transform: translateY-50%);
+              text-align: center;
+            }
+          }
+        }`}
+      </style>
+      <div className="responsive-logo">
+        {handle ? (
+          <Flex alignItems={"center"}>
+            <Heading
+              mr="-10px"
+              fontSize={{ base: "16px", md: "24x", lg: "39.06px" }}
+              className="logo-mobile"
+              sx={theme.heading}
+            >
+              FeedSee:
+            </Heading>
+            <Text
+              fontFamily={`"Montserrat Alternates", sans-serif`}
+              fontSize={{ base: "16px", md: "24x", lg: "30px" }}
+              display="inline-block"
+              pt="0"
+              alignSelf={"center"}
+              fontWeight="500"
+              letterSpacing="6px"
+              className="handle"
+            >
+              {handle}
+            </Text>
+          </Flex>
+        ) : (
           <Text
-            fontFamily={`"Montserrat Alternates", sans-serif`}
-            fontSize={"30px"}
-            display="inline-block"
-            pt="0"
-            alignSelf={"center"}
-            fontWeight="500"
-            letterSpacing="6px"
+            sx={theme.heading}
+            fontSize={{ base: "16px", md: "24x", lg: "39.06px" }}
           >
-            - {handle}
+            FeedSee
           </Text>
-        </Flex>
-      ) : (
-        <Heading sx={theme.heading}>FeedSee</Heading>
-      )}
+        )}
+      </div>
     </ChakraProvider>
   );
 };

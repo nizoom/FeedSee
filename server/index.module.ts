@@ -34,7 +34,7 @@ app.get(
     console.log("in randomize endpoint here");
     const responseFromController = await randomizeController(next);
     console.log(responseFromController);
-    res.status(200).send(responseFromController[0]);
+    res.status(200).send(responseFromController);
     return;
   }
 );

@@ -17,7 +17,7 @@ import {
 import Logo from "../components/logo";
 import { AuthFormInput, AuthFormLabel } from "../components/inputs+labels";
 import { theme } from "./css/theme";
-import { createUserWEmailAndPw } from "../firebasefuncs";
+import { createUserWEmailAndPw, signinWEmailAndPw } from "../firebasefuncs";
 
 const AuthPages = (props: {
   history: { location: { state: { loginOrSignup: string } } };
@@ -66,6 +66,13 @@ const AuthPages = (props: {
         createAccFormState.pw
       );
     }
+  };
+
+  const handleLogin = async () => {
+    const result = await signinWEmailAndPw(
+      loginFormState.email,
+      loginFormState.pw
+    );
   };
 
   return (
@@ -205,7 +212,7 @@ const AuthPages = (props: {
                       inputType="password"
                       updateState={updateLoginFormState}
                       value={loginFormState.pw}
-                      fieldCategory="password"
+                      fieldCategory="pw"
                     />
 
                     <Flex
@@ -220,6 +227,7 @@ const AuthPages = (props: {
                         letterSpacing="3px"
                         w="70%"
                         m="auto"
+                        onClick={handleLogin}
                       >
                         Login
                       </Button>

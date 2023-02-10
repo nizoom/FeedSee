@@ -15,7 +15,7 @@ const SignOutAndGoBackBtns: React.FC = () => {
     history.push("/mainmenu");
   };
   return (
-    <Flex position="absolute" top="10px" right="1%" gap={30}>
+    <Flex position="absolute" top="10px" right="1%" gap={30} pl="100px">
       <Button
         border="2px solid white"
         borderRadius={8}

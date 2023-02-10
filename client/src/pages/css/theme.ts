@@ -31,7 +31,7 @@ const buttons = {
 
 const heading = {
   fontFamily: fonts.primary,
-  fontSize: "39.06px",
+
   p: "30px",
   fontWeight: "500",
   letterSpacing: "8px",

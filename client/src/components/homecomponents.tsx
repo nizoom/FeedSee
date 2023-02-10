@@ -40,6 +40,7 @@ export const RenderTweetsComponent: React.FC<TweetComponentProps> = ({
   refreshSubsList,
 }) => {
   if (listOfTweets) {
+    // console.log(listOfTweets);
     // if there are tweets
     const listTweets = listOfTweets.map((tweet) => {
       return (

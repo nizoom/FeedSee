@@ -68,7 +68,7 @@ const HomePage = (props: {
       const { data, responseStatus } = fetchResponse as ReturnbObject;
       if (responseStatus === 200) {
         const tweets = JSON.parse(data);
-
+        console.log(tweets);
         setFeedState({
           isLoading: false,
           err: "",
