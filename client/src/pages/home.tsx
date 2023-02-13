@@ -9,7 +9,7 @@ import {
 } from "../components/homecomponents";
 import SignOutAndGoBackBtns from "../components/signout&back";
 import { FetchTweets, ReturnbObject } from "../components/fetchtweets";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { createUserInFirestore, getSubsList } from "../firestorefuncs";
 const HomePage = (props: {
   history: { location: { state: { pathSelection: string } } };

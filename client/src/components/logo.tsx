@@ -23,7 +23,7 @@ const Logo: React.FC<LogoProps> = ({ handle }) => {
             }
             .handle{
               width: 108%;
-              margin: 40px  auto ;
+              margin: 70px  auto ;
               transform: translateY-50%);
               text-align: center;
             }
