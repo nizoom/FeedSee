@@ -26,7 +26,7 @@ This app was deployed, but unfortunately it is no longer viable after Elon Musk 
 - Enter Handle: See the feed from a specifically entered account. If the FeedSee user already has an idea of what they want to see, they can enter an account name in the input field.
 - Pick from subscriptions: Select a feed from a list of your favorites. If a FeedSee user is consistenly curious about what a certain Twitter user is seeing, they can subscribe to their feed. This path presents the FeedSee user with a dropdown of their subscriptions to choose from. The option to subscribe is activated by hovering over any Tweet card and is available in all of the paths.
 
-This gif features how the "enter handle" and "subscription" paths can be used together
+This gif features how the "enter handle" and "subscription" paths can be used together.
 
 ![](https://github.com/nizoom/FeedSee/blob/main/client/src/media/gifs/manual_subs.gif)
 
@@ -36,7 +36,9 @@ This gif features how the "enter handle" and "subscription" paths can be used to
 
 ## Authentication and database
 
-This app uses Google's Firebase to authenticate users. Users can sign in using their Gmail or create an account user an email and password. Their subscriptions are stored in a Firestore database. The subscriptions list is fetched when a user enters the main menu unless the list is already available because the user is coming back from a previous search (using the back arrow at the top right). The list also refreshes when a subscription is added or removed.
+This app uses Google's Firebase to authenticate users. Users can sign in using their Gmail (Gmail pop up not shown for privacy) or create an account user an email and password. Their subscriptions are stored in a Firestore database. The subscriptions list is fetched when a user enters the main menu unless the list is already available because the user is coming back from a previous search (using the back arrow at the top right). The list also refreshes when a subscription is added or removed.
+
+![](https://github.com/nizoom/FeedSee/blob/main/client/src/media/gifs/login.gif)
 
 ## Reflection
 
