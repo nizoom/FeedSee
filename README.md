@@ -16,15 +16,23 @@ This app was deployed, but unfortunately it is no longer viable after Elon Musk 
 
 ## Main Features
 
+![](https://github.com/nizoom/FeedSee/blob/main/client/src/media/gifs/mainmenu.gif)
+
 ### Main Menu - 3 ways of using the app
 
-//ADD MENU GIF//
+![](https://github.com/nizoom/FeedSee/blob/main/client/src/media/gifs/randomize.gif)
 
 - Randomize: Clicking Randomize selects a random account from a list of public figures. This function is helpful to get people started if they can't think of a specific Twitter account off the top of their head. If I were to improve this function it would generate a live list of popular accounts once a day in an effort to capture newer popular users and remove deleted ones.
 - Enter Handle: See the feed from a specifically entered account. If the FeedSee user already has an idea of what they want to see, they can enter an account name in the input field.
 - Pick from subscriptions: Select a feed from a list of your favorites. If a FeedSee user is consistenly curious about what a certain Twitter user is seeing, they can subscribe to their feed. This path presents the FeedSee user with a dropdown of their subscriptions to choose from. The option to subscribe is activated by hovering over any Tweet card and is available in all of the paths.
 
+This gif features how the "enter handle" and "subscription" paths can be used together
+
+![](https://github.com/nizoom/FeedSee/blob/main/client/src/media/gifs/manual_subs.gif)
+
 ## Responsive UI
+
+![](https://github.com/nizoom/FeedSee/blob/main/client/src/media/gifs/responsive.gif)
 
 ## Authentication and database
 
