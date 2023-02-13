@@ -4,9 +4,9 @@ Want to see what a give person sees on Twitter? Just enter their name.
 
 ## What is it?
 
-FeedSee is a web scraping app that provides a peak into the public social network of your
+FeedSee is a new version of a web scraping app that provides a peak into the public social network of your
 favorite public figures, artists, and even friends. Enter a twitter handle and see all the most recent posts
-from their followers. The result is a more wholistic picture of that individual's interests and shared communities. The project utilizes the Twitter API fetch tweet data and users can subscribe to a specific account's feed that they are interested in.
+from their followers. The result is a more wholistic picture of that individual's interests, influences, and shared communities. The project utilizes the Twitter API fetch tweet data and users can subscribe to the feed a of specific account that they are interested in.
 
 _Technologies used for this app: ReactJS, Typescript, NodeJS, Express, Chakra UI, and Firebase_
 
@@ -42,7 +42,7 @@ This app uses Google's Firebase to authenticate users. Users can sign in using t
 
 ## Reflection
 
-This project was intended to push my UX abilities and to use modern web technologies like TypeScript and Chakra UI. All designs were created in Figma and implemented using JSX and CSS libraries. A few graphics such as the cards and landing page graphic were exported as PNGs. On the backend I focused on using functional programming and improved error handling.
+This project was intended to push my UX abilities and to use modern web technologies like TypeScript and Chakra UI. All designs were created in Figma and implemented using JSX and CSS libraries. A few graphics such as the cards and landing page graphics were exported as PNGs. On the backend I focused on using functional programming and improving error handling.
 
 ### New Features for upcoming versions:
 
